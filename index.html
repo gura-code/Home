@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il Mio Hub</title>
+  <style>
+    :root {
+      --bg-color: #121214;
+      --card-bg: #1e1e24;
+      --border-color: #2e2e38;
+      --text-color: #e1e1e6;
+      --accent-color: #82aaff;
+      --accent-green: #c3e88d;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hub-container {
+      max-width: 900px;
+      width: 100%;
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+
+    .window-header {
+      background: #18181b;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+
+    .window-title {
+      margin-left: 15px;
+      font-size: 0.85rem;
+      color: #a0a0b0;
+    }
+
+    .content {
+      padding: 24px;
+    }
+
+    .hero-section {
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 20px;
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .hero-section h1 {
+      margin: 0 0 8px 0;
+      color: var(--accent-color);
+    }
+
+    .hero-section p {
+      margin: 0;
+      color: #a0a0b0;
+    }
+
+    .rooms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px;
+      margin-top: 20px;
+    }
+
+    .room-card {
+      background: #16161a;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .room-card h3 {
+      margin-top: 0;
+      color: var(--accent-green);
+    }
+
+    .room-card ul {
+      padding-left: 20px;
+      color: #a0a0b0;
+      font-size: 0.9rem;
+    }
+
+    .btn {
+      display: inline-block;
+      text-align: center;
+      background: var(--border-color);
+      color: var(--text-color);
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background: var(--accent-color);
+      color: #121214;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hub-container">
+    <div class="window-header">
+      <div class="dots">
+        <div class="dot dot-red"></div>
+        <div class="dot dot-yellow"></div>
+        <div class="dot dot-green"></div>
+      </div>
+      <div class="window-title">my-hub-os // home</div>
+    </div>
+
+    <div class="content">
+      <div class="hero-section">
+        <h1>Benvenuta nel mio Hub</h1>
+        <p>Uno spazio minimale per strumenti interattivi, storie visive e risorse.</p>
+      </div>
+
+      <div class="rooms-grid">
+        <div class="room-card">
+          <div>
+            <h3>🛠️ Officina</h3>
+            <ul>
+              <li>Pocket Card Gen</li>
+              <li>Passaporto Digitale</li>
+              <li>Mini-Zine (PDF)</li>
+            </ul>
+          </div>
+          <a href="#" class="btn">Entra nell'Officina</a>
+        </div>
+
+        <div class="room-card">
+          <div>
+            <h3>🖼️ Galleria</h3>
+            <ul>
+              <li>Foto con Cornice</li>
+              <li>Chat Logs (LINE)</li>
+              <li>Il Giornale Scroll</li>
+            </ul>
+          </div>
+          <a href="#" class="btn">Entra in Galleria</a>
+        </div>
+
+        <div class="room-card">
+          <div>
+            <h3>🎧 Studio</h3>
+            <ul>
+              <li>Study with Me</li>
+              <li>Audio Player</li>
+              <li>Bacheca Note</li>
+            </ul>
+          </div>
+          <a href="#" class="btn">Entra nello Studio</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
+
