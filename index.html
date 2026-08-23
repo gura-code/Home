@@ -3,192 +3,95 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Il Mio Hub</title>
-  <style>
-    :root {
-      --bg-color: #121214;
-      --card-bg: #1e1e24;
-      --border-color: #2e2e38;
-      --text-color: #e1e1e6;
-      --accent-color: #82aaff;
-      --accent-green: #c3e88d;
-    }
-
-    body {
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      padding: 20px;
-      display: flex;
-      justify-content: center;
-    }
-
-    .hub-container {
-      max-width: 900px;
-      width: 100%;
-      background: var(--card-bg);
-      border: 1px solid var(--border-color);
-      border-radius: 12px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-      overflow: hidden;
-    }
-
-    .window-header {
-      background: #18181b;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .dots {
-      display: flex;
-      gap: 6px;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot-red { background: #ff5f56; }
-    .dot-yellow { background: #ffbd2e; }
-    .dot-green { background: #27c93f; }
-
-    .window-title {
-      margin-left: 15px;
-      font-size: 0.85rem;
-      color: #a0a0b0;
-    }
-
-    .content {
-      padding: 24px;
-    }
-
-    .hero-section {
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 20px;
-      margin-bottom: 20px;
-      background: rgba(255, 255, 255, 0.02);
-    }
-
-    .hero-section h1 {
-      margin: 0 0 8px 0;
-      color: var(--accent-color);
-    }
-
-    .hero-section p {
-      margin: 0;
-      color: #a0a0b0;
-    }
-
-    .rooms-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 16px;
-      margin-top: 20px;
-    }
-
-    .room-card {
-      background: #16161a;
-      border: 1px solid var(--border-color);
-      border-radius: 8px;
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .room-card h3 {
-      margin-top: 0;
-      color: var(--accent-green);
-    }
-
-    .room-card ul {
-      padding-left: 20px;
-      color: #a0a0b0;
-      font-size: 0.9rem;
-    }
-
-    .btn {
-      display: inline-block;
-      text-align: center;
-      background: var(--border-color);
-      color: var(--text-color);
-      padding: 8px 12px;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.85rem;
-      margin-top: 10px;
-    }
-
-    .btn:hover {
-      background: var(--accent-color);
-      color: #121214;
-    }
-  </style>
+  <title>SEEA HUB // Clean OS</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="hub-container">
-    <div class="window-header">
-      <div class="dots">
-        <div class="dot dot-red"></div>
-        <div class="dot dot-yellow"></div>
-        <div class="dot dot-green"></div>
-      </div>
-      <div class="window-title">my-hub-os // home</div>
-    </div>
+    
+    <!-- BANNER IN ALTO -->
+    <header class="main-banner">
+      <h1>SEEA HUB</h1>
+      <p class="subtitle">// digital space & archive</p>
+    </header>
 
-    <div class="content">
-      <div class="hero-section">
-        <h1>Benvenuta nel mio Hub</h1>
-        <p>Uno spazio minimale per strumenti interattivi, storie visive e risorse.</p>
-      </div>
+    <!-- LAYOUT PRINCIPALE A 3 COLONNE -->
+    <main class="grid-layout">
 
-      <div class="rooms-grid">
-        <div class="room-card">
-          <div>
-            <h3>🛠️ Officina</h3>
-            <ul>
-              <li>Pocket Card Gen</li>
-              <li>Passaporto Digitale</li>
-              <li>Mini-Zine (PDF)</li>
-            </ul>
+      <!-- COLONNA SINISTRA: MENÙ SCONTRINO INCLINATO -->
+      <aside class="col-left">
+        <nav class="receipt-menu">
+          <div class="receipt-header">
+            <span>*** SEEA OS ***</span>
+            <span class="receipt-date">23.08.2026</span>
           </div>
-          <a href="#" class="btn">Entra nell'Officina</a>
+          <hr class="dashed-line">
+          <ul class="menu-list">
+            <li><a href="#about">[01] ABOUT ME</a></li>
+            <li><a href="#projects">[02] PROJECTS</a></li>
+            <li><a href="#zine">[03] MINI ZINES</a></li>
+            <li><a href="#gallery">[04] DOODLES</a></li>
+            <li><a href="#guestbook">[05] GUESTBOOK</a></li>
+          </ul>
+          <hr class="dashed-line">
+          <div class="receipt-footer">
+            <p>TOTAL ITEMS: 5</p>
+            <p class="barcode">||| | |||| || | |||</p>
+            <p>THANKS FOR VISITING!</p>
+          </div>
+        </nav>
+      </aside>
+
+      <!-- COLONNA CENTRALE: BACHECA DI BENVENUTO -->
+      <section class="col-center">
+        <div class="card welcome-card">
+          <h2>welcome!</h2>
+          <p>Ciao, sono <strong>Seea</strong>. Benvenuto nel mio spazio digitale minimale.</p>
+          <p>Questo hub raccoglie i miei progetti, la grafica in bianco e nero e le mie storie tascabili. Creato con HTML, CSS e tanta logica.</p>
+          <div class="status-badge">STATUS: Coding...</div>
         </div>
 
-        <div class="room-card">
-          <div>
-            <h3>🖼️ Galleria</h3>
-            <ul>
-              <li>Foto con Cornice</li>
-              <li>Chat Logs (LINE)</li>
-              <li>Il Giornale Scroll</li>
-            </ul>
+        <div class="card updates-card">
+          <h3>latest updates</h3>
+          <ul>
+            <li><span>23 Aug</span> - Creato il layout base dell'Hub</li>
+            <li><span>18 Aug</span> - Primo concept dello Scontrino Menù</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- COLONNA DESTRAM: PLAYER MUSICALE & WIDGET LUNA -->
+      <aside class="col-right">
+        
+        <!-- PLAYER MUSICALE RETRO -->
+        <div class="music-player">
+          <div class="player-screen">
+            <div class="album-art">♪</div>
+            <div class="track-info">
+              <span class="track-title">Now Playing</span>
+              <span class="artist-name">Lo-Fi Beats // Mono</span>
+            </div>
           </div>
-          <a href="#" class="btn">Entra in Galleria</a>
+          <div class="player-controls">
+            <button class="btn">⏮</button>
+            <button class="btn play">⏯</button>
+            <button class="btn">⏭</button>
+          </div>
         </div>
 
-        <div class="room-card">
-          <div>
-            <h3>🎧 Studio</h3>
-            <ul>
-              <li>Study with Me</li>
-              <li>Audio Player</li>
-              <li>Bacheca Note</li>
-            </ul>
-          </div>
-          <a href="#" class="btn">Entra nello Studio</a>
+        <!-- WIDGET FASE LUNARE -->
+        <div class="card moon-widget">
+          <h3>The Moon Today</h3>
+          <div class="moon-phase"></div>
+          <p class="moon-text">Waxing Moon (79%)</p>
         </div>
-      </div>
-    </div>
+
+      </aside>
+
+    </main>
+
   </div>
 
 </body>
 </html>
-
