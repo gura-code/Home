@@ -90,7 +90,7 @@
       transition: opacity 0.2s ease-in-out;
     }
 
-    /* WIDGET STILI BASE (BIANCO E NERO ALTERNATO) */
+    /* WIDGET BIANCO */
     .box {
       background: #ffffff;
       border: 2px solid #111111;
@@ -172,16 +172,7 @@
 
     /* CALENDAR STYLING (NERO) */
     .calendar-graphic-dark { 
-      width: 36px; 
-      height: 36px; 
-      border: 2px solid #fff; 
-      border-radius: 6px; 
-      background: #222; 
-      margin: 0 auto 8px; 
-      display: flex; 
-      flex-direction: column; 
-      overflow: hidden;
-      box-shadow: 2px 2px 0px #fff;
+      width: 36px; height: 36px; border: 2px solid #fff; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #fff;
     }
     .calendar-graphic-top-dark { background: #fff; height: 10px; width: 100%; }
     .calendar-graphic-body-dark { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; }
@@ -202,9 +193,9 @@
     .mini-calendar th { background: #111; color: #fff; font-size: 0.6rem; }
     .mini-calendar td.today { background: #111; color: #fff; font-weight: 800; border-radius: 4px; }
 
-    /* PIXEL CLOCK STYLING (BIANCO) */
-    .pixel-clock-box {
-      background: #fff;
+    /* PIXEL CLOCK STYLING (NERO) */
+    .pixel-clock-box-dark {
+      background: #111;
       border: 2px solid #111;
       border-radius: 16px;
       padding: 12px;
@@ -212,21 +203,21 @@
       box-shadow: 3px 3px 0px #111;
       margin-bottom: 10px;
     }
-    .pixel-clock-time {
+    .pixel-clock-time-dark {
       font-family: 'Press Start 2P', monospace;
       font-size: 0.85rem;
-      color: #111;
+      color: #fff;
       letter-spacing: 1px;
     }
 
-    /* IPOD PLAYER STYLING (NERO) */
-    .ipod-player-dark { background: #1a1a1a; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
-    .ipod-screen-dark { background: #000; color: #0ff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; border: 1px solid #333; }
-    .ipod-controls-dark { display: flex; justify-content: center; gap: 8px; align-items: center; }
-    .ipod-btn-ctrl-dark { background: #333; color: #fff; border: 2px solid #555; border-radius: 50%; width: 28px; height: 28px; font-size: 0.7rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0px #000; }
-    .ipod-btn-ctrl-dark:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #000; }
+    /* IPOD PLAYER STYLING (BIANCO) */
+    .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
+    .ipod-screen { background: #111; color: #fff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; }
+    .ipod-controls { display: flex; justify-content: center; gap: 8px; align-items: center; }
+    .ipod-btn-ctrl { background: #f0f0f3; border: 2px solid #111; border-radius: 50%; width: 28px; height: 28px; font-size: 0.7rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0px #111; }
+    .ipod-btn-ctrl:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #111; }
 
-    /* BOTTONI NAVIGAZIONE ALTERNATI */
+    /* BOTTONI NAVIGAZIONE */
     .nav-box-btn {
       width: 100%;
       background: #ffffff;
@@ -350,7 +341,6 @@
 
       <!-- COLONNA SINISTRA -->
       <aside class="col-left">
-        <!-- 1. SCONTRINO MENÙ (BIANCO) -->
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
           <hr class="receipt-dash">
@@ -365,7 +355,6 @@
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
         </div>
 
-        <!-- 2. CALENDARIO (NERO) -->
         <div class="box-dark">
           <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #fff; border-radius:2px;"></div></div>
           <div class="box-body">
@@ -383,7 +372,6 @@
           </div>
         </div>
 
-        <!-- 3. LINK ME (BIANCO) -->
         <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
@@ -396,15 +384,11 @@
 
       <!-- COLONNA CENTRALE -->
       <main class="col-center">
-        <!-- 1. ABOUT ME (NERO) -->
-        <div class="box-dark" style="margin-bottom: 14px;">
-          <div class="box-header"><span>about_me.id</span><span>[ID]</span></div>
-          <div class="box-body" style="text-align: center;">
-            <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img" style="margin: 0 auto;">
-          </div>
+        <!-- ABOUT ME SENZA WIDGET (SOLO IMMAGINE) -->
+        <div style="margin-bottom: 14px;">
+          <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
-        <!-- 2. STUDY WITH ME (BIANCO) -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header">
             <span>study_with_me</span>
@@ -417,7 +401,6 @@
           </div>
         </div>
 
-        <!-- 3. WELCOME.HTML (NERO) -->
         <div class="box-dark" style="margin-bottom: 14px;">
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
@@ -427,7 +410,6 @@
           </div>
         </div>
 
-        <!-- 4. LATEST UPDATES (BIANCO) -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
@@ -437,7 +419,6 @@
           </div>
         </div>
 
-        <!-- 5. PULSANTI LINK ESTERNI ALTERNATI -->
         <div style="display: flex; gap: 10px;">
           <a href="https://tuo-sito-pocket-card.com" target="_blank" class="nav-box-btn-dark">
             POCKET CARD BUILDER -&gt;
@@ -454,31 +435,31 @@
 
         <div style="flex: 1;"></div>
 
-        <!-- 1. OROLOGIO (BIANCO) -->
-        <div class="pixel-clock-box">
-          <div class="pixel-clock-time" id="pixel-clock">00:00:00</div>
+        <!-- OROLOGIO (NERO) -->
+        <div class="pixel-clock-box-dark">
+          <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
-        <!-- 2. GUESTBOOK (NERO) -->
-        <button class="nav-box-btn-dark" onclick="openPage('guestbook-page')">
+        <!-- GUESTBOOK (BIANCO) -->
+        <button class="nav-box-btn" onclick="openPage('guestbook-page')">
           ✎ GUESTBOOK -&gt;
         </button>
 
-        <!-- 3. FRIENDS & BUTTONS (BIANCO) -->
-        <button class="nav-box-btn" onclick="openPage('buttons-page')">
+        <!-- FRIENDS & BUTTONS (NERO) -->
+        <button class="nav-box-btn-dark" onclick="openPage('buttons-page')">
           ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
-        <!-- 4. MUSIC PLAYER (NERO) -->
-        <div class="box-dark" style="margin-bottom: 0;">
+        <!-- MUSIC PLAYER (BIANCO) -->
+        <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
-            <div class="ipod-player-dark">
-              <div class="ipod-screen-dark" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
-              <div class="ipod-controls-dark">
-                <button class="ipod-btn-ctrl-dark" onclick="prevSong()">&#10094;&#10094;</button>
-                <button class="ipod-btn-ctrl-dark" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
-                <button class="ipod-btn-ctrl-dark" onclick="nextSong()">&#10095;&#10095;</button>
+            <div class="ipod-player">
+              <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
+              <div class="ipod-controls">
+                <button class="ipod-btn-ctrl" onclick="prevSong()">&#10094;&#10094;</button>
+                <button class="ipod-btn-ctrl" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+                <button class="ipod-btn-ctrl" onclick="nextSong()">&#10095;&#10095;</button>
               </div>
               <audio id="audio-element"></audio>
             </div>
@@ -705,4 +686,3 @@
 
 </body>
 </html>
-
