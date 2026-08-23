@@ -42,7 +42,7 @@
       position: relative;
     }
 
-    /* TOP BANNER MODIFICATO (GRIGIO CHIARO E MORBIDO) */
+    /* TOP BANNER GRIGIO CHIARO SOFT */
     .top-banner {
       background: #e4e4e9;
       border: 2px solid #111111;
@@ -88,7 +88,6 @@
       z-index: 100;
       pointer-events: none;
       filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
-      transition: opacity 0.2s ease-in-out;
     }
 
     /* WIDGET BIANCO */
@@ -279,14 +278,45 @@
     }
     .back-btn:hover { background: #333; }
 
+    /* CONTENITORE SCROLLABILE PER BLOG, STORIE E GIOCHI */
     .cards-grid-scroll {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 20px;
-      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-height: 75vh;
       overflow-y: auto;
       padding: 10px;
-      justify-items: center;
+    }
+
+    /* CARD POST CON DATA */
+    .blog-post-card {
+      background: #ffffff;
+      border: 2px solid #111;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 4px 4px 0px #111;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .blog-post-date {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #666;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 4px;
+    }
+    .blog-post-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+    }
+    .blog-post-text {
+      font-size: 0.82rem;
+      font-weight: 600;
+      line-height: 1.5;
+      color: #333;
     }
 
     .buttons-wall-grid {
@@ -300,7 +330,6 @@
       border-radius: 20px;
       box-shadow: 4px 4px 0px #111;
     }
-
     .buttons-wall-grid img { width: 88px; height: 31px; border: 1px solid #111; image-rendering: pixelated; }
 
     .pure-card-img {
@@ -317,7 +346,7 @@
 <body>
 
   <!-- ==========================================================
-       VISTA HOME
+       VISTA HOME (NEOCITIES MAIN VETRINA)
        ========================================================== -->
   <div id="home-view" class="site-wrapper">
 
@@ -325,11 +354,14 @@
       <div class="banner-box">
         <h1>MOONLIGHT ARCHIVE</h1>
       </div>
+      <div style="font-size: 0.75rem; font-weight: 700; background: #fff; padding: 6px 12px; border-radius: 12px; border: 2px solid #111;">
+        HOSTED ON NEOCITIES // GITHUB LINKED
+      </div>
     </header>
 
     <div class="grid-container">
 
-      <!-- COLONNA SINISTRA -->
+      <!-- COLONNA SINISTRA (MENU & CALENDARIO) -->
       <aside class="col-left">
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
@@ -338,8 +370,9 @@
             <li><a class="active">[01] HOME</a></li>
             <li><a onclick="openPage('blog-page')">[02] LOGS & BLOG</a></li>
             <li><a onclick="openPage('gallery-page')">[03] GALLERY</a></li>
-            <li><a onclick="openPage('watchlist-page')">[04] WATCHLIST</a></li>
-            <li><a onclick="openPage('projects-page')">[05] PROJECTS</a></li>
+            <li><a onclick="openPage('stories-page')">[04] STORIES</a></li>
+            <li><a onclick="openPage('games-page')">[05] MINI-GAMES</a></li>
+            <li><a onclick="openPage('watchlist-page')">[06] WATCHLIST</a></li>
           </ul>
           <hr class="receipt-dash">
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
@@ -366,7 +399,7 @@
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
             <div style="border: 2px dashed #111; padding: 6px; border-radius: 10px; font-size: 0.65rem; font-family: monospace;">
-              &lt;a href="https://seea.neocities.org"&gt;&lt;img src="./button.png"&gt;&lt;/a&gt;
+              &lt;a href="https://tuo-sito.neocities.org"&gt;&lt;img src="./button.png"&gt;&lt;/a&gt;
             </div>
           </div>
         </div>
@@ -378,23 +411,16 @@
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
-        <div class="box" style="margin-bottom: 14px;">
-          <div class="box-header">
-            <span>study_with_me</span>
-            <span style="font-size: 1rem;">☕︎</span>
-          </div>
-          <div class="box-body">
-            <p style="font-size:0.8rem; font-weight:700; line-height:1.5;">
-              Sessioni di studio, timer pomodoro e musica per concentrarsi.
-            </p>
-          </div>
-        </div>
+        <!-- PULSANTE STUDY WITH ME COLLEGATO A GITHUB -->
+        <a href="https://github.com/tuo-username/study-with-me" target="_blank" class="nav-box-btn-dark" style="background: #222; margin-bottom: 14px; padding: 14px;">
+          ☕︎ STUDY WITH ME (GITHUB REPO) -&gt;
+        </a>
 
         <div class="box-dark" style="margin-bottom: 14px;">
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
             <p style="font-size:0.85rem; line-height:1.6; font-weight:600; color:#ddd;">
-              Seleziona una voce dallo scontrino o dai pulsanti laterali per esplorare le sezioni!
+              Benvenuto nel mio archivio! Neocities ospita la home, mentre storie, mini-giochi e codice avanzato sono collegati su GitHub.
             </p>
           </div>
         </div>
@@ -403,17 +429,17 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[23 AUG]</strong> Sincronizzati i file immagini con GitHub.</li>
+              <li><strong>[23 AUG]</strong> Aggiunta sezione Storie e Mini-Giochi.</li>
             </ul>
           </div>
         </div>
 
         <div style="display: flex; gap: 10px;">
-          <a href="https://tuo-sito-pocket-card.com" target="_blank" class="nav-box-btn-dark">
-            POCKET CARD BUILDER -&gt;
+          <a href="https://github.com/tuo-username/pocket-card" target="_blank" class="nav-box-btn-dark">
+            GITHUB REPO 1 -&gt;
           </a>
-          <a href="https://tuo-sito-banner-card.com" target="_blank" class="nav-box-btn">
-            BANNER CARD BUILDER -&gt;
+          <a href="https://github.com/tuo-username/banner-card" target="_blank" class="nav-box-btn">
+            GITHUB REPO 2 -&gt;
           </a>
         </div>
       </main>
@@ -455,9 +481,60 @@
     </div>
 
     <footer class="site-footer">
-      MOONLIGHT ARCHIVE // CODED WITH HTML &amp; CSS // ALL RIGHTS RESERVED
+      MOONLIGHT ARCHIVE // HOSTED ON NEOCITIES &amp; GITHUB // ALL RIGHTS RESERVED
     </footer>
 
+  </div>
+
+  <!-- PAGINA LOGS & BLOG (CON LISTA SCROLLABILE E DATE) -->
+  <div id="blog-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>SEEA // LOGS &amp; BLOG ARCHIVE</h2>
+    </div>
+    <div class="cards-grid-scroll">
+      <div class="blog-post-card">
+        <div class="blog-post-date">23 Agosto 2026</div>
+        <div class="blog-post-title">Primo post di aggiornamento strutturale</div>
+        <div class="blog-post-text">Ho finalmente configurato il passaggio tra Neocities e GitHub per gestire i contenuti più complessi senza limiti di spazio!</div>
+      </div>
+      <div class="blog-post-card">
+        <div class="blog-post-date">15 Agosto 2026</div>
+        <div class="blog-post-title">Inizio sviluppo tema Notebook OS</div>
+        <div class="blog-post-text">Studio del layout in bianco e nero ispirato agli scontrini e ai quaderni a quadretti. Aggiunto il player e il calendario dinamico.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGINA STORIE (STORIES) -->
+  <div id="stories-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>SEEA // STORIES &amp; WRITING</h2>
+    </div>
+    <div class="cards-grid-scroll">
+      <div class="blog-post-card">
+        <div class="blog-post-date">Capitolo 1 • 2026</div>
+        <div class="blog-post-title">La notte sotto la pioggia di neon</div>
+        <div class="blog-post-text">Qui pubblicherò le mie storie e i racconti scritti interamente in markdown o collegati via GitHub. Un piccolo spazio narrativo.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGINA MINI-GIOCHI (MINI-GAMES) -->
+  <div id="games-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>SEEA // MINI-GAMES ARCHIVE</h2>
+    </div>
+    <div class="cards-grid-scroll">
+      <div class="blog-post-card" style="text-align: center; padding: 24px;">
+        <div class="blog-post-date">Progetto interattivo #1</div>
+        <div class="blog-post-title">Il mio primo mini-gioco in JS</div>
+        <div class="blog-post-text" style="margin-bottom: 12px;">Presto qui troverai i mini-giochi programmati da me e ospitati sui repository GitHub!</div>
+        <a href="https://github.com/tuo-username/mini-giochi" target="_blank" class="nav-box-btn-dark" style="display:inline-block; width:auto; padding:8px 16px;">Vedi su GitHub -&gt;</a>
+      </div>
+    </div>
   </div>
 
   <!-- PAGINA BOTTONI -->
@@ -470,12 +547,10 @@
 
     <div class="buttons-wall-grid">
       <a href="#" target="_blank"><img src="./button1.png" alt="Button 1" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
-      <a href="#" target="_blank"><img src="./button2.png" alt="Button 2" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
-      <a href="#" target="_blank"><img src="./button3.png" alt="Button 3" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
     </div>
   </div>
 
-  <!-- PAGINE SECONDARIE -->
+  <!-- ALTRE PAGINE SECONDARIE -->
   <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
@@ -493,26 +568,6 @@
     </div>
     <div class="cards-grid-scroll">
       <img src="./anime-pocket1.png" alt="Anime 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
-    </div>
-  </div>
-
-  <div id="blog-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // JOURNAL &amp; BLOG</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <img src="./blog-banner1.png" alt="Blog 1" class="pure-card-img">
-    </div>
-  </div>
-
-  <div id="projects-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // DIGITAL PROJECTS</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <img src="./project-card1.png" alt="Project 1" class="pure-card-img" onerror="this.style.height='250px'; this.style.background='#eee';">
     </div>
   </div>
 
@@ -600,10 +655,7 @@
       playPauseBtn.innerHTML = "&#10074;&#10074;";
     }
 
-    audioElement.addEventListener('ended', () => { 
-      nextSong(); 
-    });
-
+    audioElement.addEventListener('ended', () => { nextSong(); });
     loadTrack(0);
 
     function generateCalendar() {
@@ -611,7 +663,6 @@
       const currentDay = today.getDate();
       const currentMonth = today.getMonth();
       const currentYear = today.getFullYear();
-
       const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
 
       document.getElementById('cal-month-title').innerText = monthNames[currentMonth].toLowerCase();
@@ -619,7 +670,6 @@
 
       const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
       const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-
       const tbody = document.getElementById('calendar-body');
       tbody.innerHTML = '';
 
@@ -644,10 +694,7 @@
           }
           row.appendChild(cell);
         }
-
-        if (hasDate || i === 0) {
-          tbody.appendChild(row);
-        }
+        if (hasDate || i === 0) { tbody.appendChild(row); }
       }
     }
 
