@@ -8,7 +8,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
-  <!-- Font pixelato per l'orologio -->
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
@@ -91,6 +90,7 @@
       transition: opacity 0.2s ease-in-out;
     }
 
+    /* WIDGET STILI BASE (BIANCO E NERO ALTERNATO) */
     .box {
       background: #ffffff;
       border: 2px solid #111111;
@@ -99,7 +99,6 @@
       box-shadow: 3px 3px 0px #111111;
       margin-bottom: 14px;
     }
-
     .box-header {
       background: #f0f0f3;
       border-bottom: 2px solid #111111;
@@ -110,20 +109,33 @@
       justify-content: space-between;
       align-items: center;
     }
-
     .box-body { padding: 14px; }
+
+    /* WIDGET NERO */
+    .box-dark {
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+      margin-bottom: 14px;
+    }
+    .box-dark .box-header {
+      background: #222222;
+      color: #ffffff;
+      border-bottom: 2px solid #444444;
+    }
 
     .receipt-box {
       background: #ffffff;
       border: 2px solid #111111;
-      border-radius: 0px;
       padding: 18px 14px;
       box-shadow: 4px 4px 0px #111111;
       margin-bottom: 14px;
       transform: rotate(-2deg);
       transition: transform 0.2s ease;
     }
-
     .receipt-box:hover { transform: rotate(0deg) scale(1.01); }
     .receipt-title { text-align: center; font-weight: 800; font-size: 0.85rem; }
     .receipt-dash { border: none; border-top: 2px dashed #111; margin: 10px 0; }
@@ -158,30 +170,41 @@
       margin-top: 8px;
     }
 
-    /* CALENDAR STYLING */
-    .calendar-graphic { 
+    /* CALENDAR STYLING (NERO) */
+    .calendar-graphic-dark { 
       width: 36px; 
       height: 36px; 
-      border: 2px solid #111; 
+      border: 2px solid #fff; 
       border-radius: 6px; 
-      background: #fff; 
+      background: #222; 
       margin: 0 auto 8px; 
       display: flex; 
       flex-direction: column; 
       overflow: hidden;
-      box-shadow: 2px 2px 0px #111;
+      box-shadow: 2px 2px 0px #fff;
+    }
+    .calendar-graphic-top-dark { background: #fff; height: 10px; width: 100%; }
+    .calendar-graphic-body-dark { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; }
+
+    .mini-calendar-dark { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
+    .mini-calendar-dark th, .mini-calendar-dark td { padding: 3px 2px; border: 1px solid #333; border-radius: 4px; color: #fff; }
+    .mini-calendar-dark th { background: #333; color: #fff; font-size: 0.6rem; }
+    .mini-calendar-dark td.today-dark { background: #fff; color: #111; font-weight: 800; border-radius: 4px; }
+
+    /* CALENDAR STYLING (BIANCO) */
+    .calendar-graphic { 
+      width: 36px; height: 36px; border: 2px solid #111; border-radius: 6px; background: #fff; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #111;
     }
     .calendar-graphic-top { background: #111; height: 10px; width: 100%; }
     .calendar-graphic-body { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; }
-
     .mini-calendar { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
     .mini-calendar th, .mini-calendar td { padding: 3px 2px; border: 1px solid #eee; border-radius: 4px; }
     .mini-calendar th { background: #111; color: #fff; font-size: 0.6rem; }
     .mini-calendar td.today { background: #111; color: #fff; font-weight: 800; border-radius: 4px; }
 
-    /* PIXEL CLOCK STYLING */
+    /* PIXEL CLOCK STYLING (BIANCO) */
     .pixel-clock-box {
-      background: #111;
+      background: #fff;
       border: 2px solid #111;
       border-radius: 16px;
       padding: 12px;
@@ -192,16 +215,57 @@
     .pixel-clock-time {
       font-family: 'Press Start 2P', monospace;
       font-size: 0.85rem;
-      color: #fff;
+      color: #111;
       letter-spacing: 1px;
     }
 
-    /* IPOD PLAYER STYLING */
-    .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
-    .ipod-screen { background: #111; color: #fff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; }
-    .ipod-controls { display: flex; justify-content: center; gap: 8px; align-items: center; }
-    .ipod-btn-ctrl { background: #f0f0f3; border: 2px solid #111; border-radius: 50%; width: 28px; height: 28px; font-size: 0.7rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0px #111; }
-    .ipod-btn-ctrl:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #111; }
+    /* IPOD PLAYER STYLING (NERO) */
+    .ipod-player-dark { background: #1a1a1a; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
+    .ipod-screen-dark { background: #000; color: #0ff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; border: 1px solid #333; }
+    .ipod-controls-dark { display: flex; justify-content: center; gap: 8px; align-items: center; }
+    .ipod-btn-ctrl-dark { background: #333; color: #fff; border: 2px solid #555; border-radius: 50%; width: 28px; height: 28px; font-size: 0.7rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0px #000; }
+    .ipod-btn-ctrl-dark:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #000; }
+
+    /* BOTTONI NAVIGAZIONE ALTERNATI */
+    .nav-box-btn {
+      width: 100%;
+      background: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      margin-bottom: 10px;
+      transition: transform 0.1s ease;
+      text-decoration: none;
+      color: #111;
+      display: block;
+    }
+    .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
+    .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
+
+    .nav-box-btn-dark {
+      width: 100%;
+      background: #111111;
+      color: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      margin-bottom: 10px;
+      transition: transform 0.1s ease;
+      text-decoration: none;
+      display: block;
+    }
+    .nav-box-btn-dark:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #333; }
+    .nav-box-btn-dark:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
 
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
 
@@ -267,26 +331,6 @@
       transition: transform 0.15s ease;
     }
     .pure-card-img:hover { transform: translateY(-2px); }
-
-    .nav-box-btn {
-      width: 100%;
-      background: #ffffff;
-      border: 2px solid #111;
-      border-radius: 16px;
-      padding: 10px;
-      font-weight: 800;
-      font-size: 0.75rem;
-      cursor: pointer;
-      box-shadow: 3px 3px 0px #111;
-      text-align: center;
-      margin-bottom: 10px;
-      transition: transform 0.1s ease;
-      text-decoration: none;
-      color: #111;
-      display: block;
-    }
-    .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
-    .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
   </style>
 </head>
 <body>
@@ -306,6 +350,7 @@
 
       <!-- COLONNA SINISTRA -->
       <aside class="col-left">
+        <!-- 1. SCONTRINO MENÙ (BIANCO) -->
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
           <hr class="receipt-dash">
@@ -320,15 +365,15 @@
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
         </div>
 
-        <!-- CALENDARIO DINAMICO -->
-        <div class="box">
-          <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #111; border-radius:2px;"></div></div>
+        <!-- 2. CALENDARIO (NERO) -->
+        <div class="box-dark">
+          <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #fff; border-radius:2px;"></div></div>
           <div class="box-body">
-            <div class="calendar-graphic">
-              <div class="calendar-graphic-top"></div>
-              <div class="calendar-graphic-body" id="cal-day-number">--</div>
+            <div class="calendar-graphic-dark">
+              <div class="calendar-graphic-top-dark"></div>
+              <div class="calendar-graphic-body-dark" id="cal-day-number">--</div>
             </div>
-            <table class="mini-calendar">
+            <table class="mini-calendar-dark">
               <thead>
                 <tr><th>D</th><th>L</th><th>M</th><th>M</th><th>G</th><th>V</th><th>S</th></tr>
               </thead>
@@ -338,7 +383,7 @@
           </div>
         </div>
 
-        <!-- BOTTONE LINK ME CON STELLA ORIGINALE -->
+        <!-- 3. LINK ME (BIANCO) -->
         <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
@@ -351,12 +396,15 @@
 
       <!-- COLONNA CENTRALE -->
       <main class="col-center">
-        <!-- 1. CARTA D'IDENTITÀ (ABOUT ME) -->
-        <div style="margin-bottom: 14px;">
-          <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
+        <!-- 1. ABOUT ME (NERO) -->
+        <div class="box-dark" style="margin-bottom: 14px;">
+          <div class="box-header"><span>about_me.id</span><span>[ID]</span></div>
+          <div class="box-body" style="text-align: center;">
+            <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img" style="margin: 0 auto;">
+          </div>
         </div>
 
-        <!-- 2. STUDY WITH ME CON TAZZINA ☕︎ -->
+        <!-- 2. STUDY WITH ME (BIANCO) -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header">
             <span>study_with_me</span>
@@ -369,17 +417,17 @@
           </div>
         </div>
 
-        <!-- 3. WELCOME.HTML -->
-        <div class="box" style="margin-bottom: 14px;">
+        <!-- 3. WELCOME.HTML (NERO) -->
+        <div class="box-dark" style="margin-bottom: 14px;">
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
-            <p style="font-size:0.85rem; line-height:1.6; font-weight:600;">
+            <p style="font-size:0.85rem; line-height:1.6; font-weight:600; color:#ddd;">
               Seleziona una voce dallo scontrino o dai pulsanti laterali per esplorare le sezioni!
             </p>
           </div>
         </div>
 
-        <!-- 4. LATEST UPDATES -->
+        <!-- 4. LATEST UPDATES (BIANCO) -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
@@ -389,9 +437,9 @@
           </div>
         </div>
 
-        <!-- PULSANTI LINK A SITI ESTERNI -->
+        <!-- 5. PULSANTI LINK ESTERNI ALTERNATI -->
         <div style="display: flex; gap: 10px;">
-          <a href="https://tuo-sito-pocket-card.com" target="_blank" class="nav-box-btn">
+          <a href="https://tuo-sito-pocket-card.com" target="_blank" class="nav-box-btn-dark">
             POCKET CARD BUILDER -&gt;
           </a>
           <a href="https://tuo-sito-banner-card.com" target="_blank" class="nav-box-btn">
@@ -406,30 +454,31 @@
 
         <div style="flex: 1;"></div>
 
-        <!-- OROLOGIO PIXEL DIGITALE -->
+        <!-- 1. OROLOGIO (BIANCO) -->
         <div class="pixel-clock-box">
           <div class="pixel-clock-time" id="pixel-clock">00:00:00</div>
         </div>
 
-        <!-- PULSANTE GUESTBOOK -->
-        <button class="nav-box-btn" onclick="openPage('guestbook-page')">
+        <!-- 2. GUESTBOOK (NERO) -->
+        <button class="nav-box-btn-dark" onclick="openPage('guestbook-page')">
           ✎ GUESTBOOK -&gt;
         </button>
 
+        <!-- 3. FRIENDS & BUTTONS (BIANCO) -->
         <button class="nav-box-btn" onclick="openPage('buttons-page')">
           ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
-        <!-- MUSIC PLAYER -->
-        <div class="box" style="margin-bottom: 0;">
+        <!-- 4. MUSIC PLAYER (NERO) -->
+        <div class="box-dark" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
-            <div class="ipod-player">
-              <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
-              <div class="ipod-controls">
-                <button class="ipod-btn-ctrl" onclick="prevSong()">&#10094;&#10094;</button>
-                <button class="ipod-btn-ctrl" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
-                <button class="ipod-btn-ctrl" onclick="nextSong()">&#10095;&#10095;</button>
+            <div class="ipod-player-dark">
+              <div class="ipod-screen-dark" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
+              <div class="ipod-controls-dark">
+                <button class="ipod-btn-ctrl-dark" onclick="prevSong()">&#10094;&#10094;</button>
+                <button class="ipod-btn-ctrl-dark" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+                <button class="ipod-btn-ctrl-dark" onclick="nextSong()">&#10095;&#10095;</button>
               </div>
               <audio id="audio-element"></audio>
             </div>
@@ -567,10 +616,10 @@
       if (audioElement.paused) {
         if(!audioElement.src) loadTrack(currentTrackIndex);
         audioElement.play();
-        playPauseBtn.innerHTML = "&#10074;&#10074;"; // ❚❚
+        playPauseBtn.innerHTML = "&#10074;&#10074;";
       } else {
         audioElement.pause();
-        playPauseBtn.innerHTML = "&#9654;"; // ▶
+        playPauseBtn.innerHTML = "&#9654;";
       }
     }
 
@@ -626,7 +675,7 @@
           } else {
             cell.innerText = date;
             if (date === currentDay) {
-              cell.classList.add('today');
+              cell.classList.add('today-dark');
             }
             date++;
             hasDate = true;
@@ -656,3 +705,4 @@
 
 </body>
 </html>
+
