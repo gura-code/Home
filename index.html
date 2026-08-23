@@ -167,6 +167,7 @@
       margin-top: 8px;
     }
 
+    /* CALENDARIO FIXATO E BEN VISIBILE */
     .calendar-graphic-dark { 
       width: 36px; height: 36px; border: 2px solid #fff; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #fff;
     }
@@ -174,9 +175,9 @@
     .calendar-graphic-body-dark { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; color: #fff; }
 
     .mini-calendar-dark { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
-    .mini-calendar-dark th, .mini-calendar-dark td { padding: 4px 2px; border: none; color: #fff; }
-    .mini-calendar-dark th { background: #ffffff; color: #111111; font-size: 0.6rem; font-weight: 800; border-radius: 4px; }
-    .mini-calendar-dark td.today-dark { background: #fff; color: #111; font-weight: 800; border-radius: 4px; }
+    .mini-calendar-dark th, .mini-calendar-dark td { padding: 4px 2px; border: none; color: #ffffff; }
+    .mini-calendar-dark th { background: #333333; color: #ffffff; font-size: 0.6rem; font-weight: 800; border-radius: 4px; }
+    .mini-calendar-dark td.today-dark { background: #ffffff; color: #111111; font-weight: 800; border-radius: 4px; }
 
     .pixel-clock-box-dark {
       background: #111;
@@ -332,7 +333,6 @@
             <li><a class="active">˙ᵕ˙ HOME</a></li>
             <li><a onclick="openPage('blog-page')">LOGS &amp; BLOG ✐ᝰ</a></li>
             <li><a onclick="openPage('gallery-page')">GALLERY ⋆˚꩜｡</a></li>
-            <!-- STORIES AGGIORNATO CON IL NUOVO KAOMOJI DIVERSO DALLA GALLERY -->
             <li><a href="https://github.com/tuo-username/stories" target="_blank">⎚-⎚ STORIES</a></li>
             <li><a href="https://github.com/tuo-username/mini-games" target="_blank">[+..••] MINI-GAMES</a></li>
             <li><a onclick="openPage('watchlist-page')">WATCHLIST ⭑.ᐟ</a></li>
@@ -341,6 +341,7 @@
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
         </div>
 
+        <!-- CALENDARIO CORRETTO -->
         <div class="box-dark">
           <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #fff; border-radius:2px;"></div></div>
           <div class="box-body">
@@ -391,7 +392,7 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[23 AUG]</strong> Aggiornato menu con kaomoji dedicati per le storie!</li>
+              <li><strong>[23 AUG]</strong> Fixato il calendario e aggiornato il menu con kaomoji dedicati!</li>
             </ul>
           </div>
         </div>
@@ -580,7 +581,7 @@
     }
 
     audioElement.addEventListener('ended', () => { nextSong(); });
-    loadTrack(0);
+    loadTrust = loadTrack(0);
 
     function generateCalendar() {
       const today = new Date();
@@ -614,7 +615,7 @@
               cell.classList.add('today-dark');
             }
             date++;
-            hasData = true;
+            hasDate = true;
           }
           row.appendChild(cell);
         }
