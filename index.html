@@ -224,7 +224,7 @@
     }
     .back-btn:hover { background: #333; }
 
-    /* GALLERY VERTICALE (UNA SOTTO L'ALTRA) */
+    /* GALLERY VERTICALE & BUTTON GRID */
     .cards-grid-scroll {
       display: grid;
       grid-template-columns: 1fr;
@@ -233,6 +233,25 @@
       overflow-y: auto;
       padding: 10px;
       justify-items: center;
+    }
+
+    .buttons-wall-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      padding: 20px;
+      background: #fff;
+      border: 3px solid #111;
+      border-radius: 20px;
+      box-shadow: 4px 4px 0px #111;
+    }
+
+    .buttons-wall-grid img {
+      width: 88px;
+      height: 31px;
+      border: 1px solid #111;
+      image-rendering: pixelated;
     }
 
     .pure-card-img {
@@ -244,6 +263,23 @@
       transition: transform 0.15s ease;
     }
     .pure-card-img:hover { transform: translateY(-2px); }
+
+    .nav-box-btn {
+      width: 100%;
+      background: #ffffff;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 10px;
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 3px 3px 0px #111;
+      text-align: center;
+      margin-bottom: 14px;
+      transition: transform 0.1s ease;
+    }
+    .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
+    .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
   </style>
 </head>
 <body>
@@ -317,14 +353,22 @@
 
       <!-- COLONNA CENTRALE -->
       <main class="col-center">
-        <div style="flex: 1;"></div>
-
         <!-- 1. CARTA D'IDENTITÀ (ABOUT ME) -->
         <div style="margin-bottom: 14px;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
-        <!-- 2. WELCOME.HTML SUBITO SOTTO -->
+        <!-- 2. STUDY WITH ME -->
+        <div class="box" style="margin-bottom: 14px;">
+          <div class="box-header"><span>study_with_me</span><span>☕</span></div>
+          <div class="box-body">
+            <p style="font-size:0.8rem; font-weight:700; line-height:1.5;">
+              Sessioni di studio, timer pomodoro e musica per concentrarsi.
+            </p>
+          </div>
+        </div>
+
+        <!-- 3. WELCOME.HTML -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
@@ -334,7 +378,7 @@
           </div>
         </div>
 
-        <!-- 3. LATEST UPDATES IN FONDO -->
+        <!-- 4. LATEST UPDATES -->
         <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
@@ -352,7 +396,12 @@
 
         <div style="flex: 1;"></div>
 
-        <!-- MUSIC PLAYER IN BASSO A DESTRA CON CONTROLLI -->
+        <!-- PULSANTE PER ANDARE ALLA PAGINA DEI BOTTONI DEGLI ALTRI -->
+        <button class="nav-box-btn" onclick="openPage('buttons-page')">
+          ★ FRIENDS & BUTTONS (88x31) ➔
+        </button>
+
+        <!-- MUSIC PLAYER IN BASSO A DESTRA -->
         <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
@@ -380,7 +429,25 @@
 
 
   <!-- ==========================================================
-       PAGINA 1: GALLERY (VERTICALE)
+       PAGINA DEDICATA: BOTTONI DEGLI ALTRI (88x31)
+       ========================================================== -->
+  <div id="buttons-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <h2>SEEA // 88x31 BUTTON WALL</h2>
+      <img src="./avatar.png" alt="Avatar Buttons" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <div class="buttons-wall-grid">
+      <a href="#" target="_blank"><img src="./button1.png" alt="Button 1" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
+      <a href="#" target="_blank"><img src="./button2.png" alt="Button 2" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
+      <a href="#" target="_blank"><img src="./button3.png" alt="Button 3" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
+    </div>
+  </div>
+
+
+  <!-- ==========================================================
+       PAGINA 1: GALLERY
        ========================================================== -->
   <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
