@@ -156,16 +156,6 @@
       margin-top: 8px;
     }
 
-    /* MOON STYLING */
-    .moon-symbol-container {
-      font-size: 2.2rem;
-      margin: 0 auto 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-    }
-
     /* CALENDAR STYLING */
     .calendar-graphic { 
       width: 36px; 
@@ -309,15 +299,6 @@
           </ul>
           <hr class="receipt-dash">
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
-        </div>
-
-        <!-- LUNA CON SIMBOLI TESTUALI -->
-        <div class="box">
-          <div class="box-header"><span>lunar_phase</span><span style="font-size: 0.7rem; letter-spacing: 1px;">◯ ☽ ◑ ● ◐ ❨ ◯</span></div>
-          <div class="box-body" style="text-align: center;">
-            <div class="moon-symbol-container" id="moon-phase-symbol">◯</div>
-            <span id="moon-phase-name" style="font-size: 0.72rem; font-weight: 700;">Calcolo in corso...</span>
-          </div>
         </div>
 
         <!-- CALENDARIO DINAMICO -->
@@ -589,7 +570,7 @@
 
     loadTrack(0);
 
-    /* 1. CALENDARIO AUTOMATICO (Basato sul fuso orario locale del visitatore) */
+    /* CALENDARIO AUTOMATICO */
     function generateCalendar() {
       const today = new Date();
       const currentDay = today.getDate();
@@ -635,47 +616,7 @@
       }
     }
 
-    /* 2. FASE LUNARE AUTOMATICA (Con i simboli testuali richiesti) */
-    function updateMoonPhase() {
-      const today = new Date();
-      let year = today.getFullYear();
-      let month = today.getMonth() + 1;
-      const day = today.getDate();
-
-      let c = e = j = b = 0;
-      if (month < 3) {
-        year--;
-        month += 12;
-      }
-      ++month;
-      c = 365.25 * year;
-      e = 30.6 * month;
-      j = c + e + day - 694039.09;
-      j /= 29.5305882;
-      b = parseInt(j);
-      j -= b;
-      b = Math.round(j * 8);
-      if (b >= 8) b = 0;
-
-      // Lista dei simboli associati ai relativi nomi delle fasi lunari
-      const moonPhases = [
-        { name: "Luna Nuova", symbol: "◯" },
-        { name: "Crescente", symbol: "☽" },
-        { name: "Primo Quarto", symbol: "◑" },
-        { name: "Gibbosa Crescente", symbol: "●" },
-        { name: "Luna Piena", symbol: "●" },
-        { name: "Gibbosa Calante", symbol: "◐" },
-        { name: "Ultimo Quarto", symbol: "❨" },
-        { name: "Calante", symbol: "◯" }
-      ];
-
-      const currentPhase = moonPhases[b];
-      document.getElementById('moon-phase-name').innerText = currentPhase.name;
-      document.getElementById('moon-phase-symbol').innerText = currentPhase.symbol;
-    }
-
     generateCalendar();
-    updateMoonPhase();
   </script>
 
 </body>
