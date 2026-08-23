@@ -5,22 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SEEA ARCHIVE // Clean Soft OS</title>
   
-  <!-- IMPORT FONT QUICKSAND (Stesso font di Pocket Card) -->
+  <!-- FONT QUICKSAND -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* RESET & SFONDO A QUADRETTI MONOCROMATICO */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    /* RESET & BASE */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       background-color: #f5f5f7;
-      /* Griglia a micro-quadretti stile carta millimetrata */
       background-image: 
         linear-gradient(#e1e1e6 1px, transparent 1px),
         linear-gradient(90deg, #e1e1e6 1px, transparent 1px);
@@ -32,7 +27,6 @@
       justify-content: center;
     }
 
-    /* CORNICE CENTRALE ARROTONDATA */
     .site-wrapper {
       max-width: 980px;
       width: 100%;
@@ -46,7 +40,7 @@
       gap: 16px;
     }
 
-    /* BANNER SUPERIORE SOFT */
+    /* BANNER SUPERIORE */
     .top-banner {
       background: #f9f9fb;
       border: 2px solid #111111;
@@ -67,11 +61,7 @@
       box-shadow: 3px 3px 0px #111111;
     }
 
-    .banner-box h1 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-    }
+    .banner-box h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
 
     .banner-badge {
       font-weight: 700;
@@ -82,7 +72,7 @@
       border-radius: 999px;
     }
 
-    /* LAYOUT A 3 COLONNE MULTI-BOX */
+    /* GRID A 3 COLONNE */
     .grid-container {
       display: grid;
       grid-template-columns: 220px 1fr 220px;
@@ -90,7 +80,7 @@
       align-items: start;
     }
 
-    /* FINESTRE A ANGOLI MOLTO ARROTONDATI */
+    /* FINESTRE BORDER ROUNDED */
     .box {
       background: #ffffff;
       border: 2px solid #111111;
@@ -111,11 +101,9 @@
       align-items: center;
     }
 
-    .box-body {
-      padding: 14px;
-    }
+    .box-body { padding: 14px; }
 
-    /* MENÙ SCONTRINO COMPLETO ARROTONDATO */
+    /* MENÙ SCONTRINO DINAIMICO */
     .receipt-box {
       background: #ffffff;
       border: 2px solid #111111;
@@ -125,18 +113,8 @@
       margin-bottom: 14px;
     }
 
-    .receipt-title {
-      text-align: center;
-      font-weight: 800;
-      font-size: 0.85rem;
-      letter-spacing: 0.5px;
-    }
-
-    .receipt-dash {
-      border: none;
-      border-top: 2px dashed #111;
-      margin: 10px 0;
-    }
+    .receipt-title { text-align: center; font-weight: 800; font-size: 0.85rem; }
+    .receipt-dash { border: none; border-top: 2px dashed #111; margin: 10px 0; }
 
     .receipt-menu-list {
       list-style: none;
@@ -151,14 +129,16 @@
       font-weight: 700;
       font-size: 0.85rem;
       display: block;
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
-      transition: all 0.2s ease;
+      transition: all 0.15s ease;
+      cursor: pointer;
     }
 
-    .receipt-menu-list a:hover {
-      background: #111;
-      color: #fff;
+    /* STATO ATTIVO SCONTRINO (Invertito stile screenshot) */
+    .receipt-menu-list a.active, .receipt-menu-list a:hover {
+      background: #111111;
+      color: #ffffff;
     }
 
     .receipt-barcode {
@@ -169,155 +149,103 @@
       font-family: monospace;
     }
 
-    /* COLONNA CENTRALE */
-    .welcome-text {
-      font-size: 0.88rem;
-      line-height: 1.6;
-      font-weight: 600;
-    }
+    /* SEZIONI DINAMICHE COLONNA CENTRALE */
+    .view-section { display: none; }
+    .view-section.active { display: block; }
 
-    .update-log {
-      list-style: none;
-      font-size: 0.82rem;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .update-log li {
-      border-bottom: 1px dashed #ddd;
-      padding-bottom: 6px;
-    }
-
-    .log-date {
-      font-weight: 800;
-      background: #111;
-      color: #fff;
-      padding: 2px 8px;
-      border-radius: 999px;
-      margin-right: 6px;
-      font-size: 0.7rem;
-    }
-
-    .mini-grid {
+    /* STILI DOODLES (GALLERIA ARTWORK) */
+    .doodles-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 8px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      max-height: 520px;
+      overflow-y: auto;
+      padding-right: 4px;
     }
 
-    .mini-card-item {
+    .doodle-card {
       border: 2px solid #111;
       border-radius: 16px;
-      padding: 10px;
-      font-size: 0.75rem;
-      background: #fdfdfd;
-      text-align: center;
-    }
-
-    /* DESTRA: PROFILO + WIDGETS */
-    .profile-avatar {
-      width: 54px;
-      height: 54px;
-      border-radius: 50%;
-      border: 2px solid #111;
-      margin: 0 auto 8px auto;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
-      background: #f0f0f3;
-    }
-
-    .profile-info {
-      text-align: center;
-      font-size: 0.82rem;
-    }
-
-    /* IPOD PLAYER SOFT */
-    .ipod-player {
-      background: #ffffff;
-      border: 2px solid #111111;
-      border-radius: 20px;
-      padding: 10px;
-      text-align: center;
-    }
-
-    .ipod-screen {
-      background: #111111;
-      color: #ffffff;
-      border-radius: 12px;
       padding: 8px;
-      font-size: 0.7rem;
-      font-weight: 700;
-      margin-bottom: 8px;
+      background: #fafafa;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.15s ease;
     }
 
-    .ipod-wheel {
-      width: 54px;
-      height: 54px;
-      border: 2px solid #111;
-      border-radius: 50%;
-      margin: 0 auto;
-      background: #f0f0f3;
+    .doodle-card:hover { transform: translateY(-2px); }
+
+    .doodle-img-placeholder {
+      width: 100%;
+      height: 120px;
+      background: #eeeeee;
+      border: 1px dashed #111;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #666;
+      margin-bottom: 6px;
+      background-size: cover;
+      background-position: center;
     }
 
-    .ipod-btn {
-      width: 20px;
-      height: 20px;
-      background: #ffffff;
+    /* GUESTBOOK FORM */
+    .guestbook-form { display: flex; flex-direction: column; gap: 8px; margin-bottom: 14px; }
+    .gb-input, .gb-textarea {
       border: 2px solid #111;
-      border-radius: 50%;
+      border-radius: 12px;
+      padding: 8px 12px;
+      font-family: 'Quicksand', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      outline: none;
     }
-
-    /* LUNA */
-    .moon-graphic {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      background: #111;
-      border: 1px solid #111;
-      box-shadow: inset -10px -3px 0 0 #fff;
-      margin: 0 auto 6px auto;
-    }
-
-    /* CALENDARIO */
-    .mini-calendar {
-      width: 100%;
-      font-size: 0.7rem;
-      text-align: center;
-      border-collapse: collapse;
-    }
-
-    .mini-calendar th, .mini-calendar td {
-      padding: 3px;
-      border: 1px solid #eee;
-      border-radius: 4px;
-    }
-
-    .mini-calendar th {
+    .gb-btn {
       background: #111;
       color: #fff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
     }
 
-    /* FOOTER */
-    .site-footer {
-      border-top: 2px solid #111;
-      padding-top: 12px;
-      text-align: center;
-      font-weight: 700;
-      font-size: 0.72rem;
-      color: #555;
+    .gb-entry {
+      border-bottom: 1px dashed #ccc;
+      padding: 8px 0;
+      font-size: 0.8rem;
     }
+
+    /* WIDGETS DESTRA */
+    .profile-avatar {
+      width: 54px; height: 54px; border-radius: 50%; border: 2px solid #111;
+      margin: 0 auto 8px; display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem; background: #f0f0f3;
+    }
+    .profile-info { text-align: center; font-size: 0.82rem; }
+
+    .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 10px; text-align: center; }
+    .ipod-screen { background: #111; color: #fff; border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 8px; }
+    .ipod-wheel { width: 54px; height: 54px; border: 2px solid #111; border-radius: 50%; margin: 0 auto; background: #f0f0f3; display: flex; align-items: center; justify-content: center; }
+    .ipod-btn { width: 20px; height: 20px; background: #fff; border: 2px solid #111; border-radius: 50%; }
+
+    .moon-graphic { width: 38px; height: 38px; border-radius: 50%; background: #111; border: 1px solid #111; box-shadow: inset -10px -3px 0 0 #fff; margin: 0 auto 6px; }
+
+    .mini-calendar { width: 100%; font-size: 0.7rem; text-align: center; border-collapse: collapse; }
+    .mini-calendar th, .mini-calendar td { padding: 3px; border: 1px solid #eee; border-radius: 4px; }
+    .mini-calendar th { background: #111; color: #fff; }
+
+    .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
   </style>
 </head>
 <body>
 
   <div class="site-wrapper">
 
-    <!-- HEADER / BANNER -->
+    <!-- HEADER -->
     <header class="top-banner">
       <div class="banner-box">
         <h1>SEEA ARCHIVE</h1>
@@ -328,86 +256,154 @@
     <!-- GRID A 3 COLONNE -->
     <div class="grid-container">
 
-      <!-- COLONNA SINISTRA -->
+      <!-- COLONNA SINISTRA: SCONTRINO -->
       <aside class="col-left">
-
-        <!-- MENÙ SCONTRINO COMPLETO ARROTONDATO -->
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
           <hr class="receipt-dash">
           <ul class="receipt-menu-list">
-            <li><a href="#">[01] HOME</a></li>
-            <li><a href="#">[02] POCKET CARD</a></li>
-            <li><a href="#">[03] BANNER CARD</a></li>
-            <li><a href="#">[04] MINI ZINES</a></li>
-            <li><a href="#">[05] DOODLES</a></li>
-            <li><a href="#">[06] GUESTBOOK</a></li>
+            <li><a class="nav-link active" onclick="switchTab('home', this)">[01] HOME</a></li>
+            <li><a class="nav-link" onclick="switchTab('pocket', this)">[02] POCKET CARD</a></li>
+            <li><a class="nav-link" onclick="switchTab('banner', this)">[03] BANNER CARD</a></li>
+            <li><a class="nav-link" onclick="switchTab('zines', this)">[04] MINI ZINES</a></li>
+            <li><a class="nav-link" onclick="switchTab('doodles', this)">[05] DOODLES</a></li>
+            <li><a class="nav-link" onclick="switchTab('guestbook', this)">[06] GUESTBOOK</a></li>
           </ul>
           <hr class="receipt-dash">
           <div class="receipt-barcode">||| | |||| || |</div>
         </div>
 
-        <!-- BOX BUTTON LINK -->
         <div class="box">
-          <div class="box-header">
-            <span>link_me</span>
-            <span>★</span>
-          </div>
+          <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
             <div style="border: 2px dashed #111; padding: 8px; border-radius: 12px; font-size: 0.65rem; font-family: monospace;">
               &lt;a href="https://seea.neocities.org"&gt;&lt;img src="button.png"&gt;&lt;/a&gt;
             </div>
           </div>
         </div>
-
       </aside>
 
-      <!-- COLONNA CENTRALE -->
+      <!-- COLONNA CENTRALE DINAMICA -->
       <main class="col-center">
 
-        <!-- FINESTRA WELCOME -->
-        <div class="box">
-          <div class="box-header">
-            <span>welcome.html</span>
-            <span>[X]</span>
+        <!-- [01] VIEW: HOME -->
+        <div id="view-home" class="view-section active">
+          <div class="box">
+            <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
+            <div class="box-body">
+              <p style="font-size:0.88rem; line-height:1.6; font-weight:600;">
+                Benvenuto nel mio archivio digitale. Esplora i miei progetti, la galleria di bozzetti e le minizine usando lo scontrino a sinistra.
+              </p>
+            </div>
           </div>
-          <div class="box-body">
-            <p class="welcome-text">
-              Benvenuto nel mio archivio digitale. Strutturato a griglia come le classiche pagine indie, ma ripulito in stile <strong>monocromatico e minimal</strong>.
-            </p>
-          </div>
-        </div>
 
-        <!-- FINESTRA UPDATE LOG -->
-        <div class="box">
-          <div class="box-header">
-            <span>update_log 📝</span>
-            <span>[–]</span>
+          <div class="box">
+            <div class="box-header"><span>update_log 📝</span><span>[–]</span></div>
+            <div class="box-body">
+              <ul style="list-style:none; font-size:0.82rem; display:flex; flex-direction:column; gap:8px;">
+                <li style="border-bottom:1px dashed #ddd; padding-bottom:6px;"><span style="font-weight:800; background:#111; color:#fff; padding:2px 8px; border-radius:999px; font-size:0.7rem; margin-right:6px;">23 AUG</span> Aggiunta galleria Doodles & SPA system</li>
+                <li style="border-bottom:1px dashed #ddd; padding-bottom:6px;"><span style="font-weight:800; background:#111; color:#fff; padding:2px 8px; border-radius:999px; font-size:0.7rem; margin-right:6px;">18 AUG</span> Integrato menu scontrino e widget</li>
+              </ul>
+            </div>
           </div>
-          <div class="box-body">
-            <ul class="update-log">
-              <li><span class="log-date">23 AUG</span> Layout stile Cloverstar monocromatico</li>
-              <li><span class="log-date">18 AUG</span> Integrato menu scontrino e widget</li>
-              <li><span class="log-date">10 AUG</span> Testato il generatore Pocket Card</li>
-            </ul>
-          </div>
-        </div>
 
-        <!-- FINESTRA PROGETTI -->
-        <div class="box">
-          <div class="box-header">
-            <span>projects_grid</span>
-            <span>[+]</span>
-          </div>
-          <div class="box-body">
-            <div class="mini-grid">
-              <div class="mini-card-item">
-                <strong>Pocket Card</strong><br>
-                <span style="color:#666;">Web App</span>
+          <div class="box">
+            <div class="box-header"><span>projects_grid</span><span>[+]</span></div>
+            <div class="box-body">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
+                <div style="border:2px solid #111; border-radius:16px; padding:10px; font-size:0.75rem; text-align:center; background:#fdfdfd;">
+                  <strong>Pocket Card</strong><br><span style="color:#666;">Web App</span>
+                </div>
+                <div style="border:2px solid #111; border-radius:16px; padding:10px; font-size:0.75rem; text-align:center; background:#fdfdfd;">
+                  <strong>Mini Zines</strong><br><span style="color:#666;">PDF Printable</span>
+                </div>
               </div>
-              <div class="mini-card-item">
-                <strong>Mini Zine</strong><br>
-                <span style="color:#666;">8 Pages PDF</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- [02] VIEW: POCKET CARD -->
+        <div id="view-pocket" class="view-section">
+          <div class="box">
+            <div class="box-header"><span>pocket_card_creator.app</span><span>[X]</span></div>
+            <div class="box-body" style="text-align:center; padding: 20px;">
+              <h3 style="font-size:1.1rem; font-weight:800; margin-bottom:8px;">Pocket Card Generator</h3>
+              <p style="font-size:0.8rem; font-weight:600; color:#555; margin-bottom:14px;">Crea le tue schede personaggio o recensioni collezionabili.</p>
+              <button style="background:#111; color:#fff; border:none; padding:10px 20px; border-radius:999px; font-weight:700; cursor:pointer;" onclick="switchTab('home', document.querySelector('.nav-link'))">Apri App Esterna ↗</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- [03] VIEW: BANNER CARD -->
+        <div id="view-banner" class="view-section">
+          <div class="box">
+            <div class="box-header"><span>banner_card_studio.app</span><span>[X]</span></div>
+            <div class="box-body">
+              <div style="border:2px dashed #111; border-radius:16px; padding:30px 10px; text-align:center; background:#fafafa;">
+                <h2 style="font-size:1.6rem; font-weight:800;">Banner Card</h2>
+                <span style="font-size:0.75rem; font-weight:700; color:#666;">Web Graphics Studio</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- [04] VIEW: MINI ZINES -->
+        <div id="view-zines" class="view-section">
+          <div class="box">
+            <div class="box-header"><span>mini_zines_archive</span><span>[PDF]</span></div>
+            <div class="box-body">
+              <p style="font-size:0.8rem; font-weight:600; margin-bottom:12px;">Fanzine tascabili da 8 pagine pronte da stampare e piegare:</p>
+              <div style="display:flex; flex-direction:column; gap:8px;">
+                <div style="border:2px solid #111; border-radius:14px; padding:10px; display:flex; justify-content:space-between; align-items:center;">
+                  <span style="font-weight:700; font-size:0.8rem;">#01 - Minimal Life & Study</span>
+                  <a href="#" style="background:#111; color:#fff; padding:4px 10px; border-radius:999px; text-decoration:none; font-size:0.7rem; font-weight:700;">Download PDF</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- [05] VIEW: DOODLES (GALLERIA ARTWORK SCROLLABILE) -->
+        <div id="view-doodles" class="view-section">
+          <div class="box">
+            <div class="box-header"><span>doodles_gallery.art 🎨</span><span>[SCROLL]</span></div>
+            <div class="box-body">
+              <div class="doodles-grid">
+                <div class="doodle-card">
+                  <div class="doodle-img-placeholder">✏️ Pencil Sketch #1</div>
+                  <strong style="font-size:0.78rem;">Study Draft</strong>
+                </div>
+                <div class="doodle-card">
+                  <div class="doodle-img-placeholder">🖤 Molecule Art</div>
+                  <strong style="font-size:0.78rem;">Theobromine</strong>
+                </div>
+                <div class="doodle-card">
+                  <div class="doodle-img-placeholder">☕ Coffee & Bar</div>
+                  <strong style="font-size:0.78rem;">Latte Art Concept</strong>
+                </div>
+                <div class="doodle-card">
+                  <div class="doodle-img-placeholder">🥋 Martial Stance</div>
+                  <strong style="font-size:0.78rem;">Gatka Form</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- [06] VIEW: GUESTBOOK -->
+        <div id="view-guestbook" class="view-section">
+          <div class="box">
+            <div class="box-header"><span>guestbook.txt 💬</span><span>[WRITE]</span></div>
+            <div class="box-body">
+              <form class="guestbook-form" onsubmit="event.preventDefault(); addGuestbookEntry();">
+                <input type="text" id="gb-name" class="gb-input" placeholder="Il tuo nome / nickname..." required>
+                <textarea id="gb-msg" class="gb-textarea" rows="3" placeholder="Lascia un messaggio o un saluto..." required></textarea>
+                <button type="submit" class="gb-btn">Invia Messaggio ★</button>
+              </form>
+              <div id="gb-list">
+                <div class="gb-entry">
+                  <strong>Seea:</strong> Benvenuto nel guestbook! Lascia pure una firma qui sopra.
+                </div>
               </div>
             </div>
           </div>
@@ -415,15 +411,10 @@
 
       </main>
 
-      <!-- COLONNA DESTRA -->
+      <!-- COLONNA DESTRA: WIDGETS -->
       <aside class="col-right">
-
-        <!-- BOX PROFILO -->
         <div class="box">
-          <div class="box-header">
-            <span>status</span>
-            <span>●</span>
-          </div>
+          <div class="box-header"><span>status</span><span>●</span></div>
           <div class="box-body">
             <div class="profile-avatar">🖊️</div>
             <div class="profile-info">
@@ -433,43 +424,26 @@
           </div>
         </div>
 
-        <!-- RETRO PLAYER -->
         <div class="box">
-          <div class="box-header">
-            <span>music_player</span>
-            <span>♫</span>
-          </div>
+          <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
             <div class="ipod-player">
-              <div class="ipod-screen">
-                Now Playing:<br>
-                <strong>beabadoobee</strong>
-              </div>
-              <div class="ipod-wheel">
-                <div class="ipod-btn"></div>
-              </div>
+              <div class="ipod-screen">Now Playing:<br><strong>beabadoobee</strong></div>
+              <div class="ipod-wheel"><div class="ipod-btn"></div></div>
             </div>
           </div>
         </div>
 
-        <!-- WIDGET LUNA -->
         <div class="box">
-          <div class="box-header">
-            <span>lunar_phase</span>
-            <span>☾</span>
-          </div>
+          <div class="box-header"><span>lunar_phase</span><span>☾</span></div>
           <div class="box-body" style="text-align: center;">
             <div class="moon-graphic"></div>
             <span style="font-size: 0.72rem; font-weight: 700;">Waxing Moon</span>
           </div>
         </div>
 
-        <!-- CALENDARIO -->
         <div class="box">
-          <div class="box-header">
-            <span>calendar</span>
-            <span>📅</span>
-          </div>
+          <div class="box-header"><span>calendar</span><span>📅</span></div>
           <div class="box-body">
             <table class="mini-calendar">
               <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
@@ -480,7 +454,6 @@
             </table>
           </div>
         </div>
-
       </aside>
 
     </div>
@@ -491,6 +464,44 @@
     </footer>
 
   </div>
+
+  <!-- SCRIPT SWITCH SEZIONI -->
+  <script>
+    function switchTab(tabId, element) {
+      // Nascondi tutte le sezioni
+      document.querySelectorAll('.view-section').forEach(sec => {
+        sec.classList.remove('active');
+      });
+
+      // Mostra la sezione selezionata
+      const targetView = document.getElementById('view-' + tabId);
+      if(targetView) {
+        targetView.classList.add('active');
+      }
+
+      // Aggiorna lo stato attivo dello scontrino
+      document.querySelectorAll('.receipt-menu-list a').forEach(link => {
+        link.classList.remove('active');
+      });
+      if(element) {
+        element.classList.add('active');
+      }
+    }
+
+    function addGuestbookEntry() {
+      const name = document.getElementById('gb-name').value;
+      const msg = document.getElementById('gb-msg').value;
+      const list = document.getElementById('gb-list');
+
+      const entry = document.createElement('div');
+      entry.className = 'gb-entry';
+      entry.innerHTML = `<strong>${name}:</strong> ${msg}`;
+      
+      list.prepend(entry);
+      document.getElementById('gb-name').value = '';
+      document.getElementById('gb-msg').value = '';
+    }
+  </script>
 
 </body>
 </html>
