@@ -278,45 +278,15 @@
     }
     .back-btn:hover { background: #333; }
 
-    /* CONTENITORE SCROLLABILE PER BLOG, STORIE E GIOCHI */
+    /* GRIGLIA SCROLLABILE DI SOLHE FOTO (PER IL BLOG E GALLERY) */
     .cards-grid-scroll {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      max-height: 75vh;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 20px;
+      max-height: 80vh;
       overflow-y: auto;
       padding: 10px;
-    }
-
-    /* CARD POST CON DATA */
-    .blog-post-card {
-      background: #ffffff;
-      border: 2px solid #111;
-      border-radius: 18px;
-      padding: 16px;
-      box-shadow: 4px 4px 0px #111;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .blog-post-date {
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #666;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      border-bottom: 1px dashed #ddd;
-      padding-bottom: 4px;
-    }
-    .blog-post-title {
-      font-size: 0.95rem;
-      font-weight: 800;
-    }
-    .blog-post-text {
-      font-size: 0.82rem;
-      font-weight: 600;
-      line-height: 1.5;
-      color: #333;
+      justify-items: center;
     }
 
     .buttons-wall-grid {
@@ -346,7 +316,7 @@
 <body>
 
   <!-- ==========================================================
-       VISTA HOME (NEOCITIES MAIN VETRINA)
+       VISTA HOME
        ========================================================== -->
   <div id="home-view" class="site-wrapper">
 
@@ -361,7 +331,7 @@
 
     <div class="grid-container">
 
-      <!-- COLONNA SINISTRA (MENU & CALENDARIO) -->
+      <!-- COLONNA SINISTRA -->
       <aside class="col-left">
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
@@ -370,8 +340,9 @@
             <li><a class="active">[01] HOME</a></li>
             <li><a onclick="openPage('blog-page')">[02] LOGS & BLOG</a></li>
             <li><a onclick="openPage('gallery-page')">[03] GALLERY</a></li>
-            <li><a onclick="openPage('stories-page')">[04] STORIES</a></li>
-            <li><a onclick="openPage('games-page')">[05] MINI-GAMES</a></li>
+            <!-- VOCI CHE MANDANO DIRETTAMENTE ALLE PAGINE GITHUB -->
+            <li><a href="https://github.com/tuo-username/stories" target="_blank">[04] STORIES</a></li>
+            <li><a href="https://github.com/tuo-username/mini-games" target="_blank">[05] MINI-GAMES</a></li>
             <li><a onclick="openPage('watchlist-page')">[06] WATCHLIST</a></li>
           </ul>
           <hr class="receipt-dash">
@@ -420,7 +391,7 @@
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
             <p style="font-size:0.85rem; line-height:1.6; font-weight:600; color:#ddd;">
-              Benvenuto nel mio archivio! Neocities ospita la home, mentre storie, mini-giochi e codice avanzato sono collegati su GitHub.
+              Benvenuto nel mio archivio su Neocities! Le storie e i mini-giochi puntano direttamente ai repository GitHub.
             </p>
           </div>
         </div>
@@ -429,7 +400,7 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[23 AUG]</strong> Aggiunta sezione Storie e Mini-Giochi.</li>
+              <li><strong>[23 AUG]</strong> Aggiornato menu con collegamenti GitHub per storie e giochi.</li>
             </ul>
           </div>
         </div>
@@ -486,54 +457,27 @@
 
   </div>
 
-  <!-- PAGINA LOGS & BLOG (CON LISTA SCROLLABILE E DATE) -->
+  <!-- PAGINA LOGS & BLOG (SOLO FOTO IN LISTA SCROLLABILE) -->
   <div id="blog-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // LOGS &amp; BLOG ARCHIVE</h2>
+      <h2>SEEA // LOGS &amp; BLOG PHOTO ARCHIVE</h2>
     </div>
     <div class="cards-grid-scroll">
-      <div class="blog-post-card">
-        <div class="blog-post-date">23 Agosto 2026</div>
-        <div class="blog-post-title">Primo post di aggiornamento strutturale</div>
-        <div class="blog-post-text">Ho finalmente configurato il passaggio tra Neocities e GitHub per gestire i contenuti più complessi senza limiti di spazio!</div>
-      </div>
-      <div class="blog-post-card">
-        <div class="blog-post-date">15 Agosto 2026</div>
-        <div class="blog-post-title">Inizio sviluppo tema Notebook OS</div>
-        <div class="blog-post-text">Studio del layout in bianco e nero ispirato agli scontrini e ai quaderni a quadretti. Aggiunto il player e il calendario dinamico.</div>
-      </div>
+      <img src="./blog-banner1.png" alt="Blog Foto 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="./blog-banner2.png" alt="Blog Foto 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
     </div>
   </div>
 
-  <!-- PAGINA STORIE (STORIES) -->
-  <div id="stories-page" class="fullscreen-page">
+  <!-- PAGINA GALLERY (SOLO FOTO IN LISTA SCROLLABILE) -->
+  <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // STORIES &amp; WRITING</h2>
+      <h2>SEEA // GALLERY ARCHIVE</h2>
     </div>
     <div class="cards-grid-scroll">
-      <div class="blog-post-card">
-        <div class="blog-post-date">Capitolo 1 • 2026</div>
-        <div class="blog-post-title">La notte sotto la pioggia di neon</div>
-        <div class="blog-post-text">Qui pubblicherò le mie storie e i racconti scritti interamente in markdown o collegati via GitHub. Un piccolo spazio narrativo.</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- PAGINA MINI-GIOCHI (MINI-GAMES) -->
-  <div id="games-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // MINI-GAMES ARCHIVE</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <div class="blog-post-card" style="text-align: center; padding: 24px;">
-        <div class="blog-post-date">Progetto interattivo #1</div>
-        <div class="blog-post-title">Il mio primo mini-gioco in JS</div>
-        <div class="blog-post-text" style="margin-bottom: 12px;">Presto qui troverai i mini-giochi programmati da me e ospitati sui repository GitHub!</div>
-        <a href="https://github.com/tuo-username/mini-giochi" target="_blank" class="nav-box-btn-dark" style="display:inline-block; width:auto; padding:8px 16px;">Vedi su GitHub -&gt;</a>
-      </div>
+      <img src="./art-card1.png" alt="Disegno 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="./art-card2.png" alt="Disegno 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
     </div>
   </div>
 
@@ -547,17 +491,6 @@
 
     <div class="buttons-wall-grid">
       <a href="#" target="_blank"><img src="./button1.png" alt="Button 1" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
-    </div>
-  </div>
-
-  <!-- ALTRE PAGINE SECONDARIE -->
-  <div id="gallery-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // GALLERY ARCHIVE</h2>
-    </div>
-    <div class="cards-grid-scroll">
-      <img src="./art-card1.png" alt="Disegno 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
     </div>
   </div>
 
