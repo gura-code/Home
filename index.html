@@ -170,7 +170,7 @@
       margin-top: 8px;
     }
 
-    /* CALENDAR STYLING (NERO) */
+    /* CALENDAR STYLING (NERO CON INTESTAZIONE BIANCA/NERA) */
     .calendar-graphic-dark { 
       width: 36px; height: 36px; border: 2px solid #fff; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #fff;
     }
@@ -179,19 +179,9 @@
 
     .mini-calendar-dark { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
     .mini-calendar-dark th, .mini-calendar-dark td { padding: 3px 2px; border: 1px solid #333; border-radius: 4px; color: #fff; }
-    .mini-calendar-dark th { background: #333; color: #fff; font-size: 0.6rem; }
+    /* INTESTAZIONE GIORNI BIANCA CON TESTO NERO */
+    .mini-calendar-dark th { background: #ffffff; color: #111111; font-size: 0.6rem; font-weight: 800; border: 1px solid #fff; }
     .mini-calendar-dark td.today-dark { background: #fff; color: #111; font-weight: 800; border-radius: 4px; }
-
-    /* CALENDAR STYLING (BIANCO) */
-    .calendar-graphic { 
-      width: 36px; height: 36px; border: 2px solid #111; border-radius: 6px; background: #fff; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #111;
-    }
-    .calendar-graphic-top { background: #111; height: 10px; width: 100%; }
-    .calendar-graphic-body { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; }
-    .mini-calendar { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
-    .mini-calendar th, .mini-calendar td { padding: 3px 2px; border: 1px solid #eee; border-radius: 4px; }
-    .mini-calendar th { background: #111; color: #fff; font-size: 0.6rem; }
-    .mini-calendar td.today { background: #111; color: #fff; font-weight: 800; border-radius: 4px; }
 
     /* PIXEL CLOCK STYLING (NERO) */
     .pixel-clock-box-dark {
@@ -384,7 +374,6 @@
 
       <!-- COLONNA CENTRALE -->
       <main class="col-center">
-        <!-- ABOUT ME SENZA WIDGET (SOLO IMMAGINE) -->
         <div style="margin-bottom: 14px;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
@@ -435,22 +424,18 @@
 
         <div style="flex: 1;"></div>
 
-        <!-- OROLOGIO (NERO) -->
         <div class="pixel-clock-box-dark">
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
-        <!-- GUESTBOOK (BIANCO) -->
         <button class="nav-box-btn" onclick="openPage('guestbook-page')">
           ✎ GUESTBOOK -&gt;
         </button>
 
-        <!-- FRIENDS & BUTTONS (NERO) -->
         <button class="nav-box-btn-dark" onclick="openPage('buttons-page')">
           ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
-        <!-- MUSIC PLAYER (BIANCO) -->
         <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
@@ -549,7 +534,6 @@
   </div>
 
   <script>
-    /* NAVIGAZIONE PAGINE */
     function openPage(pageId) {
       document.getElementById('home-view').style.display = 'none';
       document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
@@ -562,7 +546,6 @@
       document.getElementById('home-view').style.display = 'flex';
     }
 
-    /* GUESTBOOK */
     function addGuestbookEntry() {
       const name = document.getElementById('gb-name').value;
       const msg = document.getElementById('gb-msg').value;
@@ -578,7 +561,6 @@
       document.getElementById('gb-msg').value = '';
     }
 
-    /* MUSIC PLAYER LOGIC */
     const playlist = [
       { title: "beabadoobee", file: "./song1.mp3" },
       { title: "Lo-Fi Chill Track", file: "./song2.mp3" }
@@ -624,7 +606,6 @@
 
     loadTrack(0);
 
-    /* CALENDARIO AUTOMATICO */
     function generateCalendar() {
       const today = new Date();
       const currentDay = today.getDate();
@@ -670,7 +651,6 @@
       }
     }
 
-    /* OROLOGIO PIXEL IN TEMPO REALE */
     function updatePixelClock() {
       const now = new Date();
       const hours = String(now.getHours()).padStart(2, '0');
