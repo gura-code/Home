@@ -42,12 +42,12 @@
       position: relative;
     }
 
-    /* AVATAR LIBERO (SENZA CERCHIO, POSIZIONATO IN GIRO) */
+    /* AVATAR MOLTO PIÙ GRANDE */
     .floating-avatar {
       position: absolute;
-      top: -55px;
-      right: 30px;
-      width: 130px;
+      top: -45px;
+      right: 15px;
+      width: 240px;
       height: auto;
       z-index: 100;
       pointer-events: none;
@@ -76,15 +76,6 @@
     }
 
     .banner-box h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
-
-    .banner-badge {
-      font-weight: 700;
-      font-size: 0.75rem;
-      background: #111111;
-      color: #ffffff;
-      padding: 8px 16px;
-      border-radius: 999px;
-    }
 
     /* GRID A 3 COLONNE */
     .grid-container {
@@ -117,25 +108,16 @@
 
     .box-body { padding: 14px; }
 
-    /* MENÙ SCONTRINO INCLINATO E SQUADRATO */
+    /* MENÙ SCONTRINO INCLINATO E DRITTO */
     .receipt-box {
       background: #ffffff;
       border: 2px solid #111111;
-      border-radius: 0px; /* Angoli dritti da foglio */
-      padding: 18px 14px 24px 14px;
+      border-radius: 0px;
+      padding: 18px 14px;
       box-shadow: 4px 4px 0px #111111;
       margin-bottom: 14px;
-      transform: rotate(-2.5deg); /* Leggermente storto */
+      transform: rotate(-2.5deg);
       transition: transform 0.2s ease;
-      /* Bordo seghettato inferiore da scontrino reale */
-      clip-path: polygon(
-        0% 0%, 100% 0%, 100% calc(100% - 8px),
-        95% 100%, 90% calc(100% - 8px), 85% 100%, 80% calc(100% - 8px),
-        75% 100%, 70% calc(100% - 8px), 65% 100%, 60% calc(100% - 8px),
-        55% 100%, 50% calc(100% - 8px), 45% 100%, 40% calc(100% - 8px),
-        35% 100%, 30% calc(100% - 8px), 25% 100%, 20% calc(100% - 8px),
-        15% 100%, 10% calc(100% - 8px), 5% 100%, 0% calc(100% - 8px)
-      );
     }
 
     .receipt-box:hover {
@@ -159,7 +141,7 @@
       font-size: 0.85rem;
       display: block;
       padding: 8px 12px;
-      border-radius: 4px;
+      border-radius: 0px;
       transition: all 0.15s ease;
       cursor: pointer;
     }
@@ -268,7 +250,7 @@
 
   <div class="site-wrapper">
 
-    <!-- AVATAR LIBERO SUL BORDO IN ALTO -->
+    <!-- AVATAR MOLTO PIÙ GRANDE -->
     <img src="avatar.png" alt="Seea Avatar" class="floating-avatar">
 
     <!-- HEADER -->
@@ -276,7 +258,6 @@
       <div class="banner-box">
         <h1>SEEA ARCHIVE</h1>
       </div>
-      <span class="banner-badge">VERSION 2.0 // CLEAN OS</span>
     </header>
 
     <!-- GRID A 3 COLONNE -->
