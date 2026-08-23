@@ -3,93 +3,488 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SEEA HUB // Clean OS</title>
-  <link rel="stylesheet" href="style.css">
+  <title>SEEA ARCHIVE // Clean Grid OS</title>
+  <style>
+    /* RESET & SFONDO A QUADRETTI MONOCROMATICO */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #f5f5f7;
+      /* Griglia a micro-quadretti stile carta millimetrata */
+      background-image: 
+        linear-gradient(#e1e1e6 1px, transparent 1px),
+        linear-gradient(90deg, #e1e1e6 1px, transparent 1px);
+      background-size: 20px 20px;
+      color: #111111;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+
+    /* CORNICE CENTRALE */
+    .site-wrapper {
+      max-width: 980px;
+      width: 100%;
+      background: #ffffff;
+      border: 3px solid #111111;
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 6px 6px 0px #111111;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* BANNER SUPERIORE */
+    .top-banner {
+      background: #f9f9fb;
+      border: 2px solid #111111;
+      border-radius: 14px;
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-image: radial-gradient(#111 0.75px, transparent 0.75px);
+      background-size: 8px 8px;
+    }
+
+    .banner-box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      padding: 10px 20px;
+      border-radius: 10px;
+      box-shadow: 3px 3px 0px #111111;
+    }
+
+    .banner-box h1 {
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .banner-badge {
+      font-family: monospace;
+      font-size: 0.75rem;
+      background: #111111;
+      color: #ffffff;
+      padding: 4px 8px;
+      border-radius: 6px;
+    }
+
+    /* LAYOUT A 3 COLONNE MULTI-BOX */
+    .grid-container {
+      display: grid;
+      grid-template-columns: 220px 1fr 220px;
+      gap: 14px;
+      align-items: start;
+    }
+
+    /* STILE BOX FINESTRE (Tipo Cloverstar) */
+    .box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+      margin-bottom: 14px;
+    }
+
+    .box-header {
+      background: #f0f0f3;
+      border-bottom: 2px solid #111111;
+      padding: 6px 10px;
+      font-family: monospace;
+      font-size: 0.75rem;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .box-body {
+      padding: 12px;
+    }
+
+    /* MENÙ SCONTRINO INCLINATO */
+    .receipt-box {
+      background: #ffffff;
+      border: 1px solid #111111;
+      padding: 16px 12px;
+      font-family: 'Courier New', Courier, monospace;
+      transform: rotate(-1.5deg);
+      box-shadow: 4px 4px 12px rgba(0,0,0,0.06);
+      clip-path: polygon(
+        0% 6px, 5% 0%, 10% 6%, 15% 0%, 20% 6%, 25% 0%, 30% 6%, 35% 0%, 40% 6%, 45% 0%, 50% 6%, 55% 0%, 60% 6%, 65% 0%, 70% 6%, 75% 0%, 80% 6%, 85% 0%, 90% 6%, 95% 0%, 100% 6%,
+        100% calc(100% - 6px), 95% 100%, 90% calc(100% - 6px), 85% 100%, 80% calc(100% - 6px), 75% 100%, 70% calc(100% - 6px), 65% 100%, 60% calc(100% - 6px), 55% 100%, 50% calc(100% - 6px), 45% 100%, 40% calc(100% - 6px), 35% 100%, 30% calc(100% - 6px), 25% 100%, 20% calc(100% - 6px), 15% 100%, 10% calc(100% - 6px), 5% 100%, 0% calc(100% - 6px)
+      );
+      margin-bottom: 14px;
+    }
+
+    .receipt-title {
+      text-align: center;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+
+    .receipt-dash {
+      border: none;
+      border-top: 1px dashed #111;
+      margin: 8px 0;
+    }
+
+    .receipt-menu-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .receipt-menu-list a {
+      color: #111;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.8rem;
+      display: block;
+      padding: 2px 4px;
+    }
+
+    .receipt-menu-list a:hover {
+      background: #111;
+      color: #fff;
+    }
+
+    .receipt-barcode {
+      text-align: center;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      margin-top: 8px;
+    }
+
+    /* COLONNA CENTRALE */
+    .welcome-text {
+      font-size: 0.85rem;
+      line-height: 1.5;
+    }
+
+    .update-log {
+      list-style: none;
+      font-size: 0.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .update-log li {
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 4px;
+    }
+
+    .log-date {
+      font-family: monospace;
+      font-weight: bold;
+      background: #111;
+      color: #fff;
+      padding: 1px 5px;
+      border-radius: 4px;
+      margin-right: 6px;
+      font-size: 0.7rem;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .mini-card-item {
+      border: 1px solid #111;
+      border-radius: 8px;
+      padding: 8px;
+      font-size: 0.75rem;
+      background: #fdfdfd;
+      text-align: center;
+    }
+
+    /* DESTRA: PROFILO + WIDGETS */
+    .profile-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      border: 2px solid #111;
+      margin: 0 auto 8px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      background: #f0f0f3;
+    }
+
+    .profile-info {
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    /* IPOD PLAYER */
+    .ipod-player {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 14px;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .ipod-screen {
+      background: #111111;
+      color: #ffffff;
+      border-radius: 6px;
+      padding: 6px;
+      font-size: 0.65rem;
+      font-family: monospace;
+      margin-bottom: 6px;
+    }
+
+    .ipod-wheel {
+      width: 50px;
+      height: 50px;
+      border: 2px solid #111;
+      border-radius: 50%;
+      margin: 0 auto;
+      background: #f0f0f3;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ipod-btn {
+      width: 18px;
+      height: 18px;
+      background: #ffffff;
+      border: 1px solid #111;
+      border-radius: 50%;
+    }
+
+    /* LUNA */
+    .moon-graphic {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: #111;
+      border: 1px solid #111;
+      box-shadow: inset -10px -3px 0 0 #fff;
+      margin: 0 auto 4px auto;
+    }
+
+    /* CALENDARIO */
+    .mini-calendar {
+      width: 100%;
+      font-size: 0.65rem;
+      font-family: monospace;
+      text-align: center;
+      border-collapse: collapse;
+    }
+
+    .mini-calendar th, .mini-calendar td {
+      padding: 2px;
+      border: 1px solid #eee;
+    }
+
+    .mini-calendar th {
+      background: #111;
+      color: #fff;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 2px solid #111;
+      padding-top: 10px;
+      text-align: center;
+      font-family: monospace;
+      font-size: 0.7rem;
+      color: #555;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="hub-container">
-    
-    <!-- BANNER IN ALTO -->
-    <header class="main-banner">
-      <h1>SEEA HUB</h1>
-      <p class="subtitle">// digital space & archive</p>
+  <div class="site-wrapper">
+
+    <!-- HEADER / BANNER -->
+    <header class="top-banner">
+      <div class="banner-box">
+        <h1>SEEA ARCHIVE</h1>
+      </div>
+      <span class="banner-badge">VERSION 2.0 // CLEAN OS</span>
     </header>
 
-    <!-- LAYOUT PRINCIPALE A 3 COLONNE -->
-    <main class="grid-layout">
+    <!-- GRID A 3 COLONNE -->
+    <div class="grid-container">
 
-      <!-- COLONNA SINISTRA: MENÙ SCONTRINO INCLINATO -->
+      <!-- COLONNA SINISTRA -->
       <aside class="col-left">
-        <nav class="receipt-menu">
-          <div class="receipt-header">
-            <span>*** SEEA OS ***</span>
-            <span class="receipt-date">23.08.2026</span>
-          </div>
-          <hr class="dashed-line">
-          <ul class="menu-list">
-            <li><a href="#about">[01] ABOUT ME</a></li>
-            <li><a href="#projects">[02] PROJECTS</a></li>
-            <li><a href="#zine">[03] MINI ZINES</a></li>
-            <li><a href="#gallery">[04] DOODLES</a></li>
-            <li><a href="#guestbook">[05] GUESTBOOK</a></li>
-          </ul>
-          <hr class="dashed-line">
-          <div class="receipt-footer">
-            <p>TOTAL ITEMS: 5</p>
-            <p class="barcode">||| | |||| || | |||</p>
-            <p>THANKS FOR VISITING!</p>
-          </div>
-        </nav>
-      </aside>
 
-      <!-- COLONNA CENTRALE: BACHECA DI BENVENUTO -->
-      <section class="col-center">
-        <div class="card welcome-card">
-          <h2>welcome!</h2>
-          <p>Ciao, sono <strong>Seea</strong>. Benvenuto nel mio spazio digitale minimale.</p>
-          <p>Questo hub raccoglie i miei progetti, la grafica in bianco e nero e le mie storie tascabili. Creato con HTML, CSS e tanta logica.</p>
-          <div class="status-badge">STATUS: Coding...</div>
+        <!-- MENÙ SCONTRINO INCLINATO -->
+        <div class="receipt-box">
+          <div class="receipt-title">*** SEEA MENU ***</div>
+          <hr class="receipt-dash">
+          <ul class="receipt-menu-list">
+            <li><a href="#">[01] HOME</a></li>
+            <li><a href="#">[02] POCKET CARD</a></li>
+            <li><a href="#">[03] BANNER CARD</a></li>
+            <li><a href="#">[04] MINI ZINES</a></li>
+            <li><a href="#">[05] DOODLES</a></li>
+            <li><a href="#">[06] GUESTBOOK</a></li>
+          </ul>
+          <hr class="receipt-dash">
+          <div class="receipt-barcode">||| | |||| || |</div>
         </div>
 
-        <div class="card updates-card">
-          <h3>latest updates</h3>
-          <ul>
-            <li><span>23 Aug</span> - Creato il layout base dell'Hub</li>
-            <li><span>18 Aug</span> - Primo concept dello Scontrino Menù</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- COLONNA DESTRAM: PLAYER MUSICALE & WIDGET LUNA -->
-      <aside class="col-right">
-        
-        <!-- PLAYER MUSICALE RETRO -->
-        <div class="music-player">
-          <div class="player-screen">
-            <div class="album-art">♪</div>
-            <div class="track-info">
-              <span class="track-title">Now Playing</span>
-              <span class="artist-name">Lo-Fi Beats // Mono</span>
+        <!-- BOX BUTTON LINK -->
+        <div class="box">
+          <div class="box-header">
+            <span>link_me</span>
+            <span>★</span>
+          </div>
+          <div class="box-body" style="text-align: center;">
+            <div style="border: 1px dashed #111; padding: 6px; font-family: monospace; font-size: 0.65rem;">
+              &lt;a href="https://seea.neocities.org"&gt;&lt;img src="button.png"&gt;&lt;/a&gt;
             </div>
           </div>
-          <div class="player-controls">
-            <button class="btn">⏮</button>
-            <button class="btn play">⏯</button>
-            <button class="btn">⏭</button>
-          </div>
-        </div>
-
-        <!-- WIDGET FASE LUNARE -->
-        <div class="card moon-widget">
-          <h3>The Moon Today</h3>
-          <div class="moon-phase"></div>
-          <p class="moon-text">Waxing Moon (79%)</p>
         </div>
 
       </aside>
 
-    </main>
+      <!-- COLONNA CENTRALE -->
+      <main class="col-center">
+
+        <!-- FINESTRA WELCOME -->
+        <div class="box">
+          <div class="box-header">
+            <span>welcome.html</span>
+            <span>[X]</span>
+          </div>
+          <div class="box-body">
+            <p class="welcome-text">
+              Benvenuto nel mio archivio digitale. Strutturato a griglia come le classiche pagine indie, ma ripulito in stile <strong>monocromatico e minimal</strong>.
+            </p>
+          </div>
+        </div>
+
+        <!-- FINESTRA UPDATE LOG -->
+        <div class="box">
+          <div class="box-header">
+            <span>update_log 📝</span>
+            <span>[–]</span>
+          </div>
+          <div class="box-body">
+            <ul class="update-log">
+              <li><span class="log-date">23 AUG</span> Layout stile Cloverstar monocromatico</li>
+              <li><span class="log-date">18 AUG</span> Integrato menu scontrino e widget</li>
+              <li><span class="log-date">10 AUG</span> Testato il generatore Pocket Card</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- FINESTRA PROGETTI -->
+        <div class="box">
+          <div class="box-header">
+            <span>projects_grid</span>
+            <span>[+]</span>
+          </div>
+          <div class="box-body">
+            <div class="mini-grid">
+              <div class="mini-card-item">
+                <strong>Pocket Card</strong><br>
+                <span style="color:#666;">Web App</span>
+              </div>
+              <div class="mini-card-item">
+                <strong>Mini Zine</strong><br>
+                <span style="color:#666;">8 Pages PDF</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </main>
+
+      <!-- COLONNA DESTRA -->
+      <aside class="col-right">
+
+        <!-- BOX PROFILO -->
+        <div class="box">
+          <div class="box-header">
+            <span>status</span>
+            <span>●</span>
+          </div>
+          <div class="box-body">
+            <div class="profile-avatar">🖊️</div>
+            <div class="profile-info">
+              <strong>Seea</strong><br>
+              <span style="font-size:0.7rem; color:#555;">Mood: Coding</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- RETRO PLAYER -->
+        <div class="box">
+          <div class="box-header">
+            <span>music_player</span>
+            <span>♫</span>
+          </div>
+          <div class="box-body">
+            <div class="ipod-player">
+              <div class="ipod-screen">
+                Now Playing:<br>
+                <strong>beabadoobee</strong>
+              </div>
+              <div class="ipod-wheel">
+                <div class="ipod-btn"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- WIDGET LUNA -->
+        <div class="box">
+          <div class="box-header">
+            <span>lunar_phase</span>
+            <span>☾</span>
+          </div>
+          <div class="box-body" style="text-align: center;">
+            <div class="moon-graphic"></div>
+            <span style="font-size: 0.7rem; font-family: monospace;">Waxing Moon</span>
+          </div>
+        </div>
+
+        <!-- CALENDARIO -->
+        <div class="box">
+          <div class="box-header">
+            <span>calendar</span>
+            <span>📅</span>
+          </div>
+          <div class="box-body">
+            <table class="mini-calendar">
+              <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
+              <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
+              <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+              <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+              <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><strong>23</strong></td></tr>
+            </table>
+          </div>
+        </div>
+
+      </aside>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      SEEA ARCHIVE // CODED WITH HTML & CSS // ALL RIGHTS RESERVED
+    </footer>
 
   </div>
 
