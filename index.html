@@ -108,10 +108,9 @@
       margin-bottom: 14px;
     }
 
-    /* CLASSE PER SPINGERE IL BOX SUL FONDO DELLA COLONNA */
-    .box.align-bottom {
+    /* CLASSE PER SPINGERE IL BLOCCO IN BASSO NELLA COLONNA CENTRALE */
+    .col-center .push-to-bottom {
       margin-top: auto;
-      margin-bottom: 0;
     }
 
     .box-header {
@@ -174,27 +173,6 @@
       font-family: monospace;
     }
 
-    /* PASSAPORTO / PROFILO */
-    .passport-card {
-      border: 2px solid #111;
-      border-radius: 16px;
-      padding: 14px;
-      background: #fdfdfd;
-      display: flex;
-      gap: 14px;
-      align-items: center;
-      box-shadow: 3px 3px 0px #111;
-    }
-    .passport-avatar-img {
-      width: 75px;
-      height: 90px;
-      border: 2px solid #111;
-      border-radius: 10px;
-      object-fit: cover;
-      background: #eee;
-    }
-    .passport-info { font-size: 0.8rem; line-height: 1.5; }
-
     /* WIDGETS */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 10px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 8px; }
@@ -202,9 +180,25 @@
     .ipod-btn { width: 18px; height: 18px; background: #fff; border: 2px solid #111; border-radius: 50%; }
 
     .moon-graphic { width: 36px; height: 36px; border-radius: 50%; background: #111; border: 1px solid #111; box-shadow: inset -10px -3px 0 0 #fff; margin: 0 auto 6px; }
+    
+    /* ICONA CALENDARIO STILE B/N (COERENTE CON LA LUNA/MUSICA) */
+    .calendar-graphic { 
+      width: 32px; 
+      height: 32px; 
+      border: 2px solid #111; 
+      border-radius: 6px; 
+      background: #fff; 
+      margin: 0 auto 6px; 
+      display: flex; 
+      flex-direction: column; 
+      overflow: hidden;
+      box-shadow: 2px 2px 0px #111;
+    }
+    .calendar-graphic-top { background: #111; height: 10px; width: 100%; }
+    .calendar-graphic-body { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 800; }
 
     .mini-calendar { width: 100%; font-size: 0.7rem; text-align: center; border-collapse: collapse; }
-    .mini-calendar th, .mini-calendar td { padding: 3px; border: 1px solid #eee; border-radius: 4px; }
+    .mini-calendar th, .mini-calendar td { padding: 2px; border: 1px solid #eee; border-radius: 4px; }
     .mini-calendar th { background: #111; color: #fff; }
 
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
@@ -254,7 +248,7 @@
     }
     .back-btn:hover { background: #333; }
 
-    /* GRIGLIA LIBERA PER LE CARTE INTERE SCORREVOLI */
+    /* GRIGLIA LIBERA PER LE CARTE INTERE SENZA CORNICI DI CONTORNAMENTO */
     .cards-grid-scroll {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -264,21 +258,23 @@
       padding: 10px;
     }
 
-    .full-card-img {
+    /* IMMAGINE PURA (SENZA BOX O CORNICE BIANCA EXTRA) */
+    .pure-card-img {
       width: 100%;
       height: auto;
       display: block;
-      border: 3px solid #111;
-      border-radius: 18px;
-      box-shadow: 4px 4px 0px #111;
-      background: #fff;
+      filter: drop-shadow(4px 4px 0px #111);
+      transition: transform 0.15s ease;
+    }
+    .pure-card-img:hover {
+      transform: translateY(-2px);
     }
   </style>
 </head>
 <body>
 
   <!-- ==========================================================
-       VISTA HOME (SCRIVANIA COMPLETA CON WIDGET E SCONTRINO)
+       VISTA HOME (SCRIVANIA COMPLETA)
        ========================================================== -->
   <div id="home-view" class="site-wrapper">
 
@@ -316,14 +312,20 @@
         </div>
 
         <div class="box">
-          <div class="box-header"><span>calendar</span><span>📅</span></div>
+          <div class="box-header"><span>calendar</span><div style="width:12px; height:12px; border:2px solid #111; border-radius:2px;"></div></div>
           <div class="box-body">
+            <div class="calendar-graphic">
+              <div class="calendar-graphic-top"></div>
+              <div class="calendar-graphic-body">23</div>
+            </div>
             <table class="mini-calendar">
               <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
               <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
               <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
               <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
               <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><strong>23</strong></td></tr>
+              <tr><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
+              <tr><td>31</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
             </table>
           </div>
         </div>
@@ -338,25 +340,18 @@
         </div>
       </aside>
 
-      <!-- COLONNA CENTRALE HOME (ALLINEATA IN BASSO) -->
+      <!-- COLONNA CENTRALE HOME (SPOSTATA IN BASSO, CON ABOUT_ME SOPRA WELCOME) -->
       <main class="col-center">
-        <div class="box">
-          <div class="box-header"><span>about_me.id</span><span>[PROFILE]</span></div>
-          <div class="box-body">
-            <div class="passport-card">
-              <img src="avatar-id.png" alt="Seea ID" class="passport-avatar-img">
-              <div class="passport-info">
-                <strong>NAME:</strong> Seea<br>
-                <strong>ROLE:</strong> Digital Archive Creator<br>
-                <strong>INTERESTS:</strong> Art, Anime, Minimal Web Design<br>
-                <span style="color:#666; font-size:0.75rem;">Benvenuto nel mio spazio personale in stile quaderno a quadretti!</span>
-              </div>
-            </div>
-          </div>
+        <!-- Questo blocco spinge tutto il gruppo verso il basso -->
+        <div style="flex: 1;"></div>
+
+        <!-- 1. CARTA D'IDENTITÀ (ABOUT ME) ORA FATTA DA UN'UNICA IMMAGINE/FOTO -->
+        <div style="margin-bottom: 14px;">
+          <img src="about-me-card.png" alt="about_me.id" class="pure-card-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22150%22%3E%3Crect width=%22400%22 height=%22150%22 fill=%22%23fff%22 stroke=%22%23111%22 stroke-width=%223%22 rx=%2216%22/%3E%3Ctext x=%2220%22 y=%2250%22 font-family=%22sans-serif%22 font-size=%2218%22 font-weight=%22bold%22 fill=%22%23111%22%3E[about_me.id] - Inserisci immagine%3C/text%3E%3C/svg%3E'">
         </div>
 
-        <!-- Questo blocco viene spinto in fondo con "align-bottom" -->
-        <div class="box align-bottom">
+        <!-- 2. WELCOME.HTML SUBITO SOTTO -->
+        <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
             <p style="font-size:0.85rem; line-height:1.6; font-weight:600;">
@@ -365,11 +360,12 @@
           </div>
         </div>
 
-        <div class="box" style="margin-bottom:0; margin-top:14px;">
+        <!-- 3. ULTIMO UPDATE IN FONDO ALLA FILA -->
+        <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[23 AUG]</strong> Aggiornata la navigazione con viste a pagina intera su sfondo quadrettato.</li>
+              <li><strong>[23 AUG]</strong> Spostato about_me in basso e rimosse le cornici dalle pocket cards.</li>
             </ul>
           </div>
         </div>
@@ -379,7 +375,7 @@
       <aside class="col-right">
         <img id="main-avatar" src="avatar1.png" alt="Seea Avatar" class="floating-avatar">
 
-        <div class="box align-bottom">
+        <div class="box push-to-bottom" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
             <div class="ipod-player">
@@ -400,7 +396,7 @@
 
 
   <!-- ==========================================================
-       PAGINA 1: GALLERIA D'ARTE (QUADRETTO PURO E IMMAGINI SCROLLABILI)
+       PAGINA 1: GALLERY (SOLO IMMAGINI PURE SENZA CORNICE ESTERNA)
        ========================================================== -->
   <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
@@ -410,15 +406,15 @@
     </div>
 
     <div class="cards-grid-scroll">
-      <img src="art-card1.png" alt="Disegno 1" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-      <img src="art-card2.png" alt="Disegno 2" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-      <img src="art-card3.png" alt="Disegno 3" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="art-card1.png" alt="Disegno 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="art-card2.png" alt="Disegno 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="art-card3.png" alt="Disegno 3" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
     </div>
   </div>
 
 
   <!-- ==========================================================
-       PAGINA 2: WATCHLIST ANIME (POCKET CARDS INTERE SCROLLABILI)
+       PAGINA 2: WATCHLIST ANIME (SOLO POCKET CARDS PURE)
        ========================================================== -->
   <div id="watchlist-page" class="fullscreen-page">
     <div class="fullscreen-header">
@@ -428,15 +424,15 @@
     </div>
 
     <div class="cards-grid-scroll">
-      <img src="anime-pocket1.png" alt="Pocket Card Anime 1" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
-      <img src="anime-pocket2.png" alt="Pocket Card Anime 2" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
-      <img src="anime-pocket3.png" alt="Pocket Card Anime 3" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+      <img src="anime-pocket1.png" alt="Pocket Card Anime 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+      <img src="anime-pocket2.png" alt="Pocket Card Anime 2" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+      <img src="anime-pocket3.png" alt="Pocket Card Anime 3" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
     </div>
   </div>
 
 
   <!-- ==========================================================
-       PAGINA 3: BLOG / JOURNAL (BANNER CARDS INTERE SCROLLABILI)
+       PAGINA 3: BLOG / JOURNAL (BANNER CARDS PURE)
        ========================================================== -->
   <div id="blog-page" class="fullscreen-page">
     <div class="fullscreen-header">
@@ -446,8 +442,8 @@
     </div>
 
     <div class="cards-grid-scroll" style="grid-template-columns: 1fr;">
-      <img src="blog-banner1.png" alt="Blog Banner Card 1" class="full-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
-      <img src="blog-banner2.png" alt="Blog Banner Card 2" class="full-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
+      <img src="blog-banner1.png" alt="Blog Banner Card 1" class="pure-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
+      <img src="blog-banner2.png" alt="Blog Banner Card 2" class="pure-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
     </div>
   </div>
 
@@ -463,7 +459,7 @@
     </div>
 
     <div class="cards-grid-scroll">
-      <img src="project-card1.png" alt="Project 1" class="full-card-img" onerror="this.style.height='250px'; this.style.background='#eee';">
+      <img src="project-card1.png" alt="Project 1" class="pure-card-img" onerror="this.style.height='250px'; this.style.background='#eee';">
     </div>
   </div>
 
@@ -522,4 +518,3 @@
 
 </body>
 </html>
-
