@@ -73,7 +73,7 @@
       align-items: start;
     }
 
-    /* COLONNA DESTRA CON SPAZIO PER L'AVATAR */
+    /* COLONNA DESTRA */
     .col-right {
       position: relative;
       display: flex;
@@ -81,21 +81,16 @@
       gap: 14px;
     }
 
-    /* AVATAR STICKER GRANDE IN ALTO A DESTRA */
+    /* AVATAR RIPORTATO IN ALTO COME PRIMA */
     .floating-avatar {
       position: absolute;
-      top: -85px;
-      right: -5px;
+      top: -65px;
+      right: 15px;
       width: 240px;
       height: auto;
       z-index: 100;
       pointer-events: none;
       filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
-    }
-
-    /* SPACER PER ABBASSARE I WIDGET DI DESTRA E LASCIARE SPAZIO ALL'AVATAR */
-    .widgets-spacer {
-      height: 120px;
     }
 
     /* FINESTRE BORDER ROUNDED */
@@ -243,8 +238,6 @@
     }
 
     /* WIDGETS DESTRA */
-    .profile-info { text-align: center; font-size: 0.82rem; }
-
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 10px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 8px; }
     .ipod-wheel { width: 54px; height: 54px; border: 2px solid #111; border-radius: 50%; margin: 0 auto; background: #f0f0f3; display: flex; align-items: center; justify-content: center; }
@@ -380,7 +373,7 @@
           </div>
         </div>
 
-        <!-- [05] VIEW: DOODLES (GALLERIA ARTWORK SCROLLABILE) -->
+        <!-- [05] VIEW: DOODLES -->
         <div id="view-doodles" class="view-section">
           <div class="box">
             <div class="box-header"><span>doodles_gallery.art 🎨</span><span>[SCROLL]</span></div>
@@ -428,24 +421,11 @@
 
       </main>
 
-      <!-- COLONNA DESTRA: WIDGETS CON AVATAR LIBERO IN ALTO -->
+      <!-- COLONNA DESTRA: WIDGETS CON AVATAR IN ALTO -->
       <aside class="col-right">
         
-        <!-- AVATAR GRANDE POSIZIONATO LIBERO SUL BORDO SUPERIORE -->
+        <!-- AVATAR IN ALTO -->
         <img src="avatar.png" alt="Seea Avatar" class="floating-avatar">
-
-        <!-- SPACER PER ABBASSARE I WIDGET ED EVITARE SOVRAPPOSIZIONI -->
-        <div class="widgets-spacer"></div>
-
-        <div class="box">
-          <div class="box-header"><span>status</span><span>●</span></div>
-          <div class="box-body">
-            <div class="profile-info">
-              <strong>Seea</strong><br>
-              <span style="font-size:0.75rem; color:#555;">Mood: Sketching ✏️</span>
-            </div>
-          </div>
-        </div>
 
         <div class="box">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
@@ -491,18 +471,15 @@
   <!-- SCRIPT SWITCH SEZIONI -->
   <script>
     function switchTab(tabId, element) {
-      // Nascondi tutte le sezioni
       document.querySelectorAll('.view-section').forEach(sec => {
         sec.classList.remove('active');
       });
 
-      // Mostra la sezione selezionata
       const targetView = document.getElementById('view-' + tabId);
       if(targetView) {
         targetView.classList.add('active');
       }
 
-      // Aggiorna lo stato attivo dello scontrino
       document.querySelectorAll('.receipt-menu-list a').forEach(link => {
         link.classList.remove('active');
       });
