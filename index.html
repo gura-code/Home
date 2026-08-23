@@ -14,19 +14,22 @@
 
     body {
       background-color: #f5f5f7;
-      /* SFONDO A QUADRETTI STILE QUADERNO */
+      /* SFONDO A QUADRETTI STILE QUADERNO SU TUTTO LO SCHERMO */
       background-image: 
         linear-gradient(#e1e1e6 1px, transparent 1px),
         linear-gradient(90deg, #e1e1e6 1px, transparent 1px);
       background-size: 20px 20px;
       color: #111111;
       font-family: 'Quicksand', sans-serif;
-      padding: 60px 10px 20px 10px;
+      padding: 40px 10px;
       display: flex;
       justify-content: center;
       position: relative;
     }
 
+    /* --------------------------------------------------
+       STRUTTURA HOME PRINCIPALE (SCRIVANIA)
+       -------------------------------------------------- */
     .site-wrapper {
       max-width: 980px;
       width: 100%;
@@ -76,7 +79,7 @@
       flex-direction: column;
     }
 
-    /* AVATAR DINAMICO */
+    /* AVATAR DINAMICO SCRIVANIA */
     .floating-avatar {
       position: absolute;
       top: -110px;
@@ -163,37 +166,7 @@
       font-family: monospace;
     }
 
-    /* PULSANTE BACK NELLE PAGINE INTERNE */
-    .back-btn {
-      background: #111;
-      color: #fff;
-      border: none;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-weight: 700;
-      font-size: 0.75rem;
-      cursor: pointer;
-      margin-bottom: 12px;
-      display: inline-block;
-      text-decoration: none;
-    }
-    .back-btn:hover { background: #333; }
-
-    /* VISTE SEZIONI */
-    .view-section { display: none; }
-    .view-section.active { display: block; }
-
-    /* CONTENITORI SCROLLABILI PER LE SEZIONI */
-    .scrollable-feed {
-      max-height: 480px;
-      overflow-y: auto;
-      padding-right: 4px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    /* PASSAPORTO / PROFILO POCKET CARD STILE */
+    /* PASSAPORTO / PROFILO */
     .passport-card {
       border: 2px solid #111;
       border-radius: 16px;
@@ -214,50 +187,6 @@
     }
     .passport-info { font-size: 0.8rem; line-height: 1.5; }
 
-    /* GRIGLIA POCKET CARD (PER ANIME) */
-    .pocket-cards-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-    }
-    .pocket-card-item {
-      border: 2px solid #111;
-      border-radius: 14px;
-      padding: 8px;
-      background: #fafafa;
-      text-align: center;
-      box-shadow: 2px 2px 0px #111;
-    }
-    .pocket-card-img {
-      width: 100%;
-      height: 140px;
-      border: 1px solid #111;
-      border-radius: 8px;
-      object-fit: cover;
-      background: #eee;
-      margin-bottom: 6px;
-    }
-
-    /* BANNER CARD STILE (PER I BLOG) */
-    .banner-card-item {
-      border: 2px solid #111;
-      border-radius: 16px;
-      padding: 12px;
-      background: #fafafa;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      box-shadow: 3px 3px 0px #111;
-    }
-    .banner-card-avatar {
-      width: 45px;
-      height: 45px;
-      border-radius: 50%;
-      border: 2px solid #111;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
     /* WIDGETS */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 10px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 8px; }
@@ -271,11 +200,79 @@
     .mini-calendar th { background: #111; color: #fff; }
 
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
+
+    /* --------------------------------------------------
+       PAGINE A TUTTO SCHERMO (Senza Box Bianco)
+       -------------------------------------------------- */
+    .fullscreen-page {
+      display: none;
+      max-width: 960px;
+      width: 100%;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .fullscreen-page.active {
+      display: flex;
+    }
+
+    .fullscreen-header {
+      background: #ffffff;
+      border: 3px solid #111;
+      border-radius: 20px;
+      padding: 12px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 4px 4px 0px #111;
+    }
+
+    .fullscreen-header h2 {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+    }
+
+    .back-btn {
+      background: #111111;
+      color: #ffffff;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px #555;
+    }
+    .back-btn:hover { background: #333; }
+
+    /* GRIGLIA LIBERA PER LE CARTE INTERE SCORREVOLI */
+    .cards-grid-scroll {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .full-card-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border: 3px solid #111;
+      border-radius: 18px;
+      box-shadow: 4px 4px 0px #111;
+      background: #fff;
+    }
   </style>
 </head>
 <body>
 
-  <div class="site-wrapper">
+  <!-- ==========================================================
+       VISTA HOME (SCRIVANIA COMPLETA CON WIDGET E SCONTRINO)
+       ========================================================== -->
+  <div id="home-view" class="site-wrapper">
 
     <header class="top-banner">
       <div class="banner-box">
@@ -285,18 +282,18 @@
 
     <div class="grid-container">
 
-      <!-- COLONNA SINISTRA: MENU SCONTRINO -->
+      <!-- COLONNA SINISTRA -->
       <aside class="col-left">
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
           <hr class="receipt-dash">
           <ul class="receipt-menu-list">
-            <li><a class="nav-link active" onclick="switchTab('home', 'avatar1.png', this)">[01] HOME</a></li>
-            <li><a class="nav-link" onclick="switchTab('blog', 'avatar2.png', this)">[02] LOGS & BLOG</a></li>
-            <li><a class="nav-link" onclick="switchTab('gallery', 'avatar3.png', this)">[03] GALLERY</a></li>
-            <li><a class="nav-link" onclick="switchTab('watchlist', 'avatar4.png', this)">[04] WATCHLIST</a></li>
-            <li><a class="nav-link" onclick="switchTab('projects', 'avatar5.png', this)">[05] PROJECTS</a></li>
-            <li><a class="nav-link" onclick="switchTab('guestbook', 'avatar6.png', this)">[06] GUESTBOOK</a></li>
+            <li><a class="active">[01] HOME</a></li>
+            <li><a onclick="openPage('blog-page')">[02] LOGS & BLOG</a></li>
+            <li><a onclick="openPage('gallery-page')">[03] GALLERY</a></li>
+            <li><a onclick="openPage('watchlist-page')">[04] WATCHLIST</a></li>
+            <li><a onclick="openPage('projects-page')">[05] PROJECTS</a></li>
+            <li><a onclick="openPage('guestbook-page')">[06] GUESTBOOK</a></li>
           </ul>
           <hr class="receipt-dash">
           <div class="receipt-barcode">||| | |||| || |</div>
@@ -333,164 +330,44 @@
         </div>
       </aside>
 
-      <!-- COLONNA CENTRALE DINAMICA -->
+      <!-- COLONNA CENTRALE HOME -->
       <main class="col-center">
-
-        <!-- [01] HOME (CON PASSPORT CARD PROFILO) -->
-        <div id="view-home" class="view-section active">
-          <div class="box">
-            <div class="box-header"><span>about_me.id</span><span>[PROFILE]</span></div>
-            <div class="box-body">
-              <div class="passport-card">
-                <img src="avatar-id.png" alt="Seea ID" class="passport-avatar-img">
-                <div class="passport-info">
-                  <strong>NAME:</strong> Seea<br>
-                  <strong>ROLE:</strong> Digital Archive Creator<br>
-                  <strong>INTERESTS:</strong> Art, Anime, Minimal Web Design<br>
-                  <span style="color:#666; font-size:0.75rem;">Benvenuto nel mio spazio personale in stile quaderno a quadretti!</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="box">
-            <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
-            <div class="box-body">
-              <p style="font-size:0.85rem; line-height:1.6; font-weight:600;">
-                Usa il menu a scontrino sulla sinistra per esplorare la galleria d'arte scrollabile, i post del blog in stile Banner Card e la Watchlist Anime fatta con le Pocket Card!
-              </p>
-            </div>
-          </div>
-
-          <div class="box" style="margin-bottom:0;">
-            <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
-            <div class="box-body">
-              <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-                <li><strong>[23 AUG]</strong> Aggiornato il layout con griglie scrollabili e schede personalizzate.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <!-- [02] BLOG / LOGS (BANNER CARD SCROLLABILI) -->
-        <div id="view-blog" class="view-section">
-          <button class="back-btn" onclick="switchTab('home', 'avatar1.png', document.querySelector('.receipt-menu-list a'))">← BACK TO DESK</button>
-          <div class="box" style="margin-bottom:0;">
-            <div class="box-header"><span>blog_feed.banner</span><span>[READ]</span></div>
-            <div class="box-body">
-              <div class="scrollable-feed">
-                <!-- Banner Card 1 -->
-                <div class="banner-card-item">
-                  <img src="avatar2.png" alt="Avatar" class="banner-card-avatar">
-                  <div>
-                    <span style="font-size:0.68rem; font-weight:800; background:#111; color:#fff; padding:1px 6px; border-radius:999px;">23 AUG 2026</span>
-                    <h3 style="font-size:0.9rem; margin: 4px 0;">Organizzazione dello studio e routine minimal</h3>
-                    <p style="font-size:0.78rem; color:#555;">Note su come strutturare le giornate con intervalli brevi e schede...</p>
-                  </div>
-                </div>
-                <!-- Banner Card 2 -->
-                <div class="banner-card-item">
-                  <img src="avatar2.png" alt="Avatar" class="banner-card-avatar">
-                  <div>
-                    <span style="font-size:0.68rem; font-weight:800; background:#111; color:#fff; padding:1px 6px; border-radius:999px;">18 AUG 2026</span>
-                    <h3 style="font-size:0.9rem; margin: 4px 0;">Idee per il nuovo design Neocities</h3>
-                    <p style="font-size:0.78rem; color:#555;">Sperimentando con sfondi a quadretti e widget in stile retro OS...</p>
-                  </div>
-                </div>
+        <div class="box">
+          <div class="box-header"><span>about_me.id</span><span>[PROFILE]</span></div>
+          <div class="box-body">
+            <div class="passport-card">
+              <img src="avatar-id.png" alt="Seea ID" class="passport-avatar-img">
+              <div class="passport-info">
+                <strong>NAME:</strong> Seea<br>
+                <strong>ROLE:</strong> Digital Archive Creator<br>
+                <strong>INTERESTS:</strong> Art, Anime, Minimal Web Design<br>
+                <span style="color:#666; font-size:0.75rem;">Benvenuto nel mio spazio personale in stile quaderno a quadretti!</span>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- [03] GALLERY (GALLERIA ARTE SCROLLABILE SUL QUADERNINO) -->
-        <div id="view-gallery" class="view-section">
-          <button class="back-btn" onclick="switchTab('home', 'avatar1.png', document.querySelector('.receipt-menu-list a'))">← BACK TO DESK</button>
-          <div class="box" style="margin-bottom:0;">
-            <div class="box-header"><span>art_gallery.sketch</span><span>[SCROLL]</span></div>
-            <div class="box-body">
-              <div class="scrollable-feed">
-                <div style="border:2px solid #111; border-radius:14px; padding:10px; background:#fafafa; text-align:center;">
-                  <div style="height:160px; background:#eee; border:1px dashed #111; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; margin-bottom:6px;">✏️ Immagine Bozzetto #1</div>
-                  <strong style="font-size:0.8rem;">Studio Anatomico A3</strong>
-                </div>
-                <div style="border:2px solid #111; border-radius:14px; padding:10px; background:#fafafa; text-align:center;">
-                  <div style="height:160px; background:#eee; border:1px dashed #111; border-radius:8px; display:flex; align-items:center; justify-content:center; font-weight:700; margin-bottom:6px;">🖤 Immagine Molecola</div>
-                  <strong style="font-size:0.8rem;">Theobromine Structure</strong>
-                </div>
-              </div>
-            </div>
+        <div class="box">
+          <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
+          <div class="box-body">
+            <p style="font-size:0.85rem; line-height:1.6; font-weight:600;">
+              Seleziona una voce dallo scontrino per esplorare le sezioni a tutto schermo su sfondo a quadretti puro!
+            </p>
           </div>
         </div>
 
-        <!-- [04] WATCHLIST (FATTA CON LE POCKET CARD SCROLLABILI) -->
-        <div id="view-watchlist" class="view-section">
-          <button class="back-btn" onclick="switchTab('home', 'avatar1.png', document.querySelector('.receipt-menu-list a'))">← BACK TO DESK</button>
-          <div class="box" style="margin-bottom:0;">
-            <div class="box-header"><span>anime_pocket_cards.app</span><span>[WATCH]</span></div>
-            <div class="box-body">
-              <div class="scrollable-feed">
-                <div class="pocket-cards-grid">
-                  <!-- Pocket Card Anime 1 -->
-                  <div class="pocket-card-item">
-                    <div class="pocket-card-img" style="background-image:url('anime1.jpg'); background-size:cover; background-position:center;"></div>
-                    <strong style="font-size:0.8rem;">Classroom of the Elite</strong>
-                    <p style="font-size:0.72rem; color:#666;">Voto: ★★★★★<br>Stato: Completato</p>
-                  </div>
-                  <!-- Pocket Card Anime 2 -->
-                  <div class="pocket-card-item">
-                    <div class="pocket-card-img" style="background-image:url('anime2.jpg'); background-size:cover; background-position:center;"></div>
-                    <strong style="font-size:0.8rem;">Dr. Stone</strong>
-                    <p style="font-size:0.72rem; color:#666;">Voto: ★★★★☆<br>Stato: In corso</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div class="box" style="margin-bottom:0;">
+          <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
+          <div class="box-body">
+            <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
+              <li><strong>[23 AUG]</strong> Aggiornata la navigazione con viste a pagina intera su sfondo quadrettato.</li>
+            </ul>
           </div>
         </div>
-
-        <!-- [05] PROJECTS -->
-        <div id="view-projects" class="view-section">
-          <button class="back-btn" onclick="switchTab('home', 'avatar1.png', document.querySelector('.receipt-menu-list a'))">← BACK TO DESK</button>
-          <div class="box" style="margin-bottom:0;">
-            <div class="box-header"><span>projects_archive.app</span><span>[TOOLS]</span></div>
-            <div class="box-body">
-              <div class="scrollable-feed">
-                <div style="border:2px solid #111; border-radius:14px; padding:10px; background:#fafafa;">
-                  <strong style="font-size:0.85rem;">💬 Line Style Chat Story</strong>
-                  <p style="font-size:0.75rem; color:#555;">Storia interattiva a scorrimento stile app di messaggistica.</p>
-                </div>
-                <div style="border:2px solid #111; border-radius:14px; padding:10px; background:#fafafa;">
-                  <strong style="font-size:0.85rem;">📄 Mini Zines PDF</strong>
-                  <p style="font-size:0.75rem; color:#555;">Fanzine da 8 pagine pronte da stampare e piegare.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- [06] GUESTBOOK -->
-        <div id="view-guestbook" class="view-section">
-          <button class="back-btn" onclick="switchTab('home', 'avatar1.png', document.querySelector('.receipt-menu-list a'))">← BACK TO DESK</button>
-          <div class="box" style="margin-bottom:0;">
-            <div class="box-header"><span>guestbook.txt</span><span>[WRITE]</span></div>
-            <div class="box-body">
-              <form onsubmit="event.preventDefault(); addGuestbookEntry();" style="display:flex; flex-direction:column; gap:8px; margin-bottom:12px;">
-                <input type="text" id="gb-name" style="border:2px solid #111; border-radius:10px; padding:6px 10px; font-size:0.8rem;" placeholder="Nome / Nickname..." required>
-                <textarea id="gb-msg" rows="3" style="border:2px solid #111; border-radius:10px; padding:6px 10px; font-size:0.8rem;" placeholder="Lascia un saluto..." required></textarea>
-                <button type="submit" style="background:#111; color:#fff; border:none; padding:8px; border-radius:999px; font-weight:700; cursor:pointer;">Invia Messaggio ★</button>
-              </form>
-              <div id="gb-list" style="font-size:0.8rem;">
-                <div style="border-bottom:1px dashed #ccc; padding:6px 0;"><strong>Seea:</strong> Benvenuto nel guestbook!</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
       </main>
 
-      <!-- COLONNA DESTRA: AVATAR DINAMICO + MUSICA -->
+      <!-- COLONNA DESTRA -->
       <aside class="col-right">
-        
         <img id="main-avatar" src="avatar1.png" alt="Seea Avatar" class="floating-avatar">
 
         <div class="box music-bottom">
@@ -502,7 +379,6 @@
             </div>
           </div>
         </div>
-
       </aside>
 
     </div>
@@ -513,32 +389,113 @@
 
   </div>
 
+
+  <!-- ==========================================================
+       PAGINA 1: GALLERIA D'ARTE (QUADRETTO PURO E IMMAGINI SCROLLABILI)
+       ========================================================== -->
+  <div id="gallery-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <h2>SEEA // GALLERY ARCHIVE</h2>
+      <img src="avatar3.png" alt="Avatar Gallery" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <div class="cards-grid-scroll">
+      <!-- Carichi direttamente l'immagine della tua opera/carta intera -->
+      <img src="art-card1.png" alt="Disegno 1" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="art-card2.png" alt="Disegno 2" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+      <img src="art-card3.png" alt="Disegno 3" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+
+  <!-- ==========================================================
+       PAGINA 2: WATCHLIST ANIME (POCKET CARDS INTERE SCROLLABILI)
+       ========================================================== -->
+  <div id="watchlist-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <h2>SEEA // ANIME POCKET CARDS</h2>
+      <img src="avatar4.png" alt="Avatar Anime" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <div class="cards-grid-scroll">
+      <!-- Carichi l'immagine della Pocket Card completa definita da te -->
+      <img src="anime-pocket1.png" alt="Pocket Card Anime 1" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+      <img src="anime-pocket2.png" alt="Pocket Card Anime 2" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+      <img src="anime-pocket3.png" alt="Pocket Card Anime 3" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+
+  <!-- ==========================================================
+       PAGINA 3: BLOG / JOURNAL (BANNER CARDS INTERE SCROLLABILI)
+       ========================================================== -->
+  <div id="blog-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <h2>SEEA // JOURNAL & BLOG</h2>
+      <img src="avatar2.png" alt="Avatar Blog" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <div class="cards-grid-scroll" style="grid-template-columns: 1fr;">
+      <!-- Per i blog un layout a lista singola per i Banner orizzontali -->
+      <img src="blog-banner1.png" alt="Blog Banner Card 1" class="full-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
+      <img src="blog-banner2.png" alt="Blog Banner Card 2" class="full-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+
+  <!-- ==========================================================
+       PAGINA 4: PROJECTS
+       ========================================================== -->
+  <div id="projects-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <h2>SEEA // DIGITAL PROJECTS</h2>
+      <img src="avatar5.png" alt="Avatar Projects" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <div class="cards-grid-scroll">
+      <img src="project-card1.png" alt="Project 1" class="full-card-img" onerror="this.style.height='250px'; this.style.background='#eee';">
+    </div>
+  </div>
+
+
+  <!-- ==========================================================
+       PAGINA 5: GUESTBOOK
+       ========================================================== -->
+  <div id="guestbook-page" class="fullscreen-page">
+    <div class="fullscreen-header">
+      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <h2>SEEA // GUESTBOOK</h2>
+      <img src="avatar6.png" alt="Avatar Guestbook" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+    </div>
+
+    <div style="background:#fff; border:3px solid #111; border-radius:20px; padding:20px; box-shadow:4px 4px 0px #111;">
+      <form onsubmit="event.preventDefault(); addGuestbookEntry();" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+        <input type="text" id="gb-name" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:700;" placeholder="Nickname..." required>
+        <textarea id="gb-msg" rows="3" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:600;" placeholder="Lascia un messaggio..." required></textarea>
+        <button type="submit" class="back-btn" style="align-self: flex-start;">Invia ★</button>
+      </form>
+      <div id="gb-list" style="font-size:0.85rem; display:flex; flex-direction:column; gap:8px;">
+        <div style="border-bottom:1px dashed #ccc; padding-bottom:6px;"><strong>Seea:</strong> Benvenuto nel guestbook dell'archivio!</div>
+      </div>
+    </div>
+  </div>
+
+
   <script>
-    function switchTab(tabId, avatarSrc, element) {
-      document.querySelectorAll('.view-section').forEach(sec => {
-        sec.classList.remove('active');
-      });
+    function openPage(pageId) {
+      document.getElementById('home-view').style.display = 'none';
+      document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
+      const target = document.getElementById(pageId);
+      if(target) target.classList.add('active');
+    }
 
-      const targetView = document.getElementById('view-' + tabId);
-      if(targetView) {
-        targetView.classList.add('active');
-      }
-
-      document.querySelectorAll('.receipt-menu-list a').forEach(link => {
-        link.classList.remove('active');
-      });
-      if(element) {
-        element.classList.add('active');
-      }
-
-      const avatarImg = document.getElementById('main-avatar');
-      if(avatarImg && avatarSrc) {
-        avatarImg.style.opacity = '0';
-        setTimeout(() => {
-          avatarImg.src = avatarSrc;
-          avatarImg.style.opacity = '1';
-        }, 150);
-      }
+    function closePage() {
+      document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
+      document.getElementById('home-view').style.display = 'flex';
     }
 
     function addGuestbookEntry() {
@@ -548,7 +505,7 @@
 
       const entry = document.createElement('div');
       entry.style.borderBottom = '1px dashed #ccc';
-      entry.style.padding = '6px 0';
+      entry.style.paddingBottom = '6px';
       entry.innerHTML = `<strong>${name}:</strong> ${msg}`;
       
       list.prepend(entry);
