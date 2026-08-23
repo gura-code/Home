@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+  <!-- Font pixelato per l'orologio -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -176,6 +178,23 @@
     .mini-calendar th, .mini-calendar td { padding: 3px 2px; border: 1px solid #eee; border-radius: 4px; }
     .mini-calendar th { background: #111; color: #fff; font-size: 0.6rem; }
     .mini-calendar td.today { background: #111; color: #fff; font-weight: 800; border-radius: 4px; }
+
+    /* PIXEL CLOCK STYLING */
+    .pixel-clock-box {
+      background: #111;
+      border: 2px solid #111;
+      border-radius: 16px;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 3px 3px 0px #111;
+      margin-bottom: 10px;
+    }
+    .pixel-clock-time {
+      font-family: 'Press Start 2P', monospace;
+      font-size: 0.85rem;
+      color: #fff;
+      letter-spacing: 1px;
+    }
 
     /* IPOD PLAYER STYLING */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
@@ -387,7 +406,12 @@
 
         <div style="flex: 1;"></div>
 
-        <!-- PULSANTE GUESTBOOK SPOSTATO QUI -->
+        <!-- OROLOGIO PIXEL DIGITALE -->
+        <div class="pixel-clock-box">
+          <div class="pixel-clock-time" id="pixel-clock">00:00:00</div>
+        </div>
+
+        <!-- PULSANTE GUESTBOOK -->
         <button class="nav-box-btn" onclick="openPage('guestbook-page')">
           ✎ GUESTBOOK -&gt;
         </button>
@@ -616,7 +640,18 @@
       }
     }
 
+    /* OROLOGIO PIXEL IN TEMPO REALE */
+    function updatePixelClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      document.getElementById('pixel-clock').innerText = `${hours}:${minutes}:${seconds}`;
+    }
+
     generateCalendar();
+    setInterval(updatePixelClock, 1000);
+    updatePixelClock();
   </script>
 
 </body>
