@@ -42,18 +42,6 @@
       position: relative;
     }
 
-    /* AVATAR MOLTO PIÙ GRANDE */
-    .floating-avatar {
-      position: absolute;
-      top: -45px;
-      right: 15px;
-      width: 240px;
-      height: auto;
-      z-index: 100;
-      pointer-events: none;
-      filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
-    }
-
     /* BANNER SUPERIORE */
     .top-banner {
       background: #f9f9fb;
@@ -83,6 +71,31 @@
       grid-template-columns: 220px 1fr 220px;
       gap: 14px;
       align-items: start;
+    }
+
+    /* COLONNA DESTRA CON SPAZIO PER L'AVATAR */
+    .col-right {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* AVATAR STICKER GRANDE IN ALTO A DESTRA */
+    .floating-avatar {
+      position: absolute;
+      top: -85px;
+      right: -5px;
+      width: 240px;
+      height: auto;
+      z-index: 100;
+      pointer-events: none;
+      filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
+    }
+
+    /* SPACER PER ABBASSARE I WIDGET DI DESTRA E LASCIARE SPAZIO ALL'AVATAR */
+    .widgets-spacer {
+      height: 120px;
     }
 
     /* FINESTRE BORDER ROUNDED */
@@ -250,9 +263,6 @@
 
   <div class="site-wrapper">
 
-    <!-- AVATAR MOLTO PIÙ GRANDE -->
-    <img src="avatar.png" alt="Seea Avatar" class="floating-avatar">
-
     <!-- HEADER -->
     <header class="top-banner">
       <div class="banner-box">
@@ -418,8 +428,15 @@
 
       </main>
 
-      <!-- COLONNA DESTRA: WIDGETS -->
+      <!-- COLONNA DESTRA: WIDGETS CON AVATAR LIBERO IN ALTO -->
       <aside class="col-right">
+        
+        <!-- AVATAR GRANDE POSIZIONATO LIBERO SUL BORDO SUPERIORE -->
+        <img src="avatar.png" alt="Seea Avatar" class="floating-avatar">
+
+        <!-- SPACER PER ABBASSARE I WIDGET ED EVITARE SOVRAPPOSIZIONI -->
+        <div class="widgets-spacer"></div>
+
         <div class="box">
           <div class="box-header"><span>status</span><span>●</span></div>
           <div class="box-body">
