@@ -14,7 +14,6 @@
 
     body {
       background-color: #f5f5f7;
-      /* SFONDO A QUADRETTI STILE QUADERNO */
       background-image: 
         linear-gradient(#e1e1e6 1px, transparent 1px),
         linear-gradient(90deg, #e1e1e6 1px, transparent 1px);
@@ -70,14 +69,12 @@
       align-items: stretch;
     }
 
-    /* COLONNE STRUTTURATE PER ALLINEARE I BOX IN BASSO */
     .col-center, .col-right {
       display: flex;
       flex-direction: column;
       position: relative;
     }
 
-    /* AVATAR DINAMICO SCRIVANIA */
     .floating-avatar {
       position: absolute;
       top: -110px;
@@ -112,7 +109,6 @@
 
     .box-body { padding: 14px; }
 
-    /* MENU SCONTRINO */
     .receipt-box {
       background: #ffffff;
       border: 2px solid #111111;
@@ -159,7 +155,6 @@
       font-family: monospace;
     }
 
-    /* WIDGETS */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 10px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 8px; }
     .ipod-wheel { width: 50px; height: 50px; border: 2px solid #111; border-radius: 50%; margin: 0 auto; background: #f0f0f3; display: flex; align-items: center; justify-content: center; }
@@ -188,7 +183,6 @@
 
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
 
-    /* PAGINE A TUTTO SCHERMO */
     .fullscreen-page {
       display: none;
       max-width: 960px;
@@ -247,7 +241,7 @@
 <body>
 
   <!-- ==========================================================
-       VISTA HOME (SCRIVANIA COMPLETA)
+       VISTA HOME
        ========================================================== -->
   <div id="home-view" class="site-wrapper">
 
@@ -313,13 +307,13 @@
         </div>
       </aside>
 
-      <!-- COLONNA CENTRALE HOME (ALLINEATA IN BASSO: ABOUT_ME + WELCOME + LATEST_UPDATES) -->
+      <!-- COLONNA CENTRALE -->
       <main class="col-center">
         <div style="flex: 1;"></div>
 
-        <!-- 1. CARTA D'IDENTITÀ (ABOUT ME) - IMPOSTATA COME JPG -->
+        <!-- 1. CARTA D'IDENTITÀ (ABOUT ME) - MATCH CON FILE GITHUB: about-me-card.png -->
         <div style="margin-bottom: 14px;">
-          <img src="about-me-card.jpg" alt="about_me.id" class="pure-card-img" onerror="this.src='data:image/svg+xml;charset=UTF-8,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22150%22%3E%3Crect width=%22400%22 height=%22150%22 fill=%22%23fff%22 stroke=%22%23111%22 stroke-width=%223%22 rx=%2216%22/%3E%3Ctext x=%2220%22 y=%2250%22 font-family=%22sans-serif%22 font-size=%2216%22 font-weight=%22bold%22 fill=%22%23111%22%3E[about_me.id] - File non trovato%3C/text%3E%3Ctext x=%2220%22 y=%2285%22 font-family=%22sans-serif%22 font-size=%2212%22 fill=%22%23555%22%3ECarica 'about-me-card.jpg'%3C/text%3E%3C/svg%3E'">
+          <img src="about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
         <!-- 2. WELCOME.HTML SUBITO SOTTO -->
@@ -337,15 +331,16 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[23 AUG]</strong> Aggiornato about_me in formato .jpg</li>
+              <li><strong>[23 AUG]</strong> Sincronizzati i file immagini con GitHub.</li>
             </ul>
           </div>
         </div>
       </main>
 
-      <!-- COLONNA DESTRA (CON MUSIC_PLAYER IN BASSO) -->
+      <!-- COLONNA DESTRA -->
       <aside class="col-right">
-        <img id="main-avatar" src="avatar1.png" alt="Seea Avatar" class="floating-avatar">
+        <!-- AVATAR - MATCH CON FILE GITHUB: avatar.png -->
+        <img id="main-avatar" src="avatar.png" alt="Seea Avatar" class="floating-avatar">
 
         <div style="flex: 1;"></div>
 
@@ -377,13 +372,12 @@
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // GALLERY ARCHIVE</h2>
-      <img src="avatar3.png" alt="Avatar Gallery" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+      <img src="avatar.png" alt="Avatar Gallery" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
 
     <div class="cards-grid-scroll">
       <img src="art-card1.png" alt="Disegno 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
       <img src="art-card2.png" alt="Disegno 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-      <img src="art-card3.png" alt="Disegno 3" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
     </div>
   </div>
 
@@ -395,13 +389,12 @@
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // ANIME POCKET CARDS</h2>
-      <img src="avatar4.png" alt="Avatar Anime" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+      <img src="avatar.png" alt="Avatar Anime" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
 
     <div class="cards-grid-scroll">
       <img src="anime-pocket1.png" alt="Pocket Card Anime 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
       <img src="anime-pocket2.png" alt="Pocket Card Anime 2" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
-      <img src="anime-pocket3.png" alt="Pocket Card Anime 3" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
     </div>
   </div>
 
@@ -413,12 +406,12 @@
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // JOURNAL & BLOG</h2>
-      <img src="avatar2.png" alt="Avatar Blog" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+      <img src="avatar.png" alt="Avatar Blog" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
 
     <div class="cards-grid-scroll" style="grid-template-columns: 1fr;">
-      <img src="blog-banner1.png" alt="Blog Banner Card 1" class="pure-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
-      <img src="blog-banner2.png" alt="Blog Banner Card 2" class="pure-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
+      <!-- MATCH CON FILE GITHUB: blog-banner1.png -->
+      <img src="blog-banner1.png" alt="Blog Banner Card 1" class="pure-card-img">
     </div>
   </div>
 
@@ -430,7 +423,7 @@
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // DIGITAL PROJECTS</h2>
-      <img src="avatar5.png" alt="Avatar Projects" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+      <img src="avatar.png" alt="Avatar Projects" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
 
     <div class="cards-grid-scroll">
@@ -446,7 +439,7 @@
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // GUESTBOOK</h2>
-      <img src="avatar6.png" alt="Avatar Guestbook" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
+      <img src="avatar.png" alt="Avatar Guestbook" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
 
     <div style="background:#fff; border:3px solid #111; border-radius:20px; padding:20px; box-shadow:4px 4px 0px #111;">
