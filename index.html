@@ -65,12 +65,12 @@
 
     .banner-box h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
 
-    /* GRID A 3 COLONNE */
+    /* GRID A 3 COLONNE (STRETCHED PER PERMETTERE IL POSIZIONAMENTO IN BASSO) */
     .grid-container {
       display: grid;
       grid-template-columns: 220px 1fr 220px;
       gap: 14px;
-      align-items: start;
+      align-items: stretch;
     }
 
     /* COLONNA DESTRA */
@@ -78,10 +78,9 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 14px;
     }
 
-    /* AVATAR MOLTO PIÙ IN ALTO E LIBERO */
+    /* AVATAR LIBERO IN ALTO */
     .floating-avatar {
       position: absolute;
       top: -110px;
@@ -101,6 +100,12 @@
       overflow: hidden;
       box-shadow: 3px 3px 0px #111111;
       margin-bottom: 14px;
+    }
+
+    /* SPINGE IL WIDGET MUSICA PERFETTAMENTE IN BASSO A DESTRA */
+    .box.music-bottom {
+      margin-top: auto;
+      margin-bottom: 0;
     }
 
     .box-header {
@@ -283,7 +288,7 @@
           <div class="receipt-barcode">||| | |||| || |</div>
         </div>
 
-        <!-- FASE LUNARE SPOSTATA A SINISTRA -->
+        <!-- FASE LUNARE -->
         <div class="box">
           <div class="box-header"><span>lunar_phase</span><span>☾</span></div>
           <div class="box-body" style="text-align: center;">
@@ -292,7 +297,7 @@
           </div>
         </div>
 
-        <!-- CALENDARIO SPOSTATO A SINISTRA -->
+        <!-- CALENDARIO -->
         <div class="box">
           <div class="box-header"><span>calendar</span><span>📅</span></div>
           <div class="box-body">
@@ -306,7 +311,7 @@
           </div>
         </div>
 
-        <div class="box">
+        <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
             <div style="border: 2px dashed #111; padding: 8px; border-radius: 12px; font-size: 0.65rem; font-family: monospace;">
@@ -340,7 +345,7 @@
             </div>
           </div>
 
-          <div class="box">
+          <div class="box" style="margin-bottom:0;">
             <div class="box-header"><span>projects_grid</span><span>[+]</span></div>
             <div class="box-body">
               <div style="display:grid; grid-template-columns: 1fr 1fr; gap:8px;">
@@ -444,14 +449,14 @@
 
       </main>
 
-      <!-- COLONNA DESTRA: SOLO AVATAR IN ALTO E MUSICA IN BASSO -->
+      <!-- COLONNA DESTRA: AVATAR + MUSICA ALLINEATA IN BASSO A DESTRA -->
       <aside class="col-right">
         
         <!-- AVATAR MOLTO PIÙ IN ALTO -->
         <img src="avatar.png" alt="Seea Avatar" class="floating-avatar">
 
-        <!-- LETTORE MUSICALE SPOSTATO IN BASSO A DESTRA -->
-        <div class="box" style="margin-top: 190px;">
+        <!-- LETTORE MUSICALE PERFETTAMENTE IN BASSO A DESTRA -->
+        <div class="box music-bottom">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
             <div class="ipod-player">
