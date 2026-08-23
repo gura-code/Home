@@ -81,12 +81,12 @@
       gap: 14px;
     }
 
-    /* AVATAR RIPORTATO IN ALTO COME PRIMA */
+    /* AVATAR MOLTO PIÙ IN ALTO E LIBERO */
     .floating-avatar {
       position: absolute;
-      top: -65px;
-      right: 15px;
-      width: 240px;
+      top: -110px;
+      right: -10px;
+      width: 250px;
       height: auto;
       z-index: 100;
       pointer-events: none;
@@ -237,7 +237,7 @@
       font-size: 0.8rem;
     }
 
-    /* WIDGETS DESTRA */
+    /* WIDGETS */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 10px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 12px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 8px; }
     .ipod-wheel { width: 54px; height: 54px; border: 2px solid #111; border-radius: 50%; margin: 0 auto; background: #f0f0f3; display: flex; align-items: center; justify-content: center; }
@@ -266,7 +266,7 @@
     <!-- GRID A 3 COLONNE -->
     <div class="grid-container">
 
-      <!-- COLONNA SINISTRA: SCONTRINO INCLINATO -->
+      <!-- COLONNA SINISTRA: SCONTRINO + LUNA + CALENDARIO + LINK -->
       <aside class="col-left">
         <div class="receipt-box">
           <div class="receipt-title">*** SEEA MENU ***</div>
@@ -281,6 +281,29 @@
           </ul>
           <hr class="receipt-dash">
           <div class="receipt-barcode">||| | |||| || |</div>
+        </div>
+
+        <!-- FASE LUNARE SPOSTATA A SINISTRA -->
+        <div class="box">
+          <div class="box-header"><span>lunar_phase</span><span>☾</span></div>
+          <div class="box-body" style="text-align: center;">
+            <div class="moon-graphic"></div>
+            <span style="font-size: 0.72rem; font-weight: 700;">Waxing Moon</span>
+          </div>
+        </div>
+
+        <!-- CALENDARIO SPOSTATO A SINISTRA -->
+        <div class="box">
+          <div class="box-header"><span>calendar</span><span>📅</span></div>
+          <div class="box-body">
+            <table class="mini-calendar">
+              <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
+              <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
+              <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+              <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+              <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><strong>23</strong></td></tr>
+            </table>
+          </div>
         </div>
 
         <div class="box">
@@ -421,13 +444,14 @@
 
       </main>
 
-      <!-- COLONNA DESTRA: WIDGETS CON AVATAR IN ALTO -->
+      <!-- COLONNA DESTRA: SOLO AVATAR IN ALTO E MUSICA IN BASSO -->
       <aside class="col-right">
         
-        <!-- AVATAR IN ALTO -->
+        <!-- AVATAR MOLTO PIÙ IN ALTO -->
         <img src="avatar.png" alt="Seea Avatar" class="floating-avatar">
 
-        <div class="box">
+        <!-- LETTORE MUSICALE SPOSTATO IN BASSO A DESTRA -->
+        <div class="box" style="margin-top: 190px;">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
             <div class="ipod-player">
@@ -437,26 +461,6 @@
           </div>
         </div>
 
-        <div class="box">
-          <div class="box-header"><span>lunar_phase</span><span>☾</span></div>
-          <div class="box-body" style="text-align: center;">
-            <div class="moon-graphic"></div>
-            <span style="font-size: 0.72rem; font-weight: 700;">Waxing Moon</span>
-          </div>
-        </div>
-
-        <div class="box">
-          <div class="box-header"><span>calendar</span><span>📅</span></div>
-          <div class="box-body">
-            <table class="mini-calendar">
-              <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
-              <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
-              <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
-              <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><strong>23</strong></td></tr>
-            </table>
-          </div>
-        </div>
       </aside>
 
     </div>
