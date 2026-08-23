@@ -73,6 +73,13 @@
       align-items: stretch;
     }
 
+    /* COLONNA CENTRALE STRUTTURATA PER ALLINEARE I BOX IN BASSO */
+    .col-center {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
     .col-right {
       position: relative;
       display: flex;
@@ -101,7 +108,8 @@
       margin-bottom: 14px;
     }
 
-    .box.music-bottom {
+    /* CLASSE PER SPINGERE IL BOX SUL FONDO DELLA COLONNA */
+    .box.align-bottom {
       margin-top: auto;
       margin-bottom: 0;
     }
@@ -330,7 +338,7 @@
         </div>
       </aside>
 
-      <!-- COLONNA CENTRALE HOME -->
+      <!-- COLONNA CENTRALE HOME (ALLINEATA IN BASSO) -->
       <main class="col-center">
         <div class="box">
           <div class="box-header"><span>about_me.id</span><span>[PROFILE]</span></div>
@@ -347,7 +355,8 @@
           </div>
         </div>
 
-        <div class="box">
+        <!-- Questo blocco viene spinto in fondo con "align-bottom" -->
+        <div class="box align-bottom">
           <div class="box-header"><span>welcome.html</span><span>[X]</span></div>
           <div class="box-body">
             <p style="font-size:0.85rem; line-height:1.6; font-weight:600;">
@@ -356,7 +365,7 @@
           </div>
         </div>
 
-        <div class="box" style="margin-bottom:0;">
+        <div class="box" style="margin-bottom:0; margin-top:14px;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
@@ -370,7 +379,7 @@
       <aside class="col-right">
         <img id="main-avatar" src="avatar1.png" alt="Seea Avatar" class="floating-avatar">
 
-        <div class="box music-bottom">
+        <div class="box align-bottom">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
             <div class="ipod-player">
@@ -401,7 +410,6 @@
     </div>
 
     <div class="cards-grid-scroll">
-      <!-- Carichi direttamente l'immagine della tua opera/carta intera -->
       <img src="art-card1.png" alt="Disegno 1" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
       <img src="art-card2.png" alt="Disegno 2" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
       <img src="art-card3.png" alt="Disegno 3" class="full-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
@@ -420,7 +428,6 @@
     </div>
 
     <div class="cards-grid-scroll">
-      <!-- Carichi l'immagine della Pocket Card completa definita da te -->
       <img src="anime-pocket1.png" alt="Pocket Card Anime 1" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
       <img src="anime-pocket2.png" alt="Pocket Card Anime 2" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
       <img src="anime-pocket3.png" alt="Pocket Card Anime 3" class="full-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
@@ -439,7 +446,6 @@
     </div>
 
     <div class="cards-grid-scroll" style="grid-template-columns: 1fr;">
-      <!-- Per i blog un layout a lista singola per i Banner orizzontali -->
       <img src="blog-banner1.png" alt="Blog Banner Card 1" class="full-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
       <img src="blog-banner2.png" alt="Blog Banner Card 2" class="full-card-img" onerror="this.style.height='180px'; this.style.background='#eee';">
     </div>
@@ -516,3 +522,4 @@
 
 </body>
 </html>
+
