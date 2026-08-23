@@ -196,10 +196,9 @@
     /* IPOD PLAYER STYLING */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; }
-    .ipod-controls { display: flex; justify-content: center; gap: 8px; align-items: center; margin-bottom: 8px; }
+    .ipod-controls { display: flex; justify-content: center; gap: 8px; align-items: center; }
     .ipod-btn-ctrl { background: #f0f0f3; border: 2px solid #111; border-radius: 50%; width: 28px; height: 28px; font-size: 0.7rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0px #111; }
     .ipod-btn-ctrl:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #111; }
-    .ipod-progress { width: 100%; accent-color: #111; cursor: pointer; }
 
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
 
@@ -277,11 +276,23 @@
       cursor: pointer;
       box-shadow: 3px 3px 0px #111;
       text-align: center;
-      margin-bottom: 14px;
+      margin-bottom: 10px;
       transition: transform 0.1s ease;
+      text-decoration: none;
+      color: #111;
+      display: block;
     }
     .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
     .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
+
+    .coffee-icon {
+      width: 14px;
+      height: 14px;
+      object-fit: contain;
+      filter: grayscale(100%) brightness(0);
+      display: inline-block;
+      vertical-align: middle;
+    }
   </style>
 </head>
 <body>
@@ -318,11 +329,10 @@
 
         <!-- LUNA DINAMICA -->
         <div class="box">
-          <div class="box-header"><span>lunar_phase</span><span>☾</span></div>
+          <div class="box-header"><span>lunar_phase</span><span>(C)</span></div>
           <div class="box-body" style="text-align: center;">
             <div class="moon-img-container">
               <img id="moon-phase-img" src="./moon-0.png" alt="Fase Lunare" onerror="this.style.display='none'; document.getElementById('moon-fallback').style.display='block';">
-              <!-- Fallback visivo se non hai ancora caricato le immagini -->
               <div id="moon-fallback" style="display:none; width:36px; height:36px; border-radius:50%; background:#111; box-shadow: inset -10px -3px 0 0 #fff; margin:0 auto;"></div>
             </div>
             <span id="moon-phase-name" style="font-size: 0.72rem; font-weight: 700;">Calcolo in corso...</span>
@@ -342,14 +352,13 @@
                 <tr><th>D</th><th>L</th><th>M</th><th>M</th><th>G</th><th>V</th><th>S</th></tr>
               </thead>
               <tbody id="calendar-body">
-                <!-- Generato da JS -->
               </tbody>
             </table>
           </div>
         </div>
 
         <div class="box" style="margin-bottom:0;">
-          <div class="box-header"><span>link_me</span><span>★</span></div>
+          <div class="box-header"><span>link_me</span><span>[*]</span></div>
           <div class="box-body" style="text-align: center;">
             <div style="border: 2px dashed #111; padding: 6px; border-radius: 10px; font-size: 0.65rem; font-family: monospace;">
               &lt;a href="https://seea.neocities.org"&gt;&lt;img src="./button.png"&gt;&lt;/a&gt;
@@ -367,7 +376,10 @@
 
         <!-- 2. STUDY WITH ME -->
         <div class="box" style="margin-bottom: 14px;">
-          <div class="box-header"><span>study_with_me</span><span>☕</span></div>
+          <div class="box-header">
+            <span>study_with_me</span>
+            <img src="./coffee-icon.png" alt="Cup" class="coffee-icon" onerror="this.style.display='none';">
+          </div>
           <div class="box-body">
             <p style="font-size:0.8rem; font-weight:700; line-height:1.5;">
               Sessioni di studio, timer pomodoro e musica per concentrarsi.
@@ -386,13 +398,23 @@
         </div>
 
         <!-- 4. LATEST UPDATES -->
-        <div class="box" style="margin-bottom: 0;">
+        <div class="box" style="margin-bottom: 14px;">
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
               <li><strong>[23 AUG]</strong> Sincronizzati i file immagini con GitHub.</li>
             </ul>
           </div>
+        </div>
+
+        <!-- PULSANTI LINK A SITI ESTERNI -->
+        <div style="display: flex; gap: 10px;">
+          <a href="https://tuo-sito-pocket-card.com" target="_blank" class="nav-box-btn">
+            POCKET CARD BUILDER -&gt;
+          </a>
+          <a href="https://tuo-sito-banner-card.com" target="_blank" class="nav-box-btn">
+            BANNER CARD BUILDER -&gt;
+          </a>
         </div>
       </main>
 
@@ -403,21 +425,20 @@
         <div style="flex: 1;"></div>
 
         <button class="nav-box-btn" onclick="openPage('buttons-page')">
-          ★ FRIENDS & BUTTONS (88x31) ➔
+          + FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
-        <!-- MUSIC PLAYER -->
+        <!-- MUSIC PLAYER SENZA BARRA -->
         <div class="box" style="margin-bottom: 0;">
-          <div class="box-header"><span>music_player</span><span>♫</span></div>
+          <div class="box-header"><span>music_player</span><span>[M]</span></div>
           <div class="box-body">
             <div class="ipod-player">
               <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
               <div class="ipod-controls">
-                <button class="ipod-btn-ctrl" onclick="prevSong()">⏮</button>
-                <button class="ipod-btn-ctrl" id="play-pause-btn" onclick="togglePlay()">▶</button>
-                <button class="ipod-btn-ctrl" onclick="nextSong()">⏭</button>
+                <button class="ipod-btn-ctrl" onclick="prevSong()">&#10094;&#10094;</button>
+                <button class="ipod-btn-ctrl" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+                <button class="ipod-btn-ctrl" onclick="nextSong()">&#10095;&#10095;</button>
               </div>
-              <input type="range" id="song-progress" class="ipod-progress" value="0" max="100" oninput="seekSong(this.value)">
               <audio id="audio-element"></audio>
             </div>
           </div>
@@ -427,17 +448,15 @@
     </div>
 
     <footer class="site-footer">
-      MOONLIGHT ARCHIVE // CODED WITH HTML & CSS // ALL RIGHTS RESERVED
+      MOONLIGHT ARCHIVE // CODED WITH HTML &amp; CSS // ALL RIGHTS RESERVED
     </footer>
 
   </div>
 
-  <!-- ==========================================================
-       PAGINA DEDICATA: BOTTONI DEGLI ALTRI (88x31)
-       ========================================================== -->
+  <!-- PAGINA BOTTONI -->
   <div id="buttons-page" class="fullscreen-page">
     <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
       <h2>SEEA // 88x31 BUTTON WALL</h2>
       <img src="./avatar.png" alt="Avatar Buttons" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
@@ -452,7 +471,7 @@
   <!-- PAGINE SECONDARIE -->
   <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
       <h2>SEEA // GALLERY ARCHIVE</h2>
     </div>
     <div class="cards-grid-scroll">
@@ -462,7 +481,7 @@
 
   <div id="watchlist-page" class="fullscreen-page">
     <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
       <h2>SEEA // ANIME POCKET CARDS</h2>
     </div>
     <div class="cards-grid-scroll">
@@ -472,8 +491,8 @@
 
   <div id="blog-page" class="fullscreen-page">
     <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
-      <h2>SEEA // JOURNAL & BLOG</h2>
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
+      <h2>SEEA // JOURNAL &amp; BLOG</h2>
     </div>
     <div class="cards-grid-scroll">
       <img src="./blog-banner1.png" alt="Blog 1" class="pure-card-img">
@@ -482,7 +501,7 @@
 
   <div id="projects-page" class="fullscreen-page">
     <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
       <h2>SEEA // DIGITAL PROJECTS</h2>
     </div>
     <div class="cards-grid-scroll">
@@ -492,21 +511,20 @@
 
   <div id="guestbook-page" class="fullscreen-page">
     <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
+      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
       <h2>SEEA // GUESTBOOK</h2>
     </div>
     <div style="background:#fff; border:3px solid #111; border-radius:20px; padding:20px; box-shadow:4px 4px 0px #111;">
       <form onsubmit="event.preventDefault(); addGuestbookEntry();" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
         <input type="text" id="gb-name" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:700;" placeholder="Nickname..." required>
         <textarea id="gb-msg" rows="3" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:600;" placeholder="Lascia un messaggio..." required></textarea>
-        <button type="submit" class="back-btn" style="align-self: flex-start;">Invia ★</button>
+        <button type="submit" class="back-btn" style="align-self: flex-start;">Invia</button>
       </form>
       <div id="gb-list" style="font-size:0.85rem; display:flex; flex-direction:column; gap:8px;">
         <div style="border-bottom:1px dashed #ccc; padding-bottom:6px;"><strong>Seea:</strong> Benvenuto nel guestbook dell'archivio!</div>
       </div>
     </div>
   </div>
-
 
   <script>
     /* NAVEGAZIONE PAGINE */
@@ -547,22 +565,20 @@
     const audioElement = document.getElementById('audio-element');
     const playPauseBtn = document.getElementById('play-pause-btn');
     const screenText = document.getElementById('ipod-screen-text');
-    const progressBar = document.getElementById('song-progress');
 
     function loadTrack(index) {
       audioElement.src = playlist[index].file;
       screenText.innerHTML = `Now Playing:<br><strong>${playlist[index].title}</strong>`;
-      progressBar.value = 0;
     }
 
     function togglePlay() {
       if (audioElement.paused) {
         if(!audioElement.src) loadTrack(currentTrackIndex);
         audioElement.play();
-        playPauseBtn.innerText = "❚❚";
+        playPauseBtn.innerHTML = "&#10074;&#10074;"; // Simbolo Pausa (❚❚)
       } else {
         audioElement.pause();
-        playPauseBtn.innerText = "▶";
+        playPauseBtn.innerHTML = "&#9654;"; // Simbolo Play (▶)
       }
     }
 
@@ -570,34 +586,23 @@
       currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
       loadTrack(currentTrackIndex);
       audioElement.play();
-      playPauseBtn.innerText = "❚❚";
+      playPauseBtn.innerHTML = "&#10074;&#10074;";
     }
 
     function prevSong() {
       currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
       loadTrack(currentTrackIndex);
       audioElement.play();
-      playPauseBtn.innerText = "❚❚";
+      playPauseBtn.innerHTML = "&#10074;&#10074;";
     }
 
-    function seekSong(value) {
-      if (audioElement.duration) {
-        audioElement.currentTime = (value / 100) * audioElement.duration;
-      }
-    }
-
-    audioElement.addEventListener('timeupdate', () => {
-      if (audioElement.duration) {
-        progressBar.value = (audioElement.currentTime / audioElement.duration) * 100;
-      }
+    audioElement.addEventListener('ended', () => { 
+      nextSong(); 
     });
 
-    audioElement.addEventListener('ended', () => { nextSong(); });
     loadTrack(0);
 
-    /* ==========================================================
-       1. CALENDARIO AUTOMATICO (REALE)
-       ========================================================== */
+    /* 1. CALENDARIO AUTOMATICO */
     function generateCalendar() {
       const today = new Date();
       const currentDay = today.getDate();
@@ -643,16 +648,13 @@
       }
     }
 
-    /* ==========================================================
-       2. CALCOLO FASE LUNARE AUTOMATICA E IMMAGINE
-       ========================================================== */
+    /* 2. FASE LUNARE AUTOMATICA */
     function updateMoonPhase() {
       const today = new Date();
-      const year = today.getFullYear();
-      const month = today.getMonth() + 1;
+      let year = today.getFullYear();
+      let month = today.getMonth() + 1;
       const day = today.getDate();
 
-      // Calcolo semplificato del ciclo sinodico lunare (29.53 giorni)
       let c = e = j = b = 0;
       if (month < 3) {
         year--;
@@ -662,7 +664,7 @@
       c = 365.25 * year;
       e = 30.6 * month;
       j = c + e + day - 694039.09;
-      j /= 29.5305882; // Ciclo lunare
+      j /= 29.5305882;
       b = parseInt(j);
       j -= b;
       b = Math.round(j * 8);
@@ -684,7 +686,6 @@
       document.getElementById('moon-phase-img').src = currentPhase.img;
     }
 
-    // Inizializza calendario e luna all'avvio della pagina
     generateCalendar();
     updateMoonPhase();
   </script>
