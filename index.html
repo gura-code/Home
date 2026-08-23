@@ -157,6 +157,42 @@
       font-family: monospace;
     }
 
+    /* MOON STYLING */
+    .moon-img-container {
+      width: 48px;
+      height: 48px;
+      margin: 0 auto 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .moon-img-container img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    /* CALENDAR STYLING */
+    .calendar-graphic { 
+      width: 36px; 
+      height: 36px; 
+      border: 2px solid #111; 
+      border-radius: 6px; 
+      background: #fff; 
+      margin: 0 auto 8px; 
+      display: flex; 
+      flex-direction: column; 
+      overflow: hidden;
+      box-shadow: 2px 2px 0px #111;
+    }
+    .calendar-graphic-top { background: #111; height: 10px; width: 100%; }
+    .calendar-graphic-body { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800; }
+
+    .mini-calendar { width: 100%; font-size: 0.68rem; text-align: center; border-collapse: collapse; }
+    .mini-calendar th, .mini-calendar td { padding: 3px 2px; border: 1px solid #eee; border-radius: 4px; }
+    .mini-calendar th { background: #111; color: #fff; font-size: 0.6rem; }
+    .mini-calendar td.today { background: #111; color: #fff; font-weight: 800; border-radius: 4px; }
+
     /* IPOD PLAYER STYLING */
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; }
@@ -165,37 +201,9 @@
     .ipod-btn-ctrl:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #111; }
     .ipod-progress { width: 100%; accent-color: #111; cursor: pointer; }
 
-    .moon-graphic { width: 36px; height: 36px; border-radius: 50%; background: #111; border: 1px solid #111; box-shadow: inset -10px -3px 0 0 #fff; margin: 0 auto 6px; }
-
-    .calendar-graphic { 
-      width: 32px; 
-      height: 32px; 
-      border: 2px solid #111; 
-      border-radius: 6px; 
-      background: #fff; 
-      margin: 0 auto 6px; 
-      display: flex; 
-      flex-direction: column; 
-      overflow: hidden;
-      box-shadow: 2px 2px 0px #111;
-    }
-    .calendar-graphic-top { background: #111; height: 10px; width: 100%; }
-    .calendar-graphic-body { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 800; }
-
-    .mini-calendar { width: 100%; font-size: 0.7rem; text-align: center; border-collapse: collapse; }
-    .mini-calendar th, .mini-calendar td { padding: 2px; border: 1px solid #eee; border-radius: 4px; }
-    .mini-calendar th { background: #111; color: #fff; }
-
     .site-footer { border-top: 2px solid #111; padding-top: 12px; text-align: center; font-weight: 700; font-size: 0.72rem; color: #555; }
 
-    .fullscreen-page {
-      display: none;
-      max-width: 960px;
-      width: 100%;
-      flex-direction: column;
-      gap: 16px;
-    }
-
+    .fullscreen-page { display: none; max-width: 960px; width: 100%; flex-direction: column; gap: 16px; }
     .fullscreen-page.active { display: flex; }
 
     .fullscreen-header {
@@ -224,7 +232,6 @@
     }
     .back-btn:hover { background: #333; }
 
-    /* GALLERY VERTICALE & BUTTON GRID */
     .cards-grid-scroll {
       display: grid;
       grid-template-columns: 1fr;
@@ -247,12 +254,7 @@
       box-shadow: 4px 4px 0px #111;
     }
 
-    .buttons-wall-grid img {
-      width: 88px;
-      height: 31px;
-      border: 1px solid #111;
-      image-rendering: pixelated;
-    }
+    .buttons-wall-grid img { width: 88px; height: 31px; border: 1px solid #111; image-rendering: pixelated; }
 
     .pure-card-img {
       max-width: 100%;
@@ -314,29 +316,34 @@
           <div class="receipt-barcode">||| | |||| || |</div>
         </div>
 
+        <!-- LUNA DINAMICA -->
         <div class="box">
           <div class="box-header"><span>lunar_phase</span><span>☾</span></div>
           <div class="box-body" style="text-align: center;">
-            <div class="moon-graphic"></div>
-            <span style="font-size: 0.72rem; font-weight: 700;">Waxing Moon</span>
+            <div class="moon-img-container">
+              <img id="moon-phase-img" src="./moon-0.png" alt="Fase Lunare" onerror="this.style.display='none'; document.getElementById('moon-fallback').style.display='block';">
+              <!-- Fallback visivo se non hai ancora caricato le immagini -->
+              <div id="moon-fallback" style="display:none; width:36px; height:36px; border-radius:50%; background:#111; box-shadow: inset -10px -3px 0 0 #fff; margin:0 auto;"></div>
+            </div>
+            <span id="moon-phase-name" style="font-size: 0.72rem; font-weight: 700;">Calcolo in corso...</span>
           </div>
         </div>
 
+        <!-- CALENDARIO DINAMICO -->
         <div class="box">
-          <div class="box-header"><span>calendar</span><div style="width:12px; height:12px; border:2px solid #111; border-radius:2px;"></div></div>
+          <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #111; border-radius:2px;"></div></div>
           <div class="box-body">
             <div class="calendar-graphic">
               <div class="calendar-graphic-top"></div>
-              <div class="calendar-graphic-body">23</div>
+              <div class="calendar-graphic-body" id="cal-day-number">--</div>
             </div>
             <table class="mini-calendar">
-              <tr><th>S</th><th>M</th><th>T</th><th>W</th><th>T</th><th>F</th><th>S</th></tr>
-              <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
-              <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
-              <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
-              <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td><strong>23</strong></td></tr>
-              <tr><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
-              <tr><td>31</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+              <thead>
+                <tr><th>D</th><th>L</th><th>M</th><th>M</th><th>G</th><th>V</th><th>S</th></tr>
+              </thead>
+              <tbody id="calendar-body">
+                <!-- Generato da JS -->
+              </tbody>
             </table>
           </div>
         </div>
@@ -391,17 +398,15 @@
 
       <!-- COLONNA DESTRA -->
       <aside class="col-right">
-        <!-- AVATAR -->
         <img id="main-avatar" src="./avatar.png" alt="Seea Avatar" class="floating-avatar">
 
         <div style="flex: 1;"></div>
 
-        <!-- PULSANTE PER ANDARE ALLA PAGINA DEI BOTTONI DEGLI ALTRI -->
         <button class="nav-box-btn" onclick="openPage('buttons-page')">
           ★ FRIENDS & BUTTONS (88x31) ➔
         </button>
 
-        <!-- MUSIC PLAYER IN BASSO A DESTRA -->
+        <!-- MUSIC PLAYER -->
         <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♫</span></div>
           <div class="box-body">
@@ -427,7 +432,6 @@
 
   </div>
 
-
   <!-- ==========================================================
        PAGINA DEDICATA: BOTTONI DEGLI ALTRI (88x31)
        ========================================================== -->
@@ -445,83 +449,52 @@
     </div>
   </div>
 
-
-  <!-- ==========================================================
-       PAGINA 1: GALLERY
-       ========================================================== -->
+  <!-- PAGINE SECONDARIE -->
   <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // GALLERY ARCHIVE</h2>
-      <img src="./avatar.png" alt="Avatar Gallery" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
-
     <div class="cards-grid-scroll">
       <img src="./art-card1.png" alt="Disegno 1" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
-      <img src="./art-card2.png" alt="Disegno 2" class="pure-card-img" onerror="this.style.height='300px'; this.style.background='#eee';">
     </div>
   </div>
 
-
-  <!-- ==========================================================
-       PAGINA 2: WATCHLIST ANIME
-       ========================================================== -->
   <div id="watchlist-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // ANIME POCKET CARDS</h2>
-      <img src="./avatar.png" alt="Avatar Anime" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
-
     <div class="cards-grid-scroll">
-      <img src="./anime-pocket1.png" alt="Pocket Card Anime 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
-      <img src="./anime-pocket2.png" alt="Pocket Card Anime 2" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
+      <img src="./anime-pocket1.png" alt="Anime 1" class="pure-card-img" onerror="this.style.height='380px'; this.style.background='#eee';">
     </div>
   </div>
 
-
-  <!-- ==========================================================
-       PAGINA 3: BLOG / JOURNAL
-       ========================================================== -->
   <div id="blog-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // JOURNAL & BLOG</h2>
-      <img src="./avatar.png" alt="Avatar Blog" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
-
     <div class="cards-grid-scroll">
-      <img src="./blog-banner1.png" alt="Blog Banner Card 1" class="pure-card-img">
+      <img src="./blog-banner1.png" alt="Blog 1" class="pure-card-img">
     </div>
   </div>
 
-
-  <!-- ==========================================================
-       PAGINA 4: PROJECTS
-       ========================================================== -->
   <div id="projects-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // DIGITAL PROJECTS</h2>
-      <img src="./avatar.png" alt="Avatar Projects" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
-
     <div class="cards-grid-scroll">
       <img src="./project-card1.png" alt="Project 1" class="pure-card-img" onerror="this.style.height='250px'; this.style.background='#eee';">
     </div>
   </div>
 
-
-  <!-- ==========================================================
-       PAGINA 5: GUESTBOOK
-       ========================================================== -->
   <div id="guestbook-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">← BACK TO DESK</button>
       <h2>SEEA // GUESTBOOK</h2>
-      <img src="./avatar.png" alt="Avatar Guestbook" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
-
     <div style="background:#fff; border:3px solid #111; border-radius:20px; padding:20px; box-shadow:4px 4px 0px #111;">
       <form onsubmit="event.preventDefault(); addGuestbookEntry();" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
         <input type="text" id="gb-name" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:700;" placeholder="Nickname..." required>
@@ -536,6 +509,7 @@
 
 
   <script>
+    /* NAVEGAZIONE PAGINE */
     function openPage(pageId) {
       document.getElementById('home-view').style.display = 'none';
       document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
@@ -548,6 +522,7 @@
       document.getElementById('home-view').style.display = 'flex';
     }
 
+    /* GUESTBOOK */
     function addGuestbookEntry() {
       const name = document.getElementById('gb-name').value;
       const msg = document.getElementById('gb-msg').value;
@@ -617,12 +592,101 @@
       }
     });
 
-    audioElement.addEventListener('ended', () => {
-      nextSong();
-    });
-
-    // Inizializza la prima traccia
+    audioElement.addEventListener('ended', () => { nextSong(); });
     loadTrack(0);
+
+    /* ==========================================================
+       1. CALENDARIO AUTOMATICO (REALE)
+       ========================================================== */
+    function generateCalendar() {
+      const today = new Date();
+      const currentDay = today.getDate();
+      const currentMonth = today.getMonth();
+      const currentYear = today.getFullYear();
+
+      const monthNames = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+
+      document.getElementById('cal-month-title').innerText = monthNames[currentMonth].toLowerCase();
+      document.getElementById('cal-day-number').innerText = currentDay;
+
+      const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+      const tbody = document.getElementById('calendar-body');
+      tbody.innerHTML = '';
+
+      let date = 1;
+      for (let i = 0; i < 6; i++) {
+        let row = document.createElement('tr');
+        let hasDate = false;
+
+        for (let j = 0; j < 7; j++) {
+          let cell = document.createElement('td');
+          if (i === 0 && j < firstDayOfMonth) {
+            cell.innerText = '';
+          } else if (date > daysInMonth) {
+            cell.innerText = '';
+          } else {
+            cell.innerText = date;
+            if (date === currentDay) {
+              cell.classList.add('today');
+            }
+            date++;
+            hasDate = true;
+          }
+          row.appendChild(cell);
+        }
+
+        if (hasDate || i === 0) {
+          tbody.appendChild(row);
+        }
+      }
+    }
+
+    /* ==========================================================
+       2. CALCOLO FASE LUNARE AUTOMATICA E IMMAGINE
+       ========================================================== */
+    function updateMoonPhase() {
+      const today = new Date();
+      const year = today.getFullYear();
+      const month = today.getMonth() + 1;
+      const day = today.getDate();
+
+      // Calcolo semplificato del ciclo sinodico lunare (29.53 giorni)
+      let c = e = j = b = 0;
+      if (month < 3) {
+        year--;
+        month += 12;
+      }
+      ++month;
+      c = 365.25 * year;
+      e = 30.6 * month;
+      j = c + e + day - 694039.09;
+      j /= 29.5305882; // Ciclo lunare
+      b = parseInt(j);
+      j -= b;
+      b = Math.round(j * 8);
+      if (b >= 8) b = 0;
+
+      const moonPhases = [
+        { name: "Luna Nuova", img: "./moon-0.png" },
+        { name: "Crescente", img: "./moon-1.png" },
+        { name: "Primo Quarto", img: "./moon-2.png" },
+        { name: "Gibbosa Crescente", img: "./moon-3.png" },
+        { name: "Luna Piena", img: "./moon-4.png" },
+        { name: "Gibbosa Calante", img: "./moon-5.png" },
+        { name: "Ultimo Quarto", img: "./moon-6.png" },
+        { name: "Calante", img: "./moon-7.png" }
+      ];
+
+      const currentPhase = moonPhases[b];
+      document.getElementById('moon-phase-name').innerText = currentPhase.name;
+      document.getElementById('moon-phase-img').src = currentPhase.img;
+    }
+
+    // Inizializza calendario e luna all'avvio della pagina
+    generateCalendar();
+    updateMoonPhase();
   </script>
 
 </body>
