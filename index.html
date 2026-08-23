@@ -285,9 +285,10 @@
     .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
     .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
 
+    /* UNICA IMMAGINE IN NERO SOSTITUITA PER LA TAZZINA */
     .coffee-icon {
-      width: 14px;
-      height: 14px;
+      width: 15px;
+      height: 15px;
       object-fit: contain;
       filter: grayscale(100%) brightness(0);
       display: inline-block;
@@ -327,9 +328,9 @@
           <div class="receipt-barcode">||| | |||| || |</div>
         </div>
 
-        <!-- LUNA DINAMICA -->
+        <!-- LUNA DINAMICA CON EMOJI RIPRISTINATA -->
         <div class="box">
-          <div class="box-header"><span>lunar_phase</span><span>(C)</span></div>
+          <div class="box-header"><span>lunar_phase</span><span>🌙</span></div>
           <div class="box-body" style="text-align: center;">
             <div class="moon-img-container">
               <img id="moon-phase-img" src="./moon-0.png" alt="Fase Lunare" onerror="this.style.display='none'; document.getElementById('moon-fallback').style.display='block';">
@@ -357,8 +358,9 @@
           </div>
         </div>
 
+        <!-- BOTTONE LINK ME CON EMOJI STELLA RIPRISTINATA -->
         <div class="box" style="margin-bottom:0;">
-          <div class="box-header"><span>link_me</span><span>[*]</span></div>
+          <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
             <div style="border: 2px dashed #111; padding: 6px; border-radius: 10px; font-size: 0.65rem; font-family: monospace;">
               &lt;a href="https://seea.neocities.org"&gt;&lt;img src="./button.png"&gt;&lt;/a&gt;
@@ -374,7 +376,7 @@
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
-        <!-- 2. STUDY WITH ME -->
+        <!-- 2. STUDY WITH ME CON IMMAGINE TAZZINA IN NERO -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header">
             <span>study_with_me</span>
@@ -425,12 +427,12 @@
         <div style="flex: 1;"></div>
 
         <button class="nav-box-btn" onclick="openPage('buttons-page')">
-          + FRIENDS &amp; BUTTONS (88x31) -&gt;
+          ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
         <!-- MUSIC PLAYER SENZA BARRA -->
         <div class="box" style="margin-bottom: 0;">
-          <div class="box-header"><span>music_player</span><span>[M]</span></div>
+          <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
             <div class="ipod-player">
               <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
@@ -575,10 +577,10 @@
       if (audioElement.paused) {
         if(!audioElement.src) loadTrack(currentTrackIndex);
         audioElement.play();
-        playPauseBtn.innerHTML = "&#10074;&#10074;"; // Simbolo Pausa (❚❚)
+        playPauseBtn.innerHTML = "&#10074;&#10074;"; // ❚❚
       } else {
         audioElement.pause();
-        playPauseBtn.innerHTML = "&#9654;"; // Simbolo Play (▶)
+        playPauseBtn.innerHTML = "&#9654;"; // ▶
       }
     }
 
