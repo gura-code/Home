@@ -284,16 +284,6 @@
     }
     .nav-box-btn:hover { transform: translate(-1px, -1px); box-shadow: 4px 4px 0px #111; }
     .nav-box-btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0px #111; }
-
-    /* UNICA IMMAGINE IN NERO SOSTITUITA PER LA TAZZINA */
-    .coffee-icon {
-      width: 15px;
-      height: 15px;
-      object-fit: contain;
-      filter: grayscale(100%) brightness(0);
-      display: inline-block;
-      vertical-align: middle;
-    }
   </style>
 </head>
 <body>
@@ -328,9 +318,9 @@
           <div class="receipt-barcode">||| | |||| || |</div>
         </div>
 
-        <!-- LUNA DINAMICA CON EMOJI RIPRISTINATA -->
+        <!-- LUNA CON LA SEQUENZA DI SIMBOLI SOLLECITATA -->
         <div class="box">
-          <div class="box-header"><span>lunar_phase</span><span>🌙</span></div>
+          <div class="box-header"><span>lunar_phase</span><span style="font-size: 0.7rem; letter-spacing: 1px;">◯ ☽ ◑ ● ◐ ❨ ◯</span></div>
           <div class="box-body" style="text-align: center;">
             <div class="moon-img-container">
               <img id="moon-phase-img" src="./moon-0.png" alt="Fase Lunare" onerror="this.style.display='none'; document.getElementById('moon-fallback').style.display='block';">
@@ -358,7 +348,7 @@
           </div>
         </div>
 
-        <!-- BOTTONE LINK ME CON EMOJI STELLA RIPRISTINATA -->
+        <!-- BOTTONE LINK ME CON STELLA ORIGINALE -->
         <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center;">
@@ -376,11 +366,11 @@
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
         </div>
 
-        <!-- 2. STUDY WITH ME CON IMMAGINE TAZZINA IN NERO -->
+        <!-- 2. STUDY WITH ME CON TAZZINA ☕︎ -->
         <div class="box" style="margin-bottom: 14px;">
           <div class="box-header">
             <span>study_with_me</span>
-            <img src="./coffee-icon.png" alt="Cup" class="coffee-icon" onerror="this.style.display='none';">
+            <span style="font-size: 1rem;">☕︎</span>
           </div>
           <div class="box-body">
             <p style="font-size:0.8rem; font-weight:700; line-height:1.5;">
@@ -430,7 +420,7 @@
           ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
-        <!-- MUSIC PLAYER SENZA BARRA -->
+        <!-- MUSIC PLAYER -->
         <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
@@ -529,7 +519,7 @@
   </div>
 
   <script>
-    /* NAVEGAZIONE PAGINE */
+    /* NAVIGAZIONE PAGINE */
     function openPage(pageId) {
       document.getElementById('home-view').style.display = 'none';
       document.querySelectorAll('.fullscreen-page').forEach(p => p.classList.remove('active'));
