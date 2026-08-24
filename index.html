@@ -423,7 +423,6 @@
           </div>
         </div>
 
-        <!-- BLOCCO LINK_ME -->
         <div class="box">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
@@ -436,13 +435,12 @@
           </div>
         </div>
 
-        <!-- BLOCCO FRIENDS & BUTTONS SPOSTATO QUI SOTTO -->
         <button class="nav-box-btn-dark" onclick="openPage('buttons-page')" style="margin-bottom:0;">
           ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
       </aside>
 
-      <!-- COLONNA CENTRALE (FLESSIBILE) -->
+      <!-- COLONNA CENTRALE (FLESSIBILE) - CHAT BOX SPOSTATA QUI IN FONDO -->
       <main class="col-center">
         <div style="margin-bottom: 14px;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
@@ -465,12 +463,12 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[24 AUG]</strong> Spostato il pulsante Friends &amp; Buttons sotto link_me!</li>
+              <li><strong>[24 AUG]</strong> Chat box spostata come ultima opzione della colonna centrale!</li>
             </ul>
           </div>
         </div>
 
-        <div style="display: flex; gap: 10px;">
+        <div style="display: flex; gap: 10px; margin-bottom: 14px;">
           <a href="https://github.com/tuo-username/pocket-card" target="_blank" class="nav-box-btn-dark" style="margin-bottom:0;">
             GITHUB REPO 1 -&gt;
           </a>
@@ -478,25 +476,15 @@
             GITHUB REPO 2 -&gt;
           </a>
         </div>
-      </main>
 
-      <!-- COLONNA DESTRA (PROTETTA) -->
-      <aside class="col-right">
-        <!-- Container sicuro per la GIF -->
-        <div class="floating-avatar-container">
-          <img id="main-avatar" src="./20260824_002041.gif" alt="Seea Avatar" class="floating-avatar">
-        </div>
-
-        <div style="flex: 1;"></div>
-
-        <!-- CHAT BOX -->
-        <div class="box">
+        <!-- CHAT BOX COME ULTIMA OPZIONE DELLA COLONNA CENTRALE -->
+        <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 10px;">
-            <div class="chatbox-container">
+            <div class="chatbox-container" style="margin-bottom: 0;">
               <div class="chatbox-messages">
-                <div class="chatbox-msg-item"><strong>Velas:</strong> Ciao! Dai un'occhiata alla chat ingrandita! ✨</div>
-                <div class="chatbox-msg-item"><strong>Seea:</strong> Adesso si legge benissimo! (≧◡≦)</div>
+                <div class="chatbox-msg-item"><strong>Velas:</strong> Ciao! Ora la chat box è qui sotto nella colonna centrale! ✨</div>
+                <div class="chatbox-msg-item"><strong>Seea:</strong> Perfetto! Ha tutto lo spazio che le serve (≧◡≦)</div>
               </div>
               <form class="chatbox-form" onsubmit="event.preventDefault();">
                 <input type="text" class="chatbox-input" placeholder="Name..." value="">
@@ -509,6 +497,16 @@
             </div>
           </div>
         </div>
+      </main>
+
+      <!-- COLONNA DESTRA (PROTETTA) - OROLOGIO E ALTRI ELEMENTI -->
+      <aside class="col-right">
+        <!-- Container sicuro per la GIF -->
+        <div class="floating-avatar-container">
+          <img id="main-avatar" src="./20260824_002041.gif" alt="Seea Avatar" class="floating-avatar">
+        </div>
+
+        <div style="flex: 1;"></div>
 
         <!-- OROLOGIO -->
         <div class="pixel-clock-box-dark">
