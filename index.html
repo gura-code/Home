@@ -48,7 +48,7 @@
       border-radius: 24px;
       padding: 20px;
       display: flex;
-      justify-content: center;
+      justify-content: flex-start; /* Allineato a sinistra */
       align-items: center;
       background-image: radial-gradient(#888888 0.75px, transparent 0.75px);
       background-size: 8px 8px;
@@ -167,7 +167,6 @@
       margin-top: 8px;
     }
 
-    /* CALENDARIO FIXATO E BEN VISIBILE */
     .calendar-graphic-dark { 
       width: 36px; height: 36px; border: 2px solid #fff; border-radius: 6px; background: #222; margin: 0 auto 8px; display: flex; flex-direction: column; overflow: hidden; box-shadow: 2px 2px 0px #fff;
     }
@@ -338,7 +337,6 @@
           <div class="receipt-barcode">𝄃𝄃𝄂𝄂𝄀𝄁𝄃𝄂𝄂𝄃</div>
         </div>
 
-        <!-- CALENDARIO CORRETTO -->
         <div class="box-dark">
           <div class="box-header"><span id="cal-month-title">calendar</span><div style="width:12px; height:12px; border:2px solid #fff; border-radius:2px;"></div></div>
           <div class="box-body">
@@ -578,7 +576,7 @@
     }
 
     audioElement.addEventListener('ended', () => { nextSong(); });
-    loadTrust = loadTrack(0);
+    loadTrack(0);
 
     function generateCalendar() {
       const today = new Date();
