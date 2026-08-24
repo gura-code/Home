@@ -203,11 +203,52 @@
       letter-spacing: 1px;
     }
 
-    .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
-    .ipod-screen { background: #111; color: #fff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; }
-    .ipod-controls { display: flex; justify-content: center; gap: 8px; align-items: center; }
-    .ipod-btn-ctrl { background: #f0f0f3; border: 2px solid #111; border-radius: 50%; width: 28px; height: 28px; font-size: 0.7rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 2px 2px 0px #111; }
-    .ipod-btn-ctrl:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #111; }
+    /* Lettore musicale ingrandito e senza cornice esterna */
+    .ipod-player-clean {
+      text-align: center;
+      padding: 4px 0;
+    }
+    .ipod-screen-clean { 
+      background: #222; 
+      color: #fff; 
+      border: 2px solid #444; 
+      border-radius: 12px; 
+      padding: 12px 10px; 
+      font-size: 0.78rem; 
+      font-weight: 700; 
+      margin-bottom: 12px; 
+      min-height: 55px; 
+      display: flex; 
+      flex-direction: column; 
+      justify-content: center;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.5);
+    }
+    .ipod-controls-clean { 
+      display: flex; 
+      justify-content: center; 
+      gap: 12px; 
+      align-items: center; 
+    }
+    .ipod-btn-ctrl-clean { 
+      background: #222; 
+      color: #fff;
+      border: 2px solid #555; 
+      border-radius: 50%; 
+      width: 36px; 
+      height: 36px; 
+      font-size: 0.8rem; 
+      font-weight: 800; 
+      cursor: pointer; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      box-shadow: 2px 2px 0px #444; 
+      transition: transform 0.1s ease;
+    }
+    .ipod-btn-ctrl-clean:active { 
+      transform: translate(1px, 1px); 
+      box-shadow: 1px 1px 0px #444; 
+    }
 
     .nav-box-btn {
       width: 100%;
@@ -429,7 +470,6 @@
           ✎ SIGN GUESTBOOK -&gt;
         </button>
 
-        <!-- Chatbox nera (box-dark) inserita sotto il guestbook -->
         <div class="box-dark">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 10px; background: #111111;">
@@ -437,19 +477,20 @@
           </div>
         </div>
 
-        <div class="box" style="margin-bottom: 0;">
+        <!-- Music player senza cornice bianca e ingrandito -->
+        <div class="box-dark" style="margin-bottom: 0;">
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
-            <div class="ipod-player">
-              <div class="ipod-screen" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
-              <!-- Player YouTube invisibile che utilizza la playlist ufficiale -->
+            <div class="ipod-player-clean">
+              <div class="ipod-screen-clean" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
+              <!-- Player YouTube invisibile -->
               <div style="display:none;">
                 <div id="youtube-player"></div>
               </div>
-              <div class="ipod-controls">
-                <button class="ipod-btn-ctrl" onclick="prevSong()">&#10094;&#10094;</button>
-                <button class="ipod-btn-ctrl" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
-                <button class="ipod-btn-ctrl" onclick="nextSong()">&#10095;&#10095;</button>
+              <div class="ipod-controls-clean">
+                <button class="ipod-btn-ctrl-clean" onclick="prevSong()">&#10094;&#10094;</button>
+                <button class="ipod-btn-ctrl-clean" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+                <button class="ipod-btn-ctrl-clean" onclick="nextSong()">&#10095;&#10095;</button>
               </div>
             </div>
           </div>
