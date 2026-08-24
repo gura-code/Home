@@ -515,10 +515,10 @@
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
             <div class="ipod-player">
-              <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>YouTube Track</strong></div>
-              <!-- Player YouTube nascosto per far funzionare l'audio e i comandi -->
+              <div class="ipod-screen" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
+              <!-- Player YouTube invisibile che utilizza la playlist ufficiale -->
               <div style="display:none;">
-                <iframe id="youtube-player" width="200" height="200" src="https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div id="youtube-player"></div>
               </div>
               <div class="ipod-controls">
                 <button class="ipod-btn-ctrl" onclick="prevSong()">&#10094;&#10094;</button>
@@ -627,39 +627,73 @@
       document.getElementById('gb-msg').value = '';
     }
 
-    // Gestione del player YouTube collegato ai tasti iPod
+    // Integrazione ufficiale YouTube API per la playlist di YouTube Music
+    let player;
     let isPlaying = false;
     const playPauseBtn = document.getElementById('play-pause-btn');
-    const ytIframe = document.getElementById('youtube-player');
+    const screenText = document.getElementById('ipod-screen-text');
+
+    // Carica lo script dell'API di YouTube in modo asincrono
+    const tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    const firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Questa funzione viene chiamata automaticamente da YouTube quando l'API è pronta
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('youtube-player', {
+        height: '200',
+        width: '200',
+        playerVars: {
+          'listType': 'playlist',
+          'list': 'PL1HQaIrpViLRdgseBr3FNU1XRrydb1Cem',
+          'index': 0
+        },
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+
+    function onPlayerReady(event) {
+      screenText.innerHTML = `YouTube Music<br><strong>Ready to Play</strong>`;
+    }
+
+    function onPlayerStateChange(event) {
+      // Aggiorna lo stato dei pulsanti e del testo in base a cosa fa YouTube
+      if (event.data == YT.PlayerState.PLAYING) {
+        isPlaying = true;
+        playPauseBtn.innerHTML = "&#10074;&#10074;";
+        try {
+          const videoData = player.getVideoData();
+          if (videoData && videoData.title) {
+            screenText.innerHTML = `Now Playing:<br><strong>${videoData.title}</strong>`;
+          }
+        } catch(e) {}
+      } else if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED) {
+        isPlaying = false;
+        playPauseBtn.innerHTML = "&#9654;";
+      }
+    }
 
     function togglePlay() {
-      const iframeSrc = ytIframe.src;
-      if (!isPlaying) {
-        // Avvia la riproduzione aggiungendo autoplay
-        if (!iframeSrc.includes("autoplay=1")) {
-          ytIframe.src = iframeSrc + "&autoplay=1";
-        }
-        playPauseBtn.innerHTML = "&#10074;&#10074;";
-        isPlaying = true;
+      if (!player) return;
+      if (isPlaying) {
+        player.pauseVideo();
       } else {
-        // Mette in pausa ricaricando l'iframe senza autoplay
-        ytIframe.src = "https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1";
-        playPauseBtn.innerHTML = "&#9654;";
-        isPlaying = false;
+        player.playVideo();
       }
     }
 
     function nextSong() {
-      // Se aggiungi altri video in futuro, qui puoi gestirli
-      ytIframe.src = "https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1&autoplay=1";
-      playPauseBtn.innerHTML = "&#10074;&#10074;";
-      isPlaying = true;
+      if (!player) return;
+      player.nextVideo();
     }
 
     function prevSong() {
-      ytIframe.src = "https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1&autoplay=1";
-      playPauseBtn.innerHTML = "&#10074;&#10074;";
-      isPlaying = true;
+      if (!player) return;
+      player.previousVideo();
     }
 
     function generateCalendar() {
