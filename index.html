@@ -45,34 +45,22 @@
     .top-banner {
       background: #111111;
       border: 2px solid #111111;
-      border-radius: 24px;
-      padding: 20px;
+      border-radius: 20px;
+      padding: 28px 20px;
       display: flex;
-      justify-content: flex-start;
+      justify-content: center;
       align-items: center;
       position: relative;
-      overflow: hidden;
-      /* Righe ravvicinate senza spazi, grandi e con effetto glow */
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='16' viewBox='0 0 160 16'%3E%3Ctext x='0' y='12' font-family='Quicksand, sans-serif' font-size='11' font-weight='700' fill='%23ffffff' style='text-shadow: 0 0 6px rgba(255,255,255,0.8), 0 0 12px rgba(255,255,255,0.4);'%3E.✦ ݁˖⋆｡˚ ☁︎ ˚｡⋆｡˚☽˚｡⋆★⋆.˚₊ ⊹✮⋆˙๋࣭ ⭑⚝.𖥔 ݁ ˖⛥☄%3C/text%3E%3C/svg%3E");
-      background-repeat: repeat;
+      /* Niente stelline, sfondo completamente nero e pulito */
     }
 
-    .banner-box {
-      background: #111111;
-      border: 2px solid #ffffff;
-      padding: 12px 28px;
-      border-radius: 999px;
-      box-shadow: 3px 3px 0px #ffffff;
-      position: relative;
-      z-index: 1;
-    }
-
-    .banner-box h1 { 
-      font-size: 2.3rem; 
+    .top-banner h1 { 
+      font-size: 3rem; 
       font-weight: 800; 
-      letter-spacing: -0.5px; 
+      letter-spacing: 2px; 
       color: #ffffff;
-      text-shadow: 0 0 8px rgba(255,255,255,0.9), 0 0 16px rgba(255,255,255,0.5), 0 0 24px rgba(255,255,255,0.3);
+      text-align: center;
+      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,255,255,0.4);
     }
 
     .grid-container {
@@ -324,9 +312,7 @@
   <div id="home-view" class="site-wrapper">
 
     <header class="top-banner">
-      <div class="banner-box">
-        <h1>COSMIC-S</h1>
-      </div>
+      <h1>COSMIC-S</h1>
     </header>
 
     <div class="grid-container">
