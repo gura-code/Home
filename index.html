@@ -21,11 +21,10 @@
       background-size: 20px 20px;
       color: #111111;
       font-family: 'Quicksand', sans-serif;
-      padding: 20px 10px;
+      padding: 40px 20px;
       display: flex;
       justify-content: center;
       position: relative;
-      overflow-x: hidden;
     }
 
     .site-wrapper {
@@ -64,12 +63,11 @@
       text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
     }
 
-    /* Griglia fissa su desktop */
+    /* Griglia a 3 colonne esatta come prima, con la centrale flessibile (minmax) */
     .grid-container {
       display: grid;
-      grid-template-columns: 240px 440px 220px;
+      grid-template-columns: 240px minmax(300px, 1fr) 220px;
       gap: 14px;
-      justify-content: center;
       align-items: stretch;
       padding-bottom: 20px;
     }
@@ -78,10 +76,10 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      min-width: 0;
+      min-width: 0; /* Fondamentale per evitare che il contenuto rompa il layout */
     }
 
-    /* GIF centrata sopra l'orologio */
+    /* Avatar fluttuante sopra la colonna destra */
     .floating-avatar-container {
       position: absolute;
       top: -95px;
@@ -314,36 +312,6 @@
       transition: transform 0.15s ease;
     }
     .pure-card-img:hover { transform: translateY(-2px); }
-
-    /* ==========================================================
-       MEDIA QUERY RESPONSIVE PER SMARTPHONE E SCHERMI STRETTI
-       ========================================================== */
-    @media (max-width: 950px) {
-      body {
-        padding: 10px 5px;
-      }
-      .site-wrapper {
-        padding: 12px;
-        border-radius: 20px;
-      }
-      .top-banner h1 {
-        font-size: 2.2rem;
-      }
-      /* Trasforma la griglia in un'unica colonna verticale leggibile */
-      .grid-container {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      /* Rimuove il posizionamento assoluto dell'avatar su mobile e lo centra in alto */
-      .floating-avatar-container {
-        position: relative;
-        top: 0;
-        margin-bottom: 15px;
-      }
-      .receipt-box {
-        transform: rotate(0deg); /* Rimuove la rotazione scontrino su mobile per evitare sbavature */
-      }
-    }
   </style>
 </head>
 <body>
@@ -407,7 +375,7 @@
         </div>
       </aside>
 
-      <!-- COLONNA CENTRALE -->
+      <!-- COLONNA CENTRALE (FLESSIBILE) -->
       <main class="col-center">
         <div style="margin-bottom: 14px;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
@@ -500,7 +468,7 @@
 
   </div>
 
-  <!-- PAGINA LOGS & BLOG -->
+  <!-- PAGINE INTERNE (FULLSCREEN) -->
   <div id="blog-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
@@ -512,7 +480,6 @@
     </div>
   </div>
 
-  <!-- PAGINA GALLERY -->
   <div id="gallery-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
@@ -524,14 +491,12 @@
     </div>
   </div>
 
-  <!-- PAGINA BOTTONI -->
   <div id="buttons-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
       <h2>SEEA // 88x31 BUTTON WALL</h2>
       <img src="./avatar.png" alt="Avatar Buttons" style="width: 42px; height: 42px; border: 2px solid #111; border-radius: 50%; object-fit: cover;">
     </div>
-
     <div class="buttons-wall-grid">
       <a href="#" target="_blank"><img src="./button1.png" alt="Button 1" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';"></a>
     </div>
@@ -645,7 +610,7 @@
       document.getElementById('cal-day-number').innerText = currentDay;
 
       const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getData ? new Date(currentYear, currentMonth + 1, 0).getDate() : new Date(currentYear, currentMonth + 1, 0).getDate();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
       const tbody = document.getElementById('calendar-body');
       tbody.innerHTML = '';
 
@@ -658,7 +623,7 @@
           let cell = document.createElement('td');
           if (i === 0 && j < firstDayOfMonth) {
             cell.innerText = '';
-          } else  if (date > daysInMonth) {
+          } else if (date > daysInMonth) {
             cell.innerText = '';
           } else {
             cell.innerText = date;
