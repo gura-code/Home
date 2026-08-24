@@ -515,13 +515,16 @@
           <div class="box-header"><span>music_player</span><span>♬</span></div>
           <div class="box-body">
             <div class="ipod-player">
-              <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>beabadoobee</strong></div>
+              <div class="ipod-screen" id="ipod-screen-text">Now Playing:<br><strong>YouTube Track</strong></div>
+              <!-- Player YouTube nascosto per far funzionare l'audio e i comandi -->
+              <div style="display:none;">
+                <iframe id="youtube-player" width="200" height="200" src="https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
               <div class="ipod-controls">
                 <button class="ipod-btn-ctrl" onclick="prevSong()">&#10094;&#10094;</button>
                 <button class="ipod-btn-ctrl" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
                 <button class="ipod-btn-ctrl" onclick="nextSong()">&#10095;&#10095;</button>
               </div>
-              <audio id="audio-element"></audio>
             </div>
           </div>
         </div>
@@ -624,47 +627,40 @@
       document.getElementById('gb-msg').value = '';
     }
 
-    const playlist = [
-      { title: "beabadoobee", file: "./song1.mp3" },
-      { title: "Lo-Fi Chill Track", file: "./song2.mp3" }
-    ];
-    let currentTrackIndex = 0;
-    const audioElement = document.getElementById('audio-element');
+    // Gestione del player YouTube collegato ai tasti iPod
+    let isPlaying = false;
     const playPauseBtn = document.getElementById('play-pause-btn');
-    const screenText = document.getElementById('ipod-screen-text');
-
-    function loadTrack(index) {
-      audioElement.src = playlist[index].file;
-      screenText.innerHTML = `Now Playing:<br><strong>${playlist[index].title}</strong>`;
-    }
+    const ytIframe = document.getElementById('youtube-player');
 
     function togglePlay() {
-      if (audioElement.paused) {
-        if(!audioElement.src) loadTrack(currentTrackIndex);
-        audioElement.play();
+      const iframeSrc = ytIframe.src;
+      if (!isPlaying) {
+        // Avvia la riproduzione aggiungendo autoplay
+        if (!iframeSrc.includes("autoplay=1")) {
+          ytIframe.src = iframeSrc + "&autoplay=1";
+        }
         playPauseBtn.innerHTML = "&#10074;&#10074;";
+        isPlaying = true;
       } else {
-        audioElement.pause();
+        // Mette in pausa ricaricando l'iframe senza autoplay
+        ytIframe.src = "https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1";
         playPauseBtn.innerHTML = "&#9654;";
+        isPlaying = false;
       }
     }
 
     function nextSong() {
-      currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-      loadTrack(currentTrackIndex);
-      audioElement.play();
+      // Se aggiungi altri video in futuro, qui puoi gestirli
+      ytIframe.src = "https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1&autoplay=1";
       playPauseBtn.innerHTML = "&#10074;&#10074;";
+      isPlaying = true;
     }
 
     function prevSong() {
-      currentTrackIndex = (currentTrackIndex - 1 + playlist.length) % playlist.length;
-      loadTrack(currentTrackIndex);
-      audioElement.play();
+      ytIframe.src = "https://www.youtube.com/embed/uThdFoa3sNY?enablejsapi=1&autoplay=1";
       playPauseBtn.innerHTML = "&#10074;&#10074;";
+      isPlaying = true;
     }
-
-    audioElement.addEventListener('ended', () => { nextSong(); });
-    loadTrack(0);
 
     function generateCalendar() {
       const today = new Date();
@@ -721,4 +717,3 @@
 
 </body>
 </html>
-
