@@ -40,7 +40,7 @@
       flex-direction: column;
       gap: 16px;
       position: relative;
-      overflow: hidden; /* Blocca qualsiasi elemento che tenta di uscire dal rettangolo */
+      overflow: hidden; /* Protegge i bordi del rettangolo */
     }
 
     .top-banner {
@@ -78,7 +78,7 @@
       display: flex;
       flex-direction: column;
       position: relative;
-      min-width: 0; /* Fondamentale per impedire agli elementi interni di sballare le colonne */
+      min-width: 0;
     }
 
     /* Avatar fluttuante ancorato dentro la colonna destra */
@@ -196,7 +196,7 @@
       padding: 12px;
       text-align: center;
       box-shadow: 3px 3px 0px #111;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
     }
     .pixel-clock-time-dark {
       font-family: 'Press Start 2P', monospace;
@@ -204,6 +204,69 @@
       color: #fff;
       letter-spacing: 1px;
     }
+
+    /* Stile ingrandito e dettagliato per la Chat Box / Cbox */
+    .chatbox-container {
+      background: #ffffff;
+      border: 2px solid #111;
+      border-radius: 18px;
+      padding: 10px;
+      box-shadow: 3px 3px 0px #111;
+      margin-bottom: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .chatbox-messages {
+      background: #fafafc;
+      border: 2px solid #111;
+      border-radius: 10px;
+      height: 120px;
+      overflow-y: auto;
+      padding: 8px;
+      font-size: 0.72rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .chatbox-msg-item {
+      border-bottom: 1px dashed #ddd;
+      padding-bottom: 4px;
+      line-height: 1.3;
+    }
+    .chatbox-msg-item strong { color: #111; font-weight: 800; }
+    .chatbox-form {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .chatbox-input {
+      border: 2px solid #111;
+      border-radius: 8px;
+      padding: 6px 8px;
+      font-size: 0.7rem;
+      font-family: 'Quicksand', sans-serif;
+      font-weight: 700;
+      outline: none;
+      background: #fff;
+    }
+    .chatbox-btn-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .chatbox-submit {
+      background: #111;
+      color: #fff;
+      border: none;
+      border-radius: 6px;
+      padding: 5px 12px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 2px 2px 0px #555;
+    }
+    .chatbox-submit:active { transform: translate(1px, 1px); box-shadow: 1px 1px 0px #555; }
 
     .ipod-player { background: #fff; border: 2px solid #111; border-radius: 20px; padding: 12px; text-align: center; }
     .ipod-screen { background: #111; color: #fff; border-radius: 10px; padding: 8px; font-size: 0.7rem; font-weight: 700; margin-bottom: 10px; min-height: 45px; display: flex; flex-direction: column; justify-content: center; }
@@ -222,7 +285,7 @@
       cursor: pointer;
       box-shadow: 3px 3px 0px #111;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       transition: transform 0.1s ease;
       text-decoration: none;
       color: #111;
@@ -243,7 +306,7 @@
       cursor: pointer;
       box-shadow: 3px 3px 0px #111;
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 14px;
       transition: transform 0.1s ease;
       text-decoration: none;
       display: block;
@@ -363,7 +426,6 @@
           </div>
         </div>
 
-        <!-- BLOCCO LINK_ME -->
         <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
@@ -400,16 +462,16 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[23 AUG]</strong> Fixato il calendario e aggiornato il menu con kaomoji dedicati!</li>
+              <li><strong>[24 AUG]</strong> Chat box ingrandita e riorganizzata nella colonna destra!</li>
             </ul>
           </div>
         </div>
 
         <div style="display: flex; gap: 10px;">
-          <a href="https://github.com/tuo-username/pocket-card" target="_blank" class="nav-box-btn-dark">
+          <a href="https://github.com/tuo-username/pocket-card" target="_blank" class="nav-box-btn-dark" style="margin-bottom:0;">
             GITHUB REPO 1 -&gt;
           </a>
-          <a href="https://github.com/tuo-username/banner-card" target="_blank" class="nav-box-btn">
+          <a href="https://github.com/tuo-username/banner-card" target="_blank" class="nav-box-btn" style="margin-bottom:0;">
             GITHUB REPO 2 -&gt;
           </a>
         </div>
@@ -424,18 +486,30 @@
 
         <div style="flex: 1;"></div>
 
-        <div class="pixel-clock-box-dark">
-          <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
-        </div>
-
-        <!-- CHAT BOX CON KAOMOJI -->
+        <!-- CHAT BOX PIÙ GRANDE E IN ALTO -->
         <div class="box">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
-          <div class="box-body" style="padding: 8px;">
-            <div style="font-size: 0.7rem; text-align: center; color: #777; padding: 10px; border: 2px dashed #ccc; border-radius: 10px;">
-              [Incolla qui il codice Cbox]
+          <div class="box-body" style="padding: 10px;">
+            <div class="chatbox-container">
+              <div class="chatbox-messages">
+                <div class="chatbox-msg-item"><strong>Velas:</strong> Ciao! Dai un'occhiata alla chat ingrandita! ✨</div>
+                <div class="chatbox-msg-item"><strong>Seea:</strong> Adesso si legge benissimo! (≧◡≦)</div>
+              </div>
+              <form class="chatbox-form" onsubmit="event.preventDefault();">
+                <input type="text" class="chatbox-input" placeholder="Name..." value="">
+                <input type="text" class="chatbox-input" placeholder="Message..." value="">
+                <div class="chatbox-btn-row">
+                  <span style="font-size:0.65rem; color:#666; font-weight:700;">★ Cbox</span>
+                  <button type="submit" class="chatbox-submit">Send</button>
+                </div>
+              </form>
             </div>
           </div>
+        </div>
+
+        <!-- OROLOGIO SOTTO LA CHAT BOX -->
+        <div class="pixel-clock-box-dark">
+          <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
         <button class="nav-box-btn" onclick="openPage('guestbook-page')">
