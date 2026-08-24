@@ -63,7 +63,7 @@
       text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,255,255,0.4);
     }
 
-    /* Griglia con misure fisse in pixel per la massima stabilità tra browser */
+    /* Griglia fissa a tre colonne (240px - 440px - 220px) per stabilità totale tra browser */
     .grid-container {
       display: grid;
       grid-template-columns: 240px 440px 220px;
@@ -79,10 +79,12 @@
       position: relative;
     }
 
+    /* GIF centrata sopra l'orologio, leggermente più in alto */
     .floating-avatar {
       position: absolute;
-      top: -80px;
-      right: 10px;
+      top: -95px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 130px;
       height: auto;
       z-index: 100;
@@ -353,21 +355,16 @@
           </div>
         </div>
 
-        <!-- BLOCCO LINK_ME AGGIORNATO CON ANTEPRIMA BOTTONE -->
+        <!-- BLOCCO LINK_ME CON ANTEPRIMA DEL BOTTONE -->
         <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
-            
-            <!-- Anteprimi/Segnaposto del tuo bottone 88x31 -->
             <div style="border: 1px solid #111; padding: 4px; background: #fafafa; border-radius: 6px; display: inline-block;">
               <img src="./button.png" alt="My Button" style="width: 88px; height: 31px; display: block; image-rendering: pixelated;" onerror="this.src='https://via.placeholder.com/88x31/111/fff?text=88x31';">
             </div>
-
-            <!-- Codice HTML da copiare (finestra leggermente più grande) -->
             <div style="border: 2px dashed #111; padding: 8px; border-radius: 10px; font-size: 0.65rem; font-family: monospace; width: 100%; background: #fdfdfd; word-break: break-all; text-align: left;">
               &lt;a href="https://tuo-sito.neocities.org" target="_blank"&gt;&lt;img src="./button.png" alt="Cosmic-S"&gt;&lt;/a&gt;
             </div>
-
           </div>
         </div>
       </aside>
@@ -412,6 +409,7 @@
 
       <!-- COLONNA DESTRA -->
       <aside class="col-right">
+        <!-- GIF centrata e allineata sopra l'orologio -->
         <img id="main-avatar" src="./20260824_002041.gif" alt="Seea Avatar" class="floating-avatar">
 
         <div style="flex: 1;"></div>
@@ -420,11 +418,10 @@
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
-        <!-- CHAT BOX (CBOX) -->
+        <!-- CHAT BOX (CBOX) CON KAOMOJI AL POSTO DELL'EMOJI -->
         <div class="box">
-          <div class="box-header"><span>live_chat</span><span>💬</span></div>
+          <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 8px;">
-            <!-- Incolla qui sotto il codice iframe della tua Cbox -->
             <div style="font-size: 0.7rem; text-align: center; color: #777; padding: 10px; border: 2px dashed #ccc; border-radius: 10px;">
               [Incolla qui il codice Cbox]
             </div>
