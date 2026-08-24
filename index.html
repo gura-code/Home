@@ -203,10 +203,18 @@
       letter-spacing: 1px;
     }
 
-    /* Lettore musicale ingrandito e senza cornice esterna */
-    .ipod-player-clean {
+    /* Lettore musicale con riquadro bianco ripristinato e leggermente ingrandito */
+    .ipod-player-box {
+      background: #ffffff;
+      border: 2px solid #111111;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 3px 3px 0px #111111;
+      margin-bottom: 0;
+    }
+    .ipod-player-inner {
       text-align: center;
-      padding: 4px 0;
+      padding: 12px 10px;
     }
     .ipod-screen-clean { 
       background: #222; 
@@ -473,25 +481,22 @@
         <div class="box-dark">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 10px; background: #111111;">
-            <iframe src="https://www5.cbox.ws/box/?boxid=965960&boxtag=EoeC0G" width="100%" height="200" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
+            <iframe src="https://www5.cbox.ws/box/?boxid=965960&boxtag=EoeC0G" width="100%" height="260" allowtransparency="yes" allow="autoplay" frameborder="0" marginheight="0" marginwidth="0" scrolling="auto"></iframe>
           </div>
         </div>
 
-        <!-- Music player senza cornice bianca e ingrandito -->
-        <div class="box-dark" style="margin-bottom: 0;">
-          <div class="box-header"><span>music_player</span><span>♬</span></div>
-          <div class="box-body">
-            <div class="ipod-player-clean">
-              <div class="ipod-screen-clean" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
-              <!-- Player YouTube invisibile -->
-              <div style="display:none;">
-                <div id="youtube-player"></div>
-              </div>
-              <div class="ipod-controls-clean">
-                <button class="ipod-btn-ctrl-clean" onclick="prevSong()">&#10094;&#10094;</button>
-                <button class="ipod-btn-ctrl-clean" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
-                <button class="ipod-btn-ctrl-clean" onclick="nextSong()">&#10095;&#10095;</button>
-              </div>
+        <!-- Lettore musicale con riquadro bianco e senza scritta sopra -->
+        <div class="ipod-player-box">
+          <div class="ipod-player-inner">
+            <div class="ipod-screen-clean" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
+            <!-- Player YouTube invisibile -->
+            <div style="display:none;">
+              <div id="youtube-player"></div>
+            </div>
+            <div class="ipod-controls-clean">
+              <button class="ipod-btn-ctrl-clean" onclick="prevSong()">&#10094;&#10094;</button>
+              <button class="ipod-btn-ctrl-clean" id="play-pause-btn" onclick="togglePlay()">&#9654;</button>
+              <button class="ipod-btn-ctrl-clean" onclick="nextSong()">&#10095;&#10095;</button>
             </div>
           </div>
         </div>
