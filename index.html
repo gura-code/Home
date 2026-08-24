@@ -43,27 +43,7 @@
       overflow: hidden;
     }
 
-    .top-banner {
-      background: #111111;
-      border: 2px solid #111111;
-      border-radius: 20px;
-      padding: 12px 25px;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      position: relative;
-    }
-
-    .top-banner h1 { 
-      font-size: 3.5rem; 
-      font-weight: 800; 
-      letter-spacing: 3px; 
-      color: #ffffff;
-      text-align: left;
-      line-height: 1;
-      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
-    }
-
+    /* Griglia principale a 3 colonne */
     .grid-container {
       display: grid;
       grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr) minmax(160px, 220px);
@@ -78,6 +58,31 @@
       flex-direction: column;
       position: relative;
       min-width: 0;
+    }
+
+    /* Il banner nero occupa esattamente la colonna 1 e la colonna 2 */
+    .top-banner {
+      background: #111111;
+      border: 2px solid #111111;
+      border-radius: 20px;
+      padding: 12px 25px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      position: relative;
+      width: 100%;
+      grid-column: 1 / 3; /* Si estende dalla colonna 1 fino all'inizio della colonna 3 */
+      margin-bottom: 4px;
+    }
+
+    .top-banner h1 { 
+      font-size: 3.5rem; 
+      font-weight: 800; 
+      letter-spacing: 3px; 
+      color: #ffffff;
+      text-align: left;
+      line-height: 1;
+      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
     }
 
     .floating-avatar-container {
@@ -383,13 +388,14 @@
        ========================================================== -->
   <div id="home-view" class="site-wrapper">
 
-    <header class="top-banner">
-      <h1>COSMIC-S</h1>
-    </header>
-
     <div class="grid-container">
 
-      <!-- COLONNA SINISTRA -->
+      <!-- BANNER NERO POSIZIONATO DIRETTAMENTE NELLA GRIGLIA (OCCUPA COLONNA 1 E 2) -->
+      <header class="top-banner">
+        <h1>COSMIC-S</h1>
+      </header>
+
+      <!-- COLONNA SINISTRA (MENU E ALTRE ROBE) -->
       <aside class="col-left">
         <div class="receipt-box">
           <div class="receipt-title">.☘︎ ݁˖ MENU ☰ ❞</div>
@@ -440,7 +446,7 @@
         </button>
       </aside>
 
-      <!-- COLONNA CENTRALE (FLESSIBILE) - CHAT BOX SPOSTATA QUI IN FONDO -->
+      <!-- COLONNA CENTRALE -->
       <main class="col-center">
         <div style="margin-bottom: 14px;">
           <img src="./about-me-card.png" alt="about_me.id" class="pure-card-img">
@@ -463,7 +469,7 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[24 AUG]</strong> Chat box spostata come ultima opzione della colonna centrale!</li>
+              <li><strong>[24 AUG]</strong> Banner corretto sopra le prime due colonne!</li>
             </ul>
           </div>
         </div>
@@ -477,14 +483,14 @@
           </a>
         </div>
 
-        <!-- CHAT BOX COME ULTIMA OPZIONE DELLA COLONNA CENTRALE -->
+        <!-- CHAT BOX -->
         <div class="box" style="margin-bottom: 0;">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 10px;">
             <div class="chatbox-container" style="margin-bottom: 0;">
               <div class="chatbox-messages">
-                <div class="chatbox-msg-item"><strong>Velas:</strong> Ciao! Ora la chat box è qui sotto nella colonna centrale! ✨</div>
-                <div class="chatbox-msg-item"><strong>Seea:</strong> Perfetto! Ha tutto lo spazio che le serve (≧◡≦)</div>
+                <div class="chatbox-msg-item"><strong>Velas:</strong> Fatto! Il menu è tornato a sinistra e il banner si ferma sulla seconda colonna ✨</div>
+                <div class="chatbox-msg-item"><strong>Seea:</strong> Perfetto, proprio così! (≧◡≦)</div>
               </div>
               <form class="chatbox-form" onsubmit="event.preventDefault();">
                 <input type="text" class="chatbox-input" placeholder="Name..." value="">
@@ -499,7 +505,7 @@
         </div>
       </main>
 
-      <!-- COLONNA DESTRA (PROTETTA) - OROLOGIO E ALTRI ELEMENTI -->
+      <!-- COLONNA DESTRA (TERZA COLONNA) -->
       <aside class="col-right">
         <!-- Container sicuro per la GIF -->
         <div class="floating-avatar-container">
