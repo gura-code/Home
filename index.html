@@ -40,7 +40,7 @@
       flex-direction: column;
       gap: 16px;
       position: relative;
-      overflow: hidden; /* Protegge i bordi del rettangolo */
+      overflow: hidden;
     }
 
     .top-banner {
@@ -64,7 +64,6 @@
       text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
     }
 
-    /* Griglia a 3 colonne con limiti sicuri: sinistra e destra protette, centro flessibile */
     .grid-container {
       display: grid;
       grid-template-columns: minmax(180px, 240px) minmax(220px, 1fr) minmax(160px, 220px);
@@ -81,7 +80,6 @@
       min-width: 0;
     }
 
-    /* Avatar fluttuante ancorato dentro la colonna destra */
     .floating-avatar-container {
       position: absolute;
       top: -95px;
@@ -205,7 +203,6 @@
       letter-spacing: 1px;
     }
 
-    /* Stile ingrandito e dettagliato per la Chat Box / Cbox */
     .chatbox-container {
       background: #ffffff;
       border: 2px solid #111;
@@ -426,7 +423,8 @@
           </div>
         </div>
 
-        <div class="box" style="margin-bottom:0;">
+        <!-- BLOCCO LINK_ME -->
+        <div class="box">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
             <div style="border: 1px solid #111; padding: 4px; background: #fafafa; border-radius: 6px; display: inline-block;">
@@ -437,6 +435,11 @@
             </div>
           </div>
         </div>
+
+        <!-- BLOCCO FRIENDS & BUTTONS SPOSTATO QUI SOTTO -->
+        <button class="nav-box-btn-dark" onclick="openPage('buttons-page')" style="margin-bottom:0;">
+          ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
+        </button>
       </aside>
 
       <!-- COLONNA CENTRALE (FLESSIBILE) -->
@@ -462,7 +465,7 @@
           <div class="box-header"><span>latest_updates</span><span>[LOG]</span></div>
           <div class="box-body">
             <ul style="list-style:none; font-size:0.8rem; display:flex; flex-direction:column; gap:6px;">
-              <li><strong>[24 AUG]</strong> Chat box ingrandita e riorganizzata nella colonna destra!</li>
+              <li><strong>[24 AUG]</strong> Spostato il pulsante Friends &amp; Buttons sotto link_me!</li>
             </ul>
           </div>
         </div>
@@ -486,7 +489,7 @@
 
         <div style="flex: 1;"></div>
 
-        <!-- CHAT BOX PIÙ GRANDE E IN ALTO -->
+        <!-- CHAT BOX -->
         <div class="box">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 10px;">
@@ -507,17 +510,13 @@
           </div>
         </div>
 
-        <!-- OROLOGIO SOTTO LA CHAT BOX -->
+        <!-- OROLOGIO -->
         <div class="pixel-clock-box-dark">
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
         <button class="nav-box-btn" onclick="openPage('guestbook-page')">
           ✎ GUESTBOOK -&gt;
-        </button>
-
-        <button class="nav-box-btn-dark" onclick="openPage('buttons-page')">
-          ★ FRIENDS &amp; BUTTONS (88x31) -&gt;
         </button>
 
         <div class="box" style="margin-bottom: 0;">
