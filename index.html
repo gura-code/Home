@@ -21,10 +21,11 @@
       background-size: 20px 20px;
       color: #111111;
       font-family: 'Quicksand', sans-serif;
-      padding: 40px 10px;
+      padding: 20px 10px;
       display: flex;
       justify-content: center;
       position: relative;
+      overflow-x: hidden;
     }
 
     .site-wrapper {
@@ -54,16 +55,16 @@
     }
 
     .top-banner h1 { 
-      font-size: 4.2rem; 
+      font-size: 3.5rem; 
       font-weight: 800; 
       letter-spacing: 3px; 
       color: #ffffff;
       text-align: left;
       line-height: 1;
-      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6), 0 0 30px rgba(255,255,255,0.4);
+      text-shadow: 0 0 10px rgba(255,255,255,0.9), 0 0 20px rgba(255,255,255,0.6);
     }
 
-    /* Griglia fissa a tre colonne (240px - 440px - 220px) per stabilità totale tra browser */
+    /* Griglia fissa su desktop */
     .grid-container {
       display: grid;
       grid-template-columns: 240px 440px 220px;
@@ -73,22 +74,29 @@
       padding-bottom: 20px;
     }
 
-    .col-center, .col-right {
+    .col-left, .col-center, .col-right {
       display: flex;
       flex-direction: column;
       position: relative;
+      min-width: 0;
     }
 
-    /* GIF centrata sopra l'orologio, leggermente più in alto */
-    .floating-avatar {
+    /* GIF centrata sopra l'orologio */
+    .floating-avatar-container {
       position: absolute;
       top: -95px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 130px;
-      height: auto;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
       z-index: 100;
       pointer-events: none;
+    }
+
+    .floating-avatar {
+      width: 130px;
+      max-width: 100%;
+      height: auto;
       filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
     }
 
@@ -306,6 +314,36 @@
       transition: transform 0.15s ease;
     }
     .pure-card-img:hover { transform: translateY(-2px); }
+
+    /* ==========================================================
+       MEDIA QUERY RESPONSIVE PER SMARTPHONE E SCHERMI STRETTI
+       ========================================================== */
+    @media (max-width: 950px) {
+      body {
+        padding: 10px 5px;
+      }
+      .site-wrapper {
+        padding: 12px;
+        border-radius: 20px;
+      }
+      .top-banner h1 {
+        font-size: 2.2rem;
+      }
+      /* Trasforma la griglia in un'unica colonna verticale leggibile */
+      .grid-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      /* Rimuove il posizionamento assoluto dell'avatar su mobile e lo centra in alto */
+      .floating-avatar-container {
+        position: relative;
+        top: 0;
+        margin-bottom: 15px;
+      }
+      .receipt-box {
+        transform: rotate(0deg); /* Rimuove la rotazione scontrino su mobile per evitare sbavature */
+      }
+    }
   </style>
 </head>
 <body>
@@ -355,7 +393,7 @@
           </div>
         </div>
 
-        <!-- BLOCCO LINK_ME CON ANTEPRIMA DEL BOTTONE -->
+        <!-- BLOCCO LINK_ME -->
         <div class="box" style="margin-bottom:0;">
           <div class="box-header"><span>link_me</span><span>★</span></div>
           <div class="box-body" style="text-align: center; display: flex; flex-direction: column; gap: 10px; align-items: center;">
@@ -409,8 +447,10 @@
 
       <!-- COLONNA DESTRA -->
       <aside class="col-right">
-        <!-- GIF centrata e allineata sopra l'orologio -->
-        <img id="main-avatar" src="./20260824_002041.gif" alt="Seea Avatar" class="floating-avatar">
+        <!-- Container sicuro per la GIF -->
+        <div class="floating-avatar-container">
+          <img id="main-avatar" src="./20260824_002041.gif" alt="Seea Avatar" class="floating-avatar">
+        </div>
 
         <div style="flex: 1;"></div>
 
@@ -418,7 +458,7 @@
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
-        <!-- CHAT BOX (CBOX) CON KAOMOJI AL POSTO DELL'EMOJI -->
+        <!-- CHAT BOX CON KAOMOJI -->
         <div class="box">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
           <div class="box-body" style="padding: 8px;">
@@ -605,7 +645,7 @@
       document.getElementById('cal-day-number').innerText = currentDay;
 
       const firstDayOfMonth = new Date(currentYear, currentMonth, 1).getDay();
-      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+      const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getData ? new Date(currentYear, currentMonth + 1, 0).getDate() : new Date(currentYear, currentMonth + 1, 0).getDate();
       const tbody = document.getElementById('calendar-body');
       tbody.innerHTML = '';
 
@@ -618,7 +658,7 @@
           let cell = document.createElement('td');
           if (i === 0 && j < firstDayOfMonth) {
             cell.innerText = '';
-          } else if (date > daysInMonth) {
+          } else  if (date > daysInMonth) {
             cell.innerText = '';
           } else {
             cell.innerText = date;
@@ -649,3 +689,4 @@
 
 </body>
 </html>
+
