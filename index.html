@@ -203,7 +203,6 @@
       letter-spacing: 1px;
     }
 
-    /* Lettore musicale con riquadro bianco ripristinato e leggermente ingrandito */
     .ipod-player-box {
       background: #ffffff;
       border: 2px solid #111111;
@@ -474,9 +473,10 @@
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
         </div>
 
-        <button class="nav-box-btn" onclick="openPage('guestbook-page')">
+        <!-- COLLEGAMENTO AL VERO GUESTBOOK DI ATABOOK -->
+        <a href="https://gura-code.atabook.org" target="_blank" class="nav-box-btn" style="display: block; text-decoration: none;">
           ✎ SIGN GUESTBOOK -&gt;
-        </button>
+        </a>
 
         <div class="box-dark">
           <div class="box-header"><span>live_chat</span><span>(๑>◡<๑)</span></div>
@@ -485,11 +485,9 @@
           </div>
         </div>
 
-        <!-- Lettore musicale con riquadro bianco e senza scritta sopra -->
         <div class="ipod-player-box">
           <div class="ipod-player-inner">
             <div class="ipod-screen-clean" id="ipod-screen-text">YouTube Music<br><strong>Playlist Ready</strong></div>
-            <!-- Player YouTube invisibile -->
             <div style="display:none;">
               <div id="youtube-player"></div>
             </div>
@@ -510,7 +508,7 @@
 
   </div>
 
-  <!-- FULLSCREEN PAGES -->
+  <!-- FULLSCREEN PAGES (Le altre pagine interne rimangono invariate) -->
   <div id="blog-page" class="fullscreen-page">
     <div class="fullscreen-header">
       <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
@@ -554,23 +552,6 @@
     </div>
   </div>
 
-  <div id="guestbook-page" class="fullscreen-page">
-    <div class="fullscreen-header">
-      <button class="back-btn" onclick="closePage()">&lt;- BACK TO DESK</button>
-      <h2>SEEA // GUESTBOOK</h2>
-    </div>
-    <div style="background:#fff; border:3px solid #111; border-radius:20px; padding:20px; box-shadow:4px 4px 0px #111;">
-      <form onsubmit="event.preventDefault(); addGuestbookEntry();" style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
-        <input type="text" id="gb-name" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:700;" placeholder="Your nickname..." required>
-        <textarea id="gb-msg" rows="3" style="border:2px solid #111; border-radius:10px; padding:8px 12px; font-weight:600;" placeholder="Leave a nice message..." required></textarea>
-        <button type="submit" class="back-btn" style="align-self: flex-start;">Submit</button>
-      </form>
-      <div id="gb-list" style="font-size:0.85rem; display:flex; flex-direction:column; gap:8px;">
-        <div style="border-bottom:1px dashed #ccc; padding-bottom:6px;"><strong>Seea:</strong> Welcome to the archive guestbook! Please leave a trace!</div>
-      </div>
-    </div>
-  </div>
-
   <script>
     function openPage(pageId) {
       document.getElementById('home-view').style.display = 'none';
@@ -584,34 +565,17 @@
       document.getElementById('home-view').style.display = 'flex';
     }
 
-    function addGuestbookEntry() {
-      const name = document.getElementById('gb-name').value;
-      const msg = document.getElementById('gb-msg').value;
-      const list = document.getElementById('gb-list');
-
-      const entry = document.createElement('div');
-      entry.style.borderBottom = '1px dashed #ccc';
-      entry.style.paddingBottom = '6px';
-      entry.innerHTML = `<strong>${name}:</strong> ${msg}`;
-      
-      list.prepend(entry);
-      document.getElementById('gb-name').value = '';
-      document.getElementById('gb-msg').value = '';
-    }
-
     // Integrazione ufficiale YouTube API per la playlist di YouTube Music
     let player;
     let isPlaying = false;
     const playPauseBtn = document.getElementById('play-pause-btn');
     const screenText = document.getElementById('ipod-screen-text');
 
-    // Carica lo script dell'API di YouTube in modo asincrono
     const tag = document.createElement('script');
     tag.src = "https://www.youtube.com/iframe_api";
     const firstScriptTag = document.getElementsByTagName('script')[0];
     firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-    // Questa funzione viene chiamata automaticamente da YouTube quando l'API è pronta
     function onYouTubeIframeAPIReady() {
       player = new YT.Player('youtube-player', {
         height: '200',
@@ -633,7 +597,6 @@
     }
 
     function onPlayerStateChange(event) {
-      // Aggiorna lo stato dei pulsanti e del testo in base a cosa fa YouTube
       if (event.data == YT.PlayerState.PLAYING) {
         isPlaying = true;
         playPauseBtn.innerHTML = "&#10074;&#10074;";
