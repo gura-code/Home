@@ -80,22 +80,19 @@
       min-width: 0;
     }
 
-    .floating-avatar-container {
-      position: absolute;
-      top: -95px;
-      left: 0;
-      right: 0;
+    /* Stile per il pezzo di carta allineato alla colonna e largo quanto l'orologio */
+    .paper-note-container {
+      width: 100%;
+      margin-bottom: 14px;
       display: flex;
       justify-content: center;
-      z-index: 100;
-      pointer-events: none;
     }
 
-    .floating-avatar {
-      width: 130px;
-      max-width: 100%;
+    .paper-note-img {
+      width: 100%;
       height: auto;
-      filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.15));
+      display: block;
+      filter: drop-shadow(3px 3px 0px rgba(0,0,0,0.15));
     }
 
     .box {
@@ -463,11 +460,10 @@
 
       <!-- RIGHT COLUMN -->
       <aside class="col-right">
-        <div class="floating-avatar-container">
-          <img id="main-avatar" src="./1787672037979.png" alt="Seea Avatar" class="floating-avatar">
+        <!-- Pezzo di carta posizionato tra il banner nero e l'orologio, largo quanto l'orologio -->
+        <div class="paper-note-container">
+          <img src="./1787672037979.png" alt="Note Paper" class="paper-note-img">
         </div>
-
-        <div style="flex: 1;"></div>
 
         <div class="pixel-clock-box-dark">
           <div class="pixel-clock-time-dark" id="pixel-clock">00:00:00</div>
